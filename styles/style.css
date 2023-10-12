@@ -1,9 +1,35 @@
-
-body{
-    font-family: 'Barlow', sans-serif;
+body {
+  font-family: 'Barlow', sans-serif;
 }
 
-.navbar-brand{
-    font-family: 'Bree Serif', serif;
+.navbar-brand {
+  font-family: 'Bree Serif', serif;
 
+}
+
+.welcome-background-image {
+  background-image: url(../images/welcome_banner_img.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+}
+
+.welcome-texts {
+  text-align: left;
+  position: absolute;
+  bottom: 20vh;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.btn-primary {
+  background-color: #CCD5AE !important;
+  border: none;
+  color: #888888;
+}
+
+.btn-outline-secondary {
+  border-color: #ffffff;
+  color: #ffffff;
 }
