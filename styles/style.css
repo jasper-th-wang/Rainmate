@@ -1,7 +1,9 @@
-body {
-  font-family: 'Barlow', sans-serif;
+
+body{
+    font-family: 'Barlow', sans-serif;
 }
 
-.topnav {
-  font-family: 'Bree Serif', serif;
+.navbar-brand{
+    font-family: 'Bree Serif', serif;
+
 }
