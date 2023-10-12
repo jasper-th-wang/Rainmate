@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>My BCIT Project</title>
+  <title>RainMate</title>
   <meta name="comp1800 template" content="My 1800 App">
 
   <!-- Required meta tags -->
@@ -35,7 +35,9 @@
   <link rel="stylesheet" href="./styles/style.css">
 
   <!-- Other libraries go here -->
-
+  <!-- Google Material icon -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <!-- Link to styles of your own -->
   <link rel="stylesheet" href="./styles/style.css">
 
@@ -76,7 +78,7 @@
       <div class="d-flex gap-3 justify-content-start lead fw-normal">
         <button class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">Sign
           up</button>
-        <button class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">Learn more</button>
+        <a href="#featured-3" class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">Learn more</a>
       </div>
     </div>
     <div class="product-device shadow-sm d-none d-md-block"></div>
@@ -87,106 +89,61 @@
   <div class="container marketing">
     <!-- START THE FEATURETTES -->
 
-    <div class="row featurette py-5">
-      <div class="col-md-7 align-self-center">
-        <h2 class="featurette-heading fw-normal lh-1">Don't Let the Rain Get in Your Way!<span
-            class="text-body-secondary"></span></h2>
-        <p class="lead">
-          Say goodbye to getting caught in the rain without protection. With RainMate, you'll have a convenient,
-          affordable, and eco-friendly solution right at your fingertips.
-        </p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-          height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-          preserveAspectRatio="xMidYMid slice" focusable="false">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect><text x="50%" y="50%"
-            fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-        </svg>
-      </div>
-    </div>
-
-
     <div class="container px-4 py-5" id="featured-3">
       <h2 class="pb-2 border-bottom">Why RainMate?</h2>
       <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
         <div class="feature col">
           <div
             class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-            <svg class="bi" width="1em" height="1em">
-              <use xlink:href="#collection"></use>
-            </svg>
+            <span class="material-symbols-outlined">
+              bolt
+            </span>
           </div>
           <h3 class="fs-2 text-body-emphasis">Instant Access</h3>
           <p>Need an umbrella? Just open the app, locate the nearest umbrella station, and grab one on the go. It's that
             simple!</p>
-          <a href="#" class="icon-link">
-            Call to action
-            <svg class="bi">
-              <use xlink:href="#chevron-right"></use>
-            </svg>
-          </a>
         </div>
         <div class="feature col">
           <div
             class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-            <svg class="bi" width="1em" height="1em">
-              <use xlink:href="#people-circle"></use>
-            </svg>
+            <span class="material-symbols-outlined">
+              savings
+            </span>
           </div>
           <h3 class="fs-2 text-body-emphasis">Affordable</h3>
           <p>No need to buy another umbrella ever again!</p>
-          <a href="#" class="icon-link">
-            Call to action
-            <svg class="bi">
-              <use xlink:href="#chevron-right"></use>
-            </svg>
-          </a>
         </div>
         <div class="feature col">
           <div
             class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-            <svg class="bi" width="1em" height="1em">
-              <use xlink:href="#toggles2"></use>
-            </svg>
+            <span class="material-symbols-outlined">
+              eco
+            </span>
           </div>
           <h3 class="fs-2 text-body-emphasis">Eco-friendly</h3>
           <p>Reduce waste and promote sustainability by sharing umbrellas with your community. Join us in making
             Vancouver greener,
             one umbrella at a time.</p>
-          <a href="#" class="icon-link">
-            Call to action
-            <svg class="bi">
-              <use xlink:href="#chevron-right"></use>
-            </svg>
-          </a>
         </div>
       </div>
     </div>
-    <div class="row featurette">
+    <div class="row featurette mb-5">
       <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading fw-normal lh-1">About us <span class="text-body-secondary"></span></h2>
-        <p class="lead">
-        <p>RainMate APP is the next step in umbrella sharing, designed for people in need of a quick solution when the
-          rain starts falling. RainMate APP provides you with the convenience to borrow an umbrella from one location
-          and return it at another, ensuring you stay dry and connected with your community. Our fleet of high-quality
-          umbrellas is available at your fingertips, offering a cost-effective and eco-friendly way to stay dry while
-          exploring your city.
+        <h2 class="featurette-heading fw-normal lh-1 position-relative">How it works</h2>
+        <p class="lead">Open our RainMate app, and voilà! We’ve connected you with a local vendors who are part of our
+          umbrella-sharing network.
+          With just a tap, you can rent an umbrella and pick it up at your convenience. Need to return it? No problem!
+          Drop it off
+          at any of our partner vendors. It's that easy!
         </p>
-        RainMate APP is committed to respecting and acknowledging the traditional and contemporary territories of
-        Indigenous communities across what is now recognized as our service areas. Our headquarters are located on the
-        lands of the original stewards, and we are grateful to the local communities for allowing us to operate on their
-        lands.</p>
       </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-          height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-          preserveAspectRatio="xMidYMid slice" focusable="false">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect><text x="50%" y="50%"
-            fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-        </svg>
+      <div class="col-md-5 order-md-1 position-relative">
+        <iframe style="position: relative;" width="100%" height="auto"
+          src="https://www.youtube.com/embed/v886WAUnIFQ?si=PsK3vLCl03En7F6_" title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
 
@@ -197,26 +154,19 @@
 
   <!-- Sign Up Section -->
   <div class="p-5 text-center bg-body-tertiary rounded-3">
-    <svg class="bi mt-4 mb-3" style="color: var(--bs-indigo);" width="100" height="100">
-      <use xlink:href="#bootstrap"></use>
-    </svg>
     <h1 class="text-body-emphasis">Be Part of Something Bigger</h1>
     <p class="col-lg-8 mx-auto fs-5 text-muted">With RainReady, you're not just staying dry - you're contributing to a
       more sustainable, connected Vancouver. Join us in
       revolutionizing the way we deal with rainy days.</p>
-    <div class="d-inline-flex gap-2 mb-5">
-      <button class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">
-        Call to action
-      </button>
-      <button class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
-        Secondary link
-      </button>
+    <div class="d-inline-flex gap-2 ">
+      <button class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">Sign up
+        now</button>
     </div>
   </div>
 
   <!-- Footer Section -->
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-body-secondary">© 2023 Company, Inc</p>
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 ">
+    <p class="col-md-4 mb-0 text-body-secondary">© 2023 RainMate, Inc</p>
 
     <a href="/"
       class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -228,8 +178,8 @@
     <ul class="nav col-md-4 justify-content-end">
       <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Why RainMate</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">
-          <button class="btn btn-outline-success" type="submit">Sign In</button>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary text-body-success">
+          Sign In</a>
       </li>
 
     </ul>
