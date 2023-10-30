@@ -1,4 +1,2 @@
-function sayHello() {
-    
-}
+function sayHello() {}
 //sayHello();
