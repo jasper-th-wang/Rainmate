@@ -58,12 +58,26 @@ body {
   color: red;
 }
 
-.map-ui__list {
+.map-ui__list,
+.map-ui__map {
   position: absolute;
-  top: 40px;
-  right: 40px;
   transform: scale(2);
   cursor: pointer;
+}
+
+.map-ui__list {
+  top: 40px;
+  right: 40px;
+}
+
+.map-ui__map {
+  top: 80px;
+  right: 40px;
+}
+
+.map-ui__map a {
+  text-decoration: none;
+  color: red;
 }
 
 .map-ui__location {
@@ -108,6 +122,3 @@ body {
   padding-top: 20px;
   border-bottom: 10px;
 }
-/* .qrcode {
-  width:20%;
-} */
