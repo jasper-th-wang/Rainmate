@@ -110,8 +110,6 @@ body {
 }
 
 
-
-
 .map-ui img {
   object-fit: fill;
   height: 100%;
@@ -123,6 +121,7 @@ body {
   border-bottom: 10px;
 }
 
+
 /* #qrcode {
   width:60px;
 } */
@@ -130,4 +129,26 @@ body {
 #qrcode>img {
   width: 100%;
   object-fit: cover;
+
+#timer {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900px;
+  font-size: 40px;
+  margin: 0;
+  background-color: #E9EDC9
+}
+
+.card-body {
+  padding: 0;
+}
+
+.btn.btn-primary {
+  margin: 15px;
+}
+
+.card-title {
+  margin-left: 4px;
+  margin-top: 4px;
+  font-weight: 600;
 }
