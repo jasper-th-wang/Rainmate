@@ -39,6 +39,14 @@
   <link rel="stylesheet" href="./styles/style.css">
 
   <!-- Other libraries go here -->
+  <!-------------------------------------------------------->
+  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+  <!-------------------------------------------------------->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
   <!-- Google Material icon -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -161,7 +169,7 @@
     <ul class="nav col-md-4 justify-content-end">
       <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Why RainMate</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary text-body-success">
+      <li class="nav-item"><a href="login.html" class="nav-link px-2 text-body-secondary text-body-success">
           Sign In</a>
       </li>
 
@@ -181,6 +189,9 @@
   <script src="./scripts/script.js"></script>
   <script src="./scripts/firebaseAPI.js"></script>
   <script src="./scripts/skeleton.js"></script>
+  <script>
+    logout();       //make sure user is logged out
+  </script>
 
 </body>
 
