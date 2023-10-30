@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Reservation Confirmation</title>
+  <!-- Add necessary libraries and stylesheets here, just like in your existing HTML -->
+</head>
+<body>
+  <div class="container">
+    <h2>Reservation Confirmation</h2>
+    <p>Your reservation is confirmed!</p>
+    <!-- Add the QR code display area -->
+    <div id="qrcode"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/qrcode.min.js"></script>
+  <script>
+    // Generate a QR code with QRCode.js or any QR code generation library
+    const qrcode = new QRCode(document.getElementById("qrcode"), {
+      text: "Your QR Code Data", // Replace with the actual reservation data
+      width: 128,
+      height: 128
+    });
+  </script>
+</body>
+</html>
