@@ -95,3 +95,8 @@ body {
   height: 100%;
   width: 100%;
 }
+
+.list {
+  padding-top: 20px;
+  border-bottom: 10px;
+}
