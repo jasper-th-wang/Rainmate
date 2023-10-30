@@ -53,6 +53,11 @@ body {
   height: cal(100vh - 390px);
 }
 
+.map-ui a {
+  text-decoration: none;
+  color: red;
+}
+
 .map-ui__location {
   position: absolute;
   transform: scale(1.5);
