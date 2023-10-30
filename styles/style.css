@@ -58,6 +58,28 @@ body {
   color: red;
 }
 
+.map-ui__list,
+.map-ui__map {
+  position: absolute;
+  transform: scale(2);
+  cursor: pointer;
+}
+
+.map-ui__list {
+  top: 40px;
+  right: 40px;
+}
+
+.map-ui__map {
+  top: 80px;
+  right: 40px;
+}
+
+.map-ui__map a {
+  text-decoration: none;
+  color: red;
+}
+
 .map-ui__location {
   position: absolute;
   transform: scale(1.5);
