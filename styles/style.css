@@ -110,8 +110,6 @@ body {
 }
 
 
-
-
 .map-ui img {
   object-fit: fill;
   height: 100%;
@@ -121,4 +119,27 @@ body {
 .list {
   padding-top: 20px;
   border-bottom: 10px;
+}
+
+#timer {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900px;
+  font-size: 40px;
+  margin: 0;
+  background-color: #E9EDC9
+}
+
+.card-body {
+  padding: 0;
+}
+
+.btn.btn-primary {
+  margin: 15px;
+}
+
+.card-title {
+  margin-left: 4px;
+  margin-top: 4px;
+  font-weight: 600;
 }
