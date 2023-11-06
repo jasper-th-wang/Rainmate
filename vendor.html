@@ -60,19 +60,25 @@
   <nav class="navbar navbar-expand-lg" id="navbar">
   </nav>
   <div class="container">
+    <img class="vendor-img responsive img-fluid" src="" />
     <h2 id="vendorName">Some Vendor</h2>
-    <p>Rating</p>
+    <p id="vendorRating">Rating: </p>
+    <div class="hours p-5" id="vendorHours">
+      <h3>Hours: </h3>
+    </div>
     <p>Description:</p>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto sequi corporis, in voluptates maxime ullam
+    <p id="vendorDescription">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto sequi corporis, in
+      voluptates maxime ullam
       cupiditate ratione perferendis nostrum dolorem dolores ex labore reiciendis assumenda incidunt aut minima. Illo,
       rerum!</p>
     <a href="main.html" class="btn btn-secondary">Cancel</a>
-    <a href="reservation.html" class="btn btn-primary">Reserve</a>
+    <a href="reservation.html" class="btn btn-primary" id="reserveBtn">Reserve</a>
   </div>
 
   <script src="./scripts/script.js"></script>
   <script src="./scripts/firebaseAPI.js"></script>
   <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/vendor.js"></script>
 </body>
 
 </html>
