@@ -20,7 +20,8 @@ var uiConfig = {
           name: user.displayName,                    //"users" collection
           email: user.email,                         //with authenticated user's ID (user.uid)
           signup_date: firebase.firestore.FieldValue.serverTimestamp(),  //current system time
-          reservation_history: []                    //empty array for now
+          current_reservation: "",                 //get reservation_id from Reservations collection 
+          current_borrowing: "",                   //get borrowing_id from Borrowings collection  
         }).then(function () {
           console.log("New user added to firestore");
           window.location.assign("main.html");       //re-direct to main.html after signup
