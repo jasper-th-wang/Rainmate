@@ -153,3 +153,9 @@ body {
   margin-top: 4px;
   font-weight: 600;
 }
+
+.hi-user-name{
+  font-family: "Bree Serif", serif;
+  font-weight: 400;
+  padding-left: 15px;;
+}
