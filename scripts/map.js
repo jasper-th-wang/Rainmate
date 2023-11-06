@@ -43,6 +43,21 @@ function showMap() {
               // Coordinates
               vendor_name = doc.data().name; // Event Name
               address = doc.data().address; // Text Preview
+              hours = doc.data().hours_of_operation;
+              hoursSorted = [
+                `Monday: ${hours.monday}`,
+                `Tuesday: ${hours.tuesday}`,
+                `Wednesday: ${hours.wednesday}`,
+                `Thursday: ${hours.thursday}`,
+                `Friday: ${hours.friday}`,
+                `Saturday: ${hours.saturday}`,
+                `Sunday: ${hours.sunday}`,
+              ];
+              hoursHTML = '';
+              for (const dayHours of hoursSorted) {
+                dayOfWeek = `<p>${dayHours}</p>`;
+                hoursHTML += dayOfWeek;
+              }
               // img = doc.data().posterurl; // Image
               // url = doc.data().link; // URL
 
@@ -51,7 +66,7 @@ function showMap() {
               features.push({
                 type: 'Feature',
                 properties: {
-                  description: `<strong>${vendor_name}</strong><p>${address}</p> <br> <a href="/vendor.html?id=${doc.id}" target="_blank" title="Opens in a new window">Read more</a>`,
+                  description: `<strong>${vendor_name}</strong><p>${address}</p> <br> <div id="hours">${hoursHTML}</div> <a href="/vendor.html?id=${doc.id}" target="_blank" title="Opens in a new window">Read more</a>`,
                 },
                 geometry: {
                   type: 'Point',
