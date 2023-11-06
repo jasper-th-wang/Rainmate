@@ -121,6 +121,16 @@ body {
   border-bottom: 10px;
 }
 
+
+/* #qrcode {
+  width:60px;
+} */
+
+#qrcode>img {
+  width: 100%;
+  object-fit: cover;
+}
+
 #timer {
   text-align: center;
   font-family: 'Roboto', sans-serif;
