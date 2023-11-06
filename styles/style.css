@@ -130,6 +130,8 @@ body {
   width: 100%;
   object-fit: cover;
 
+}
+
 #timer {
   text-align: center;
   font-family: 'Roboto', sans-serif;
