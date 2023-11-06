@@ -104,3 +104,49 @@ function writeReservations() {
   });
 
 }
+
+function writeBorrowings(){
+
+  var BorrowingsRef = db.collection("Borrowings");
+
+  BorrowingsRef.add({
+    reservation_id: "RsdGckt2XI7rlAx36Qac",
+    pickup_time: 0,
+    return_vendor_id: "",
+    return_time: 0,
+    last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+  });
+
+  BorrowingsRef.add({
+    reservation_id: "TSyETWJH9Clp5X8DZnPN",
+    pickup_time: "2023-11-06 07:27:57",
+    return_vendor_id: "",
+    return_time: 0,
+    last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+  });
+
+  BorrowingsRef.add({
+    reservation_id: "WeM7rwfMXHAlmYRjJ3Li",
+    pickup_time: "2023-11-05 12:35:21",
+    return_vendor_id: "ybruxGV5yQ4zrLuaWfOJ",
+    return_time: "2023-11-06 07:15:21",
+    last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+  });
+
+  BorrowingsRef.add({
+    reservation_id: "pxWzNiZL6aq6YLN86ZfV",
+    pickup_time: "2023-11-05 10:00:22",
+    return_vendor_id: "nbj8MBuPq4gAVRzkDycD",
+    return_time: "2023-11-05 17:00:47",
+    last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+  });
+
+  BorrowingsRef.add({
+    reservation_id: "vTdfQPmQPEBJAdWcCw8o",
+    pickup_time: "2023-11-06 10:45:25",
+    return_vendor_id: "Vfllt9nP7BWmc6RYdJhf",
+    return_time: "2023-11-07 17:45:25",
+    last_updated: firebase.firestore.FieldValue.serverTimestamp()  //current system time
+  });
+
+}
