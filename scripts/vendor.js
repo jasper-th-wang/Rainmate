@@ -39,9 +39,9 @@ function displayVendorInfo() {
         .insertAdjacentHTML('beforeend', vendorHoursHTML);
       document.getElementById(
         'reserveBtn'
-      ).href = `/reservation.html?id=${doc.id}`;
+      ).href = `./reservation.html?id=${doc.id}`;
       let imgEvent = document.querySelector('.vendor-img');
-      imgEvent.src = '../images/vendors/' + vendorCode + '.png';
+      imgEvent.src = './images/vendors/' + vendorCode + '.png';
     });
 }
 
