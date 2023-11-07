@@ -41,7 +41,7 @@ function displayVendorInfo() {
         'reserveBtn'
       ).href = `/reservation.html?id=${doc.id}`;
       let imgEvent = document.querySelector('.vendor-img');
-      imgEvent.src = '../images/vendors/' + vendorCode + '.png';
+      imgEvent.src = './images/vendors/' + vendorCode + '.png';
     });
 }
 
