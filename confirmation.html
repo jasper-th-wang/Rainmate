@@ -75,7 +75,7 @@
     <p>Go to pick up your reservation as soon as possible!</p>
 
     <div id="qrcode">
-      <img src="QR code.jpg" alt="QRCode">
+      <!-- <img src="QR code.jpg" alt="QRCode"> -->
     </div>
     <a href="main.html" class="btn btn-secondary">Back to map</a>
     <a href="list.html" class="btn btn-primary">Back to vendor list</a>
@@ -84,19 +84,10 @@
   <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/qrcode.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 
-  <script>
-
-    // Generate a QR code with QRCode.js or any QR code generation library
-    const qrcode = new QRCode(document.getElementById("qrcode"), {
-      text: "Your QR Code Data", // Replace with the actual reservation data
-      width: 128,
-      height: 128,
-    });
-  </script>
-
   <script src="./scripts/script.js"></script>
   <script src="./scripts/firebaseAPI.js"></script>
   <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/reservation.js"></script>
 </body>
 
 </html>
