@@ -49,65 +49,10 @@ body {
   font-size: 3rem;
 }
 
-.map-ui {
-  position: relative;
-  height: cal(100vh - 390px);
-}
+.mapboxgl-canvas-container {
 
-.map-ui a {
-  text-decoration: none;
-  color: red;
-}
+  height: 100vh;
 
-.map-ui__list,
-.map-ui__map {
-  position: absolute;
-  transform: scale(2);
-  cursor: pointer;
-}
-
-.map-ui__list {
-  top: 40px;
-  right: 40px;
-}
-
-.map-ui__map {
-  top: 80px;
-  right: 40px;
-}
-
-.map-ui__map a {
-  text-decoration: none;
-  color: red;
-}
-
-.map-ui__location {
-  position: absolute;
-  transform: scale(1.5);
-  cursor: pointer;
-}
-
-.map-ui__location:nth-of-type(1) {
-  bottom: 50%;
-  right: 30%;
-}
-
-
-.map-ui__location:nth-of-type(2) {
-  bottom: 69%;
-  right: 70%;
-}
-
-
-.map-ui__location:nth-of-type(3) {
-  bottom: 30%;
-  right: 50%;
-
-}
-
-.map-ui__location:hover {
-  transform: scale(2.5);
-  transition-duration: 0.2s;
 }
 
 
@@ -155,8 +100,9 @@ body {
   font-weight: 600;
 }
 
-.hi-user-name{
+.hi-user-name {
   font-family: "Bree Serif", serif;
   font-weight: 400;
-  padding-left: 15px;;
+  padding-left: 15px;
+  ;
 }

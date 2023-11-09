@@ -1,3 +1,16 @@
+function dayIndexToStr(dayIndex) {
+  const weekday = [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+  ];
+  return weekday[dayIndex];
+}
+
 function showMap() {
   //-----------------------------------------
   // Define and initialize basic mapbox data
@@ -7,12 +20,23 @@ function showMap() {
   const map = new mapboxgl.Map({
     container: 'map', // Container ID
     style: 'mapbox://styles/mapbox/streets-v11', // Styling URL
-    center: [-122.964274, 49.236082], // Starting position
-    zoom: 8, // Starting zoom
+    center: [-123.11526553178035, 49.283591043313926], // Starting position
+    zoom: 15, // Starting zoom
   });
 
   // Add user controls to map
   map.addControl(new mapboxgl.NavigationControl());
+  map.addControl(
+    new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true,
+      },
+      // When active the map will receive updates to the device's location as it changes.
+      trackUserLocation: true,
+      // Draw an arrow next to the location dot to indicate which direction the device is heading.
+      showUserHeading: true,
+    })
+  );
 
   //------------------------------------
   // Listen for when map finishes loading
@@ -37,27 +61,17 @@ function showMap() {
             allVendors.forEach((doc) => {
               lat = doc.data().lat;
               lng = doc.data().lng;
-              console.log(lat, lng);
               coordinates = [lng, lat];
-              console.log(coordinates);
+
               // Coordinates
               vendor_name = doc.data().name; // Event Name
               address = doc.data().address; // Text Preview
               hours = doc.data().hours_of_operation;
-              hoursSorted = [
-                `Monday: ${hours.monday}`,
-                `Tuesday: ${hours.tuesday}`,
-                `Wednesday: ${hours.wednesday}`,
-                `Thursday: ${hours.thursday}`,
-                `Friday: ${hours.friday}`,
-                `Saturday: ${hours.saturday}`,
-                `Sunday: ${hours.sunday}`,
-              ];
-              hoursHTML = '';
-              for (const dayHours of hoursSorted) {
-                dayOfWeek = `<p>${dayHours}</p>`;
-                hoursHTML += dayOfWeek;
-              }
+              dayOfTodayIndex = new Date().getDay();
+              dayOfTodayStr = dayIndexToStr(dayOfTodayIndex);
+
+              hoursHTML = `Today's Hours: ${hours[dayOfTodayStr]}`;
+
               // img = doc.data().posterurl; // Image
               // url = doc.data().link; // URL
 
