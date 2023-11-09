@@ -35,6 +35,7 @@ body {
 .btn-outline-secondary {
   border-color: #ffffff;
   color: #ffffff;
+  margin: 15px;
 }
 
 .feature-icon {
