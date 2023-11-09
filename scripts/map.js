@@ -1,3 +1,16 @@
+function dayIndexToStr(dayIndex) {
+  const weekday = [
+    'sunday',
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+  ];
+  return weekday[dayIndex];
+}
+
 function showMap() {
   //-----------------------------------------
   // Define and initialize basic mapbox data
@@ -48,27 +61,17 @@ function showMap() {
             allVendors.forEach((doc) => {
               lat = doc.data().lat;
               lng = doc.data().lng;
-              console.log(lat, lng);
               coordinates = [lng, lat];
-              console.log(coordinates);
+
               // Coordinates
               vendor_name = doc.data().name; // Event Name
               address = doc.data().address; // Text Preview
               hours = doc.data().hours_of_operation;
-              hoursSorted = [
-                `Monday: ${hours.monday}`,
-                `Tuesday: ${hours.tuesday}`,
-                `Wednesday: ${hours.wednesday}`,
-                `Thursday: ${hours.thursday}`,
-                `Friday: ${hours.friday}`,
-                `Saturday: ${hours.saturday}`,
-                `Sunday: ${hours.sunday}`,
-              ];
-              hoursHTML = '';
-              for (const dayHours of hoursSorted) {
-                dayOfWeek = `<p>${dayHours}</p>`;
-                hoursHTML += dayOfWeek;
-              }
+              dayOfTodayIndex = new Date().getDay();
+              dayOfTodayStr = dayIndexToStr(dayOfTodayIndex);
+
+              hoursHTML = `Today's Hours: ${hours[dayOfTodayStr]}`;
+
               // img = doc.data().posterurl; // Image
               // url = doc.data().link; // URL
 
