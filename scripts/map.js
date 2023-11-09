@@ -7,12 +7,23 @@ function showMap() {
   const map = new mapboxgl.Map({
     container: 'map', // Container ID
     style: 'mapbox://styles/mapbox/streets-v11', // Styling URL
-    center: [-122.964274, 49.236082], // Starting position
-    zoom: 8, // Starting zoom
+    center: [-123.11526553178035, 49.283591043313926], // Starting position
+    zoom: 15, // Starting zoom
   });
 
   // Add user controls to map
   map.addControl(new mapboxgl.NavigationControl());
+  map.addControl(
+    new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true,
+      },
+      // When active the map will receive updates to the device's location as it changes.
+      trackUserLocation: true,
+      // Draw an arrow next to the location dot to indicate which direction the device is heading.
+      showUserHeading: true,
+    })
+  );
 
   //------------------------------------
   // Listen for when map finishes loading
