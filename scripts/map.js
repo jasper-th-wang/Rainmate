@@ -65,6 +65,9 @@ function showMap() {
 
               // Coordinates
               vendor_name = doc.data().name; // Event Name
+              vendor_code = doc.data().code;
+              available_umbrellas = doc.data().available_umbrellas;
+              vendor_imgSrc = './images/vendors/' + vendor_code + '.png';
               address = doc.data().address; // Text Preview
               hours = doc.data().hours_of_operation;
               dayOfTodayIndex = new Date().getDay();
@@ -80,7 +83,7 @@ function showMap() {
               features.push({
                 type: 'Feature',
                 properties: {
-                  description: `<strong>${vendor_name}</strong><p>${address}</p> <br> <div id="hours">${hoursHTML}</div> <a href="./vendor.html?id=${doc.id}" target="_blank" title="Opens in a new window">Read more</a>`,
+                  description: `<h2>${vendor_name}</h2><img src="${vendor_imgSrc}" style="width: 100%;"></img><p>${address}</p> <br> <p id="hours">${hoursHTML}</p> <p>Available Umbrellas: ${available_umbrellas} umbrellas</p><a href="./vendor.html?id=${doc.id}"  title="Opens in a new window">Details</a>`,
                 },
                 geometry: {
                   type: 'Point',
