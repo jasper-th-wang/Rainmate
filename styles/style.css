@@ -93,7 +93,16 @@ body {
 .btn.btn-primary {
   margin: 15px;
 }
+.btn.btn-secondary {
+  margin: 15px;
+}
 
+.btn.btn-third {
+  margin: 15px;
+  background-color: #92b5af ;
+  border: none;
+  color: #FFFFFF;
+}
 .card-title {
   margin-left: 4px;
   margin-top: 4px;
