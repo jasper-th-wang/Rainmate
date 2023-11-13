@@ -2,7 +2,7 @@ const pickUpBtn = document.getElementById('pickUpTestBtn');
 const returnBtn = document.getElementById('returnTestBtn');
 
 async function handleReturn(currentUser, currentReservation) {
-  console.log(currentReservationId);
+  console.log(currentReservation);
 
   // get vendor id for current reservation
   const currentReservationDoc = await currentReservation.get();
@@ -26,7 +26,7 @@ async function handleReturn(currentUser, currentReservation) {
   });
 }
 async function handlePickUp(currentReservation) {
-  console.log(currentReservationId);
+  console.log(currentReservation);
 
   // register pickup (isPickedUp) to current reservation
   currentReservation.update({
@@ -62,22 +62,29 @@ async function myUmbrellaMain() {
           .collection('Reservations')
           .doc(currentReservationId);
 
-        const currentReservationDoc = await currentReservation.get();
-        const { isPickedUp } = currentReservationDoc.data();
-        // Display pickup and reserve button
-        if (!isPickedUp) {
-          pickUpBtn.style.display = 'block';
-          pickUpBtn.addEventListener('click', (e) => {
-            handlePickUp(currentReservation);
-          });
-        }
+        currentReservation.onSnapshot((doc) => {
+          const { isPickedUp, isReturned } = doc.data();
+          // Display pickup and reserve button
+          if (!isPickedUp) {
+            pickUpBtn.style.display = 'block';
+            pickUpBtn.addEventListener('click', (e) => {
+              handlePickUp(currentReservation);
+            });
+          }
 
-        if (isPickedUp) {
-          returnBtn.style.display = 'block';
-          returnBtn.addEventListener('click', (e) => {
-            handleReturn(currentUser, currentReservation);
-          });
-        }
+          if (isPickedUp) {
+            pickUpBtn.style.display = 'none';
+            returnBtn.style.display = 'block';
+            returnBtn.addEventListener('click', (e) => {
+              handleReturn(currentUser, currentReservation);
+            });
+          }
+
+          if (isReturned) {
+            pickUpBtn.style.display = 'none';
+            returnBtn.style.display = 'none';
+          }
+        });
       }
     } else {
       throw new Error('No user is logged in.'); // Log a message when no user is logged in
