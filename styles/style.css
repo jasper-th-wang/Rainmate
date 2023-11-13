@@ -125,6 +125,7 @@ body {
 
 .mobile-nav {
   background: #ffffff;
+  border-top: 0.5px solid #808080;
   position: fixed;
   bottom: 0;
   height: 65px;
@@ -141,4 +142,9 @@ body {
 
 .bloc-icon img {
   width: 30px;
+}
+
+
+.content-container {
+  padding-bottom: 65px;
 }
