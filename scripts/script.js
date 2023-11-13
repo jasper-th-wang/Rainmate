@@ -1,8 +1,3 @@
-function sayHello() {}
-//sayHello();
-//------------------------------------------------
-// Call this function when the "logout" button is clicked
-//-------------------------------------------------
 function logout() {
   firebase
     .auth()
@@ -163,3 +158,4 @@ function addVendorHours() {
     { merge: true }
   );
 }
+
