@@ -1,24 +1,8 @@
-// function updateReservationDoc(reservationDoc, updateType) {
-//   if (updateType === 'pickUp') {
-//     reservationDoc    return;
-//   }
-//   if (updateType === 'return') {
+const pickUpBtn = document.getElementById('pickUpTestBtn');
+const returnBtn = document.getElementById('returnTestBtn');
 
-//     reservationDoc.update({
-//       returnVendorId:
-//       returnTime: firebase.firestore.FieldValue.serverTimestamp(),
-//     });
-//     return;
-//   }
-// }
-
-async function handleReturn(currentUser, currentReservationId) {
+async function handleReturn(currentUser, currentReservation) {
   console.log(currentReservationId);
-
-  // get current reservation info (for 1. calculate remaining time and 2. pickup / return)
-  const currentReservation = db
-    .collection('Reservations')
-    .doc(currentReservationId);
 
   // get vendor id for current reservation
   const currentReservationDoc = await currentReservation.get();
@@ -41,13 +25,9 @@ async function handleReturn(currentUser, currentReservationId) {
     currentReservation: false,
   });
 }
-async function handlePickUp(currentReservationId) {
+async function handlePickUp(currentReservation) {
   console.log(currentReservationId);
 
-  // get current reservation info (for 1. calculate remaining time and 2. pickup / return)
-  const currentReservation = db
-    .collection('Reservations')
-    .doc(currentReservationId);
   // register pickup (isPickedUp) to current reservation
   currentReservation.update({
     isPickedUp: true,
@@ -75,17 +55,30 @@ async function myUmbrellaMain() {
       const { name: userFullName, currentReservation: currentReservationId } =
         currentUserDoc.data();
       document.getElementById('userFullName').innerText = userFullName;
-      // Attach event listener to the form
-      document
-        .getElementById('pickUpTestBtn')
-        .addEventListener('click', (e) => {
-          handlePickUp(currentReservationId);
-        });
-      document
-        .getElementById('returnTestBtn')
-        .addEventListener('click', (e) => {
-          handleReturn(currentUser, currentReservationId);
-        });
+
+      if (currentReservationId) {
+        // get current reservation info (for 1. calculate remaining time and 2. pickup / return)
+        const currentReservation = db
+          .collection('Reservations')
+          .doc(currentReservationId);
+
+        const currentReservationDoc = await currentReservation.get();
+        const { isPickedUp } = currentReservationDoc.data();
+        // Display pickup and reserve button
+        if (!isPickedUp) {
+          pickUpBtn.style.display = 'block';
+          pickUpBtn.addEventListener('click', (e) => {
+            handlePickUp(currentReservation);
+          });
+        }
+
+        if (isPickedUp) {
+          returnBtn.style.display = 'block';
+          returnBtn.addEventListener('click', (e) => {
+            handleReturn(currentUser, currentReservation);
+          });
+        }
+      }
     } else {
       throw new Error('No user is logged in.'); // Log a message when no user is logged in
     }
