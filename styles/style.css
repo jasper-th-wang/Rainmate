@@ -51,7 +51,7 @@ body {
 
 .mapboxgl-canvas-container {
 
-  height: 100vh;
+  height: calc(100vh - 121px);
 
 }
 
@@ -67,10 +67,6 @@ body {
   border-bottom: 10px;
 }
 
-
-/* #qrcode {
-  width:60px;
-} */
 
 #qrcode>img {
   width: 100%;
@@ -93,16 +89,18 @@ body {
 .btn.btn-primary {
   margin: 15px;
 }
+
 .btn.btn-secondary {
   margin: 15px;
 }
 
 .btn.btn-third {
   margin: 15px;
-  background-color: #92b5af ;
+  background-color: #92b5af;
   border: none;
   color: #FFFFFF;
 }
+
 .card-title {
   margin-left: 4px;
   margin-top: 4px;
@@ -115,6 +113,7 @@ body {
   padding-left: 15px;
   ;
 }
+
 
 .switch {
   position: relative;
@@ -167,7 +166,7 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-/* Rounded sliders */
+
 .slider.round {
   border-radius: 20px;
 }
@@ -185,4 +184,31 @@ input:checked + .slider:before {
   .position-fixed {
     z-index: 999; /* High value to ensure it's on top */
   }
+
+
+.mobile-nav {
+  background: #ffffff;
+  border-top: 0.5px solid #808080;
+  position: fixed;
+  bottom: 0;
+  height: 65px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bloc-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bloc-icon img {
+  width: 30px;
+}
+
+
+.content-container {
+  padding-bottom: 65px;
+
 }
