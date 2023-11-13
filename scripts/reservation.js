@@ -26,7 +26,7 @@ function registerReservationIDToUser(reservationID) {
       console.log(user.uid); // Let's know who the logged-in user is by logging their UID
       // currentUserUID = db.collection('users').doc(user.uid); // Go to the Firestore document of the user
       db.collection('users').doc(user.uid).update({
-        current_reservation: reservationID,
+        currentReservation: reservationID,
       });
     } else {
       console.log('No user is logged in.'); // Log a message when no user is logged in
@@ -34,7 +34,7 @@ function registerReservationIDToUser(reservationID) {
   });
 }
 
-async function handleFormSubmit(event) {
+async function handleReservationFormSubmit(event) {
   event.preventDefault();
   try {
     let { id: reservationID } = await createReservationDoc();
@@ -49,4 +49,4 @@ async function handleFormSubmit(event) {
 // Attach event listener to the form
 document
   .getElementById('reservationForm')
-  .addEventListener('submit', handleFormSubmit);
+  .addEventListener('submit', handleReservationFormSubmit);

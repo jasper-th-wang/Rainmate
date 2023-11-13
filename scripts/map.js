@@ -66,7 +66,7 @@ function showMap() {
               // Coordinates
               vendor_name = doc.data().name; // Event Name
               vendor_code = doc.data().code;
-              available_umbrellas = doc.data().available_umbrellas;
+              available_umbrellas = doc.data().umbrellaCount;
               vendor_imgSrc = './images/vendors/' + vendor_code + '.png';
               address = doc.data().address; // Text Preview
               hours = doc.data().hours_of_operation;
