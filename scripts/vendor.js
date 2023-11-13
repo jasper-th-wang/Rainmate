@@ -10,7 +10,6 @@ function displayVendorInfo() {
     .then((doc) => {
       thisVendor = doc.data();
       vendorCode = thisVendor.code;
-      vendorRating = thisVendor.rating;
       vendorName = thisVendor.name;
       // vendorHours = thisVendor.hours_of_operation;
       hours = thisVendor.hours_of_operation;
@@ -30,9 +29,6 @@ function displayVendorInfo() {
       }
 
       // only populate title, and image
-      document
-        .getElementById('vendorRating')
-        .insertAdjacentHTML('beforeend', vendorRating);
       document.getElementById('vendorName').innerHTML = vendorName;
       document
         .getElementById('vendorHours')
