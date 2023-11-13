@@ -60,33 +60,42 @@
   <!-- Navbar-->
   <nav class="navbar navbar-expand-lg" id="navbar"></nav>
 
-  <div class="container">
-    <!-- Here is the container for cards  -->
-    <div class="container">
-      <div id="vendors-go-here" class="row row-cols-auto">
-      </div>
+  <div class="position-fixed" style="top: 10vh; right: 20px;">
+    <label class="switch">
+      <input type="checkbox" id="pageToggle">
+      <span class="slider round"></span>
+    </label>
+  </div>
+
+  <!-- Cards-->
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="./images/vendors/" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">
+        <div id="name"></div>
+      </p>
     </div>
   </div>
 
-  <!-- Templates for general use, not displayed -->
-  <template id="vendorCardTemplate">
-    <div class="card py-2 mx-2" style="width: 18rem">
-      <img class="card-image card-img-top" src=" ..." alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-length">placeholder</p>
-        <br/>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-      </div>
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+  
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
   </template>
 
+  <div class="footer-nav" id="footerNav"></div>
   <script src="./scripts/script.js"></script>
   <script src="./scripts/firebaseAPI.js"></script>
   <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/main.js"></script>
 </body>
 
 </html>
