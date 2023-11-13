@@ -51,7 +51,7 @@ body {
 
 .mapboxgl-canvas-container {
 
-  height: 100vh;
+  height: calc(100vh - 121px);
 
 }
 
@@ -93,16 +93,18 @@ body {
 .btn.btn-primary {
   margin: 15px;
 }
+
 .btn.btn-secondary {
   margin: 15px;
 }
 
 .btn.btn-third {
   margin: 15px;
-  background-color: #92b5af ;
+  background-color: #92b5af;
   border: none;
   color: #FFFFFF;
 }
+
 .card-title {
   margin-left: 4px;
   margin-top: 4px;
@@ -114,4 +116,29 @@ body {
   font-weight: 400;
   padding-left: 15px;
   ;
+}
+
+
+/**
+  Mobile Sticky Footer Nav
+*/
+
+.mobile-nav {
+  background: #ffffff;
+  position: fixed;
+  bottom: 0;
+  height: 65px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.bloc-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bloc-icon img {
+  width: 30px;
 }
