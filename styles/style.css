@@ -10,6 +10,10 @@ body {
   font-family: 'Bree Serif', serif;
 }
 
+*{
+  margin:0;
+}
+
 .welcome-background-image {
   background-image: url(../images/welcome_banner_img.jpg);
   background-size: cover;
@@ -208,6 +212,16 @@ input:checked + .slider:before {
 .content-container {
   padding-bottom: 65px;
 
+}
+
+.vendors-go-here{
+  align-items: center;
+}
+
+.vendor-card{
+  margin: 10px;
+  margin-left: 0;
+  padding: 0;
 }
 
 @media (max-width: 690px) {
