@@ -10,6 +10,7 @@ function displayCardsDynamically(collection) {
                 var vendorName = doc.data().name;       // get value of the "name" key
                 var vendorCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
                 var vendorDistance = doc.data().code; //gets the length field
+                var docID = doc.id; //gets the unique ID of the document
 
                 let newCard = Template.content.cloneNode(true); // Clone the HTML template to create a new card (newCard) that will be filled with Firestore data.
 
@@ -17,6 +18,15 @@ function displayCardsDynamically(collection) {
                 newCard.querySelector('.card-title').innerHTML = vendorName;
                 newCard.querySelector('.card-image').src = `./images/vendors/${vendorCode}.png`; //Example: NV01.jpg
                 newCard.querySelector('.card-distance').innerHTML = vendorDistance + "km";
+
+                document.addEventListener("click", function(event){
+                    target = event.target.closest(".card");
+
+                    if (target){
+                        window.location.href = `./vendor.html?id=${docID}`;
+                    }
+                })
+
 
                 //attach to gallery, Example: "hikes-go-here"
                 document.getElementById(collection + "-go-here").appendChild(newCard);
