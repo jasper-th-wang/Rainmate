@@ -115,7 +115,7 @@ body {
 }
 
 
-.switch {
+/* .switch {
   position: relative;
   display: inline-block;
   width: 55px;
@@ -126,7 +126,7 @@ body {
   opacity: 0;
   width: 0;
   height: 0;
-}
+} */
 
 .slider {
   position: absolute;
@@ -180,7 +180,27 @@ input:checked + .slider:before {
 }
 
 
+#pageToggle .btn {
+  font-size: 1.0em; 
+  padding: 5px 50px; 
+}
 
+#pageToggle .btn-secondary {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+}
+
+#pageToggle .btn-secondary.active, 
+#pageToggle .btn-secondary:active {
+  background-color: #007bff;
+  color: white;
+}
+
+#pageToggle {
+  position: relative; 
+  z-index: 1000; 
+}
 
 
 .mobile-nav {
@@ -214,4 +234,8 @@ input:checked + .slider:before {
   .position-fixed {
     z-index: 999; /* High value to ensure it's on top */
 }
+  /* #pageToggle .btn {
+    width: 100%;
+    padding: 10px 100px; 
+  } */
 }

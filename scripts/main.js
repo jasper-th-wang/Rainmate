@@ -1,24 +1,21 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var toggle = document.getElementById('pageToggle');
 
-    // Check if on List.html and set toggle state
+document.addEventListener("DOMContentLoaded", function () {
+    var mapButton = document.getElementById('mapButton');
+    var listButton = document.getElementById('listButton');
+
+    // Set initial active button based on current page
     if (window.location.href.indexOf('List.html') > -1) {
-      toggle.checked = true;
+        listButton.classList.add('active');
     } else {
-      toggle.checked = false;
+        mapButton.classList.add('active');
     }
 
-    toggle.addEventListener('change', function() {
-      if(this.checked) {
-        // Only redirect if not already on List.html
-        if (window.location.href.indexOf('List.html') === -1) {
-          window.location.href = 'List.html';
-        }
-      } else {
-        // Only redirect if not already on Main.html
-        if (window.location.href.indexOf('Main.html') === -1) {
-          window.location.href = 'Main.html';
-        }
-      }
+    mapButton.addEventListener('click', function () {
+        window.location.href = 'Main.html';
+    });
+
+    listButton.addEventListener('click', function () {
+        window.location.href = 'List.html';
     });
 });
+
