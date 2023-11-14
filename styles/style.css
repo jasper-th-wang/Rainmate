@@ -10,8 +10,8 @@ body {
   font-family: 'Bree Serif', serif;
 }
 
-*{
-  margin:0;
+* {
+  margin: 0;
 }
 
 .welcome-background-image {
@@ -156,15 +156,15 @@ body {
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: #CCD5AE;
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px #CCD5AE;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -180,13 +180,14 @@ input:checked + .slider:before {
 }
 
 .position-fixed {
-  z-index: 999; /* High value to ensure it's on top */
+  z-index: 999;
+  /* High value to ensure it's on top */
 }
 
 
 #pageToggle .btn {
-  font-size: 1.0em; 
-  padding: 5px 50px; 
+  font-size: 1.0em;
+  padding: 5px 50px;
 }
 
 #pageToggle .btn-secondary {
@@ -195,15 +196,15 @@ input:checked + .slider:before {
   border: 1px solid #ccc;
 }
 
-#pageToggle .btn-secondary.active, 
+#pageToggle .btn-secondary.active,
 #pageToggle .btn-secondary:active {
   background-color: #CCD5AE;
   color: white;
 }
 
 #pageToggle {
-  position: relative; 
-  z-index: 1000; 
+  position: relative;
+  z-index: 1000;
 }
 
 
@@ -234,27 +235,27 @@ input:checked + .slider:before {
 
 }
 
-.vendors-go-here{
+.vendors-go-here {
   align-items: center;
 }
 
-.vendor-card{
+.vendor-card {
   margin: 10px;
   margin-left: 0;
   padding: 0;
 }
 
-#mapButton{
+#mapButton {
   width: 50vw;
   margin-right: auto;
 
 }
 
-#listButton{
+#listButton {
   width: 50vw;
 }
 
-#pageToggle{
+#pageToggle {
   padding-left: 10px;
   padding-right: 10px;
   align-items: center;
@@ -273,10 +274,16 @@ input:checked + .slider:before {
 
 @media (max-width: 690px) {
   .position-fixed {
-    z-index: 999; /* High value to ensure it's on top */
-}
+    z-index: 999;
+    /* High value to ensure it's on top */
+  }
+
   /* #pageToggle .btn {
     width: 100%;
     padding: 10px 100px; 
   } */
+}
+
+.card-link {
+  all: unset;
 }
