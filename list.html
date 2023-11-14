@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;700;1,100&family=Bree+Serif&family=Pacifico&family=Tilt+Neon&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="./styles/style.css">
@@ -71,41 +71,36 @@
     <button type="button" class="btn btn-secondary" id="mapButton">Map</button>
     <button type="button" class="btn btn-secondary" id="listButton">List</button>
   </div>
-  
 
   <!-- Cards-->
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="./images/vendors/" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-text">
-        <div id="name"></div>
-        </p>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
+  <div class="list-card-container">
+    <!-- Here is the container for cards  -->
+    <div class="container">
+      <div id="vendors-go-here" class="row row-cols-auto">
       </div>
     </div>
   </div>
 
+  <!-- Templates for general use, not displayed -->
+  <template id="vendorCardTemplate">
+    <div class="card py-2 mx-auto vendor-card" style="width: 100%">
+      <img class="card-image card-img-top" src=" ..." alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-distance">placeholder</p>
+      </div>
+    </div>
+  </template>
 
+  <!-- Footer-->
   <div class="footer-nav" id="footerNav"></div>
-  <script src="./scripts/script.js"></script>
+  
+  <!-- JS-->
   <script src="./scripts/firebaseAPI.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/main.js"></script>
+  <script src="./scripts/script.js"></script>
+  <script src="./scripts/list.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,3 @@
-function sayHello() {}
-//sayHello();
-//------------------------------------------------
-// Call this function when the "logout" button is clicked
-//-------------------------------------------------
 function logout() {
   firebase
     .auth()
@@ -16,6 +11,8 @@ function logout() {
     });
 }
 
+// Comment out unused, archived code
+/**
 function writeVendors() {
   //define a variable for the collection you want to create in Firestore to populate data
   var VendorsRef = db.collection('vendors');
@@ -163,3 +160,4 @@ function addVendorHours() {
     { merge: true }
   );
 }
+*/

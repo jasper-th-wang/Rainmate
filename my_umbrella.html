@@ -63,7 +63,7 @@
   <nav class="navbar navbar-expand-lg" id="navbar">
   </nav>
   <div class="content-container">
-    <h1 class="hi-user-name">Hi <span id="user_name"></span> </h1>
+    <h1 class="hi-user-name">Hi <span id="userFullName"></span> </h1>
 
     <!-- Countdown timer-->
     <div class="card">
@@ -93,15 +93,21 @@
             href="confirmation.html" style="text-decoration: none; color: black;">Retrieve QR
           </a> </button>
 
-        <button type="button" class="btn btn-secondary" id="pickupTestBtn" data-toggle="modal"
-          data-target="#exampleModal">Pick Up
+        <button type="button" class="btn btn-secondary" id="pickUpTestBtn" data-toggle="modal"
+          data-target="#exampleModal" style="display: none;">Pick Up
           Test</button>
+        <button type="button" class="btn btn-secondary" id="returnTestBtn" data-toggle="modal"
+          data-target="#exampleModal" style="display: none;">Return Test</button>
       </div>
     </div>
   </div>
+
+  <!-- Footer-->
   <div class="footer-nav" id="footerNav"></div>
-  <script src="./scripts/script.js"></script>
+
+  <!-- JS -->
   <script src="./scripts/firebaseAPI.js"></script>
+  <script src="./scripts/script.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/timer.js"></script>
   <script src="./scripts/my_umbrella.js"></script>
