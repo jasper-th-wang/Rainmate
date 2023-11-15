@@ -8,10 +8,17 @@ body {
 
 .navbar-brand {
   font-family: 'Bree Serif', serif;
+  background-color: #CCD5AE;
+}
+
+
+#navbar{
+  background-color: #CCD5AE;
 }
 
 * {
   margin: 0;
+
 }
 
 .welcome-background-image {
