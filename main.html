@@ -58,45 +58,27 @@
 
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg" id="navbar">
+<body class="container">
+  <nav class="row navbar navbar-expand-lg" id="navbar">
   </nav>
-  <div class="h-100">
+  <div class="row justify-content-center">
+    <div class="btn-group" id="pageToggle">
+      <button type="button" class="btn btn-secondary" id="mapButton">Map</button>
+      <button type="button" class="btn btn-secondary" id="listButton">List</button>
+    </div>
+  </div>
 
-    <!-- <div class="position-fixed" style="top: 10vh; right: 20px;">
+
+  <!-- <div class="position-fixed" style="top: 10vh; right: 20px;">
       <label class="switch">
         <input type="checkbox" id="pageToggle">
         <span class="slider round"></span>
       </label>
     </div> -->
-    <div class="row justify-content-center">
-      <div class="btn-group" id="pageToggle">
-        <button type="button" class="btn btn-secondary" id="mapButton">Map</button>
-        <button type="button" class="btn btn-secondary" id="listButton">List</button>
-      </div>
-    </div>
-    <!-- MAPBOX -->
-    <div id='map' style='width: 100%;'></div>
-    <div>
-      <div class="card">
-      </div>
-    </div>
-    <div class="map-ui" style="display: none;">
-      <img src="images/map_sample.png" alt="a map" srcset="">
-      <span class="material-symbols-outlined map-ui__location">
-        <a href="vendor.html">location_on</a>
-      </span>
-      <span class="material-symbols-outlined map-ui__location">
-        <a href="vendor.html">location_on</a>
-      </span>
-      <span class="material-symbols-outlined map-ui__location">
-        <a href="vendor.html">location_on</a>
-      </span>
-      <span class="material-symbols-outlined map-ui__list">
-        <a href="list.html">list_alt</a>
-      </span>
-    </div>
-  </div>
+  <!-- MAPBOX -->
+  <div class="content-container" id='map' style='width: 100%;'></div>
+
+
 
   <!-- Footer-->
   <div class="footer-nav" id="footerNav"></div>

@@ -60,7 +60,8 @@ body {
   font-size: 3rem;
 }
 
-.mapboxgl-canvas-container {
+.mapboxgl-canvas-container,
+#map {
 
   height: calc(100vh - 121px);
 
