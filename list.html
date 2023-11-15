@@ -72,7 +72,7 @@
       <button type="button" class="btn btn-secondary" id="listButton">List</button>
     </div>
   </div>
-  
+
   <!-- Cards-->
   <div class="list-card-container">
     <!-- Here is the container for cards  -->
@@ -84,18 +84,19 @@
 
   <!-- Templates for general use, not displayed -->
   <template id="vendorCardTemplate">
-    <div class="card mx-auto vendor-card" style="width: 100%; border: 0; padding: 0 10px;margin: 10px; margin-top: 0; ">
-      <img class="card-image card-img-top" src=" ..." alt="..." style="border-radius: 10px;"/>
+    <a class="card-link card mx-auto vendor-card" id="card-link"
+      style="width: 100%; border: 0; padding: 0 10px;margin: 10px; margin-top: 0;">
+      <img class="card-image card-img-top" src=" ..." alt="..." style="border-radius: 10px; " />
       <div class="card-body">
         <h5 class="card-title" style="margin: 0;">Card title</h5>
         <p class="card-distance" style="margin: 0;">placeholder</p>
       </div>
-    </div>
+    </a>
   </template>
 
   <!-- Footer-->
   <div class="footer-nav" id="footerNav"></div>
-  
+
   <!-- JS-->
   <script src="./scripts/firebaseAPI.js"></script>
   <script src="./scripts/skeleton.js"></script>
