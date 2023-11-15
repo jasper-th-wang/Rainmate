@@ -263,14 +263,6 @@ input:checked + .slider:before {
 
 
 
-
-
-
-
-
-
-
-
 @media (max-width: 690px) {
   .position-fixed {
     z-index: 999; /* High value to ensure it's on top */
