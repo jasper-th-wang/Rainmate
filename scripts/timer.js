@@ -25,3 +25,66 @@ var x = setInterval(function () {
     document.getElementById('timer').innerHTML = 'EXPIRED';
   }
 }, 1000);
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  let countdown;
+  const timerDisplay = document.getElementById('timer');
+  const pickUpBtn = document.getElementById('pickUpTestBtn');
+  const returnTestBtn = document.getElementById('returnTestBtn');
+
+  function updateTimerDisplay(timeLeft) {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  }
+
+  function startCountdown(duration, onComplete) {
+      const endTime = new Date().getTime() + duration * 1000;
+      localStorage.setItem('countdownEndTime', endTime);
+      runCountdown(onComplete);
+  }
+
+  function runCountdown(onComplete) {
+      clearInterval(countdown);
+      countdown = setInterval(() => {
+          const now = new Date().getTime();
+          const endTime = parseInt(localStorage.getItem('countdownEndTime'), 10);
+          const timeLeft = Math.round((endTime - now) / 1000);
+          
+          if (timeLeft >= 0) {
+              updateTimerDisplay(timeLeft);
+              alert('Pick up on time! Thank you, now you have 24 hrs for return.');
+          } else {
+              clearInterval(countdown);
+              onComplete();
+              localStorage.removeItem('countdownEndTime'); // Clear the end time
+          }
+      }, 1000);
+  }
+
+  function onCountdownComplete() {
+      alert('Time is up!');
+      // Additional actions on countdown complete
+  }
+
+  // Start or resume the countdown
+  const savedEndTime = localStorage.getItem('countdownEndTime');
+  if (savedEndTime) {
+      runCountdown(onCountdownComplete);
+  } else {
+      startCountdown(20 * 60, onCountdownComplete); // Start a new 20-minute countdown
+  }
+
+  pickUpBtn.addEventListener('click', () => {
+      startCountdown(24 * 60 * 60, onCountdownComplete); // Start a new 24-hour countdown
+  });
+
+  returnTestBtn.addEventListener('click', () => {
+      clearInterval(countdown);
+      localStorage.removeItem('countdownEndTime'); // Clear the saved end time
+      updateTimerDisplay(0);
+      alert('Countdown stopped and timer cleared.');
+      // Additional actions on stopping the countdown
+  });
+});
