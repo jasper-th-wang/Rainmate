@@ -8,10 +8,17 @@ body {
 
 .navbar-brand {
   font-family: 'Bree Serif', serif;
+  background-color: #CCD5AE;
+}
+
+
+#navbar{
+  background-color: #CCD5AE;
 }
 
 * {
   margin: 0;
+
 }
 
 .welcome-background-image {
@@ -261,14 +268,6 @@ input:checked+.slider:before {
   padding-right: 10px;
   align-items: center;
 }
-
-
-
-
-
-
-
-
 
 
 
