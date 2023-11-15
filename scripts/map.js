@@ -11,6 +11,47 @@ function dayIndexToStr(dayIndex) {
   return weekday[dayIndex];
 }
 
+// Converts numeric degrees to radians
+function toRad(Value) {
+  return (Value * Math.PI) / 180;
+}
+function calculateDistance(userCoordinates, vendorCoordinates) {
+  var [lng1, lat1] = userCoordinates;
+  var [lng2, lat2] = vendorCoordinates;
+
+  var R = 6371; // km
+  var dLat = toRad(lat2 - lat1);
+  var dLon = toRad(lng2 - lng1);
+  var lat1 = toRad(lat1);
+  var lat2 = toRad(lat2);
+
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+  return d;
+}
+
+function assignDistancesToVendor(userCoordinates) {
+  // calculateDistance
+  for (let i = 0; i < sessionStorage.length; i++) {
+    const itemKey = sessionStorage.key(i);
+    if (itemKey.includes('vendor-')) {
+      console.log(itemKey);
+      const itemData = JSON.parse(sessionStorage.getItem(itemKey));
+      console.log(itemData);
+      console.log(itemData.coordinates);
+      console.log(calculateDistance(userCoordinates, itemData.coordinates));
+      itemData.distance = calculateDistance(
+        userCoordinates,
+        itemData.coordinates
+      );
+      sessionStorage.setItem(itemKey, JSON.stringify(itemData));
+    }
+  }
+}
+
 function showMap() {
   //-----------------------------------------
   // Define and initialize basic mapbox data
@@ -64,6 +105,7 @@ function showMap() {
               coordinates = [lng, lat];
 
               // Coordinates
+              vendorID = doc.id;
               vendor_name = doc.data().name; // Event Name
               vendor_code = doc.data().code;
               available_umbrellas = doc.data().umbrellaCount;
@@ -73,6 +115,16 @@ function showMap() {
               dayOfTodayIndex = new Date().getDay();
               dayOfTodayStr = dayIndexToStr(dayOfTodayIndex);
 
+              // Store in session storage
+              if (!sessionStorage.getItem(`vendor-${doc.id}`)) {
+                sessionStorage.setItem(
+                  `vendor-${doc.id}`,
+                  JSON.stringify({
+                    coordinates: coordinates,
+                    distance: 0,
+                  })
+                );
+              }
               hoursHTML = `Today's Hours: ${hours[dayOfTodayStr]}`;
 
               // img = doc.data().posterurl; // Image
@@ -83,7 +135,7 @@ function showMap() {
               features.push({
                 type: 'Feature',
                 properties: {
-                  description: `<h2>${vendor_name}</h2><img src="${vendor_imgSrc}" style="width: 100%;"></img><p>${address}</p> <br> <p id="hours">${hoursHTML}</p> <p>Available Umbrellas: ${available_umbrellas} umbrellas</p><a href="./vendor.html?id=${doc.id}"  title="Opens in a new window">Details</a>`,
+                  description: `<div class="vendor-features" id="vendor-${doc.id}" data-lat="${lat}" data-lng="${lng}"><h2>${vendor_name}</h2><img src="${vendor_imgSrc}" style="width: 100%;"></img><p>${address}</p> <br> <p id="hours">${hoursHTML}</p> <p>Available Umbrellas: ${available_umbrellas} umbrellas</p><a href="./vendor.html?id=${doc.id}"  title="Opens in a new window">Details</a></div>`,
                 },
                 geometry: {
                   type: 'Point',
@@ -167,6 +219,9 @@ function showMap() {
             position.coords.longitude,
             position.coords.latitude,
           ];
+          assignDistancesToVendor(userLocation);
+
+          // call function to calculate and render distance
           console.log(userLocation);
           if (userLocation) {
             map.addSource('userLocation', {
