@@ -181,7 +181,7 @@ function showMap() {
             position.coords.longitude,
             position.coords.latitude,
           ];
-          assignDistancesToVendor(userLocation);
+          assignDistancesToVendorsInStorage(userLocation);
 
           // call function to calculate and render distance
           console.log(userLocation);

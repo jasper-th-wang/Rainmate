@@ -32,7 +32,7 @@ function calculateDistance(userCoordinates, vendorCoordinates) {
   return d;
 }
 
-function assignDistancesToVendor(userCoordinates) {
+function assignDistancesToVendorsInStorage(userCoordinates) {
   // calculateDistance
   for (let i = 0; i < sessionStorage.length; i++) {
     const itemKey = sessionStorage.key(i);
