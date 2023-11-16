@@ -181,6 +181,7 @@ function showMap() {
             position.coords.longitude,
             position.coords.latitude,
           ];
+          sessionStorage.setItem('currentPosition', userLocation);
           assignDistancesToVendorsInStorage(userLocation);
 
           // call function to calculate and render distance
