@@ -35,9 +35,18 @@ function displayVendorInfo() {
       document
         .getElementById('vendor-hours')
         .insertAdjacentHTML('beforeend', vendorHoursHTML);
-      document.getElementById(
-        'reserveBtn'
-      ).href = `./reservation.html?id=${doc.id}`;
+
+      if (
+        !JSON.parse(sessionStorage.getItem('currentUser')).currentReservation
+      ) {
+        document.getElementById('reserveBtn').style.display = 'block';
+        document.getElementById(
+          'reserveBtn'
+        ).href = `./reservation.html?id=${doc.id}`;
+      } else {
+        document.getElementById('noReserveBtn').style.display = 'block';
+      }
+
       let imgEvent = document.querySelector('#vendor-img');
       imgEvent.src = './images/vendors/' + vendorCode + '.png';
     });

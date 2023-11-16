@@ -13,7 +13,10 @@ async function renderVendorCard(vendorID, isPickedUp) {
     : 'Pending Pick Up';
   vendorCard.querySelector('#card-vendor-name').innerHTML = vendorData.name;
   vendorCard.querySelector('#card-vendor-link').innerHTML =
-    'Click Here for More Details';
+    'Click here to see the vendor on the map!';
+  vendorCard.querySelector(
+    '#card-vendor-link'
+  ).href = `main.html?vendorCoord=${vendorData.lng},${vendorData.lat}`;
   vendorCard.querySelector(
     '#card-vendor-img'
   ).src = `./images/vendors/${vendorData.code}.png`;
@@ -79,8 +82,8 @@ async function myUmbrellaMain() {
       document.getElementById('userFullName').innerText = userFullName;
 
       if (currentReservationId) {
-        document.getElementById('no-reservation-message').style.display =
-          'none';
+        // document.getElementById('no-reservation-message').style.display =
+        //   'none';
         // get current reservation info (for 1. calculate remaining time and 2. pickup / return)
         const currentReservation = db
           .collection('Reservations')
@@ -116,6 +119,7 @@ async function myUmbrellaMain() {
           } else {
             console.log(pickedUpTime);
             initTimer(pickedUpTime, true);
+            renderVendorCard(vendorId, true);
             pickUpBtn.style.display = 'none';
             returnBtn.style.display = 'block';
             returnBtn.addEventListener('click', (e) => {
@@ -130,8 +134,13 @@ async function myUmbrellaMain() {
         });
       } else {
         // no reservation
-        document.getElementById('no-reservation-message').style.display =
-          'block';
+        // document.getElementById('no-reservation-message').style.display =
+        // 'block';
+        const noReservationCard =
+          '<div class="my-umbrella-no-reservation" id="no-reservation-message"><h1>You Have No Reservation!</h1></div>';
+        document
+          .querySelector('.content-container')
+          .insertAdjacentHTML('beforeend', noReservationCard);
       }
     } else {
       throw new Error('No user is logged in.'); // Log a message when no user is logged in
@@ -139,7 +148,6 @@ async function myUmbrellaMain() {
   });
 }
 
-myUmbrellaMain();
 // initTimer();
 
 function renderModal() {
@@ -169,3 +177,6 @@ function renderModal() {
     }
   };
 }
+
+myUmbrellaMain();
+renderReservationQRCode();

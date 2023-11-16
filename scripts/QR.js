@@ -38,8 +38,6 @@ function renderReservationQRCode() {
   console.log(reservationID);
 }
 
-renderReservationQRCode();
-
 function generateQRCode(reservationId) {
   // Your code to generate the QR code using qrcode.js
   let qrcode = new QRCode(document.getElementById('qrcode'), {

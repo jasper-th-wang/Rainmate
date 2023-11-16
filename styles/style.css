@@ -63,8 +63,13 @@ body {
 .mapboxgl-canvas-container,
 #map {
 
-  height: calc(100vh - 121px);
+  height: calc(80vh);
 
+}
+
+.vendor-features img {
+  height: 50px;
+  object-fit: cover;
 }
 
 
@@ -117,6 +122,11 @@ body {
   margin-left: 4px;
   margin-top: 4px;
   font-weight: 600;
+}
+
+.card-image {
+  height: 12rem;
+  object-fit: cover;
 }
 
 .hi-user-name {
@@ -328,17 +338,27 @@ input:checked+.slider:before {
   width: 80%;
 }
 
+.modal-buttons {
+  padding-top: 1rem;
+}
+
+.modal-button {
+  width: 100%;
+  margin: 5px 0 !important;
+  border: none;
+}
+
 /* The Close Button */
-.close {
+/* .close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
-}
+} */
 
-.close:hover,
+/* .close:hover,
 .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-}
+} */

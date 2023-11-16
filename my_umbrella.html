@@ -71,9 +71,7 @@
         <p id="timer"></p>
       </div>
     </div>
-    <div class="my-umbrella-no-reservation" id="no-reservation-message">
-      <h1>You Have No Reservation!</h1>
-    </div>
+
 
     <!-- Reservation Details-->
     <template id="my-umbrella-card">
@@ -85,7 +83,6 @@
           <ul>
             <li id="card-vendor-name"></li>
             <li><a id="card-vendor-link" href=""></a></li>
-            <li><a>Check their store hours and contact!</a></li>
           </ul>
           </p>
 
@@ -111,17 +108,16 @@
 
     <!-- Modal content -->
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Some text in the Modal..</p>
+      <p>Show this QR code to the vendor, after them scanning it, click Complete!</p>
       <div id="qrcode">
         <!-- <img src="QR code.jpg" alt="QRCode"> -->
       </div>
       <div class="modal-buttons">
-        <button type="button" class="btn btn-secondary" id="pickUpTestBtn" data-toggle="modal"
-          data-target="#exampleModal" style="display: none;">Pick Up
-          Test</button>
-        <button type="button" class="btn btn-secondary" id="returnTestBtn" data-toggle="modal"
-          data-target="#exampleModal" style="display: none;">Return Test</button>
+        <button type="button" class="btn btn-secondary modal-button" id="pickUpTestBtn" data-toggle="modal"
+          data-target="#exampleModal" style="display: none; background-color: #CCD5AE;">Complete Pickup</button>
+        <button type="button" class="btn btn-secondary modal-button" id="returnTestBtn" data-toggle="modal"
+          data-target="#exampleModal" style="display: none; background-color: #CCD5AE;">Complete Return</button>
+        <button class="btn btn-secondary modal-button close">Cancel</span>
       </div>
     </div>
 
@@ -132,9 +128,9 @@
   <script src="./scripts/script.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/timer.js"></script>
-  <script src="./scripts/my_umbrella.js"></script>
   <script src="./scripts/qrcode.js"></script>
   <script src="./scripts/QR.js"></script>
+  <script src="./scripts/my_umbrella.js"></script>
 
 </body>
 

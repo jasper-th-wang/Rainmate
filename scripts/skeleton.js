@@ -4,7 +4,7 @@
 // }
 
 function loadSkeleton() {
-  firebase.auth().onAuthStateChanged(function (user) {
+  firebase.auth().onAuthStateChanged(async function (user) {
     if (user) {
       //if the pointer to "user" object is not null, then someone is logged in
       // User is signed in.
@@ -17,6 +17,9 @@ function loadSkeleton() {
       console.log($('#navbar').load('./components/nav_before_login.html'));
       // console.log($('#footerPlaceholder').load('./components/footer.html'));
     }
+    const currentUser = await db.collection('users').doc(user.uid).get();
+    const currentUserData = currentUser.data();
+    sessionStorage.setItem('currentUser', JSON.stringify(currentUserData));
   });
 }
 
