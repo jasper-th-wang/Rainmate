@@ -71,30 +71,52 @@
         <p id="timer"></p>
       </div>
     </div>
+    <div class="my-umbrella-no-reservation" id="no-reservation-message">
+      <h1>You Have No Reservation!</h1>
+    </div>
 
     <!-- Reservation Details-->
-    <div class="card" style="width: 100%">
-      <img class="card-img-top" src="./images/vendors/starbucks.png" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Pending pick-up</h5>
-        <p class="card-text">
-        <ul>
-          <li>Address: <a
-              href="https://www.google.com/maps/dir//Starbucks,+Salt,+860+Drake+St,+Vancouver,+BC+V6Z+2P2/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x548673d39c873267:0xa3e068c45e7e6498?sa=X&ved=2ahUKEwjK696sm56CAxWUFTQIHSgDBHQQ48ADegQIExAA&ved=2ahUKEwjK696sm56CAxWUFTQIHSgDBHQQ48ADegQIGhAJ"
-              alt="navigate using google maps" target="_blank">Salt, 860 Drake St, Vancouver, BC V6Z 2P2</a>
-          </li>
-          <li><a
-              href="https://www.starbucks.ca/store-locator/store/1010158/hornby-drake-860-drake-street-vancouver-bc-v-6-z-2-p-2-ca"
-              target="_blank">Check their store hours and contact!</a></li>
-        </ul>
-        </p>
+    <template id="my-umbrella-card">
+      <div class="card" style="width: 100%">
+        <img id="card-vendor-img" src="" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title" id="card-title"></h5>
+          <p class="card-text">
+          <ul>
+            <li id="card-vendor-name"></li>
+            <li><a id="card-vendor-link" href=""></a></li>
+            <li><a>Check their store hours and contact!</a></li>
+          </ul>
+          </p>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-          <a href="confirmation.html?id=YOUR_RESERVATION_ID" style="text-decoration: none; color: black;">Retrieve
-            QR</a></button>
+          <button type="button" class="btn btn-primary" id="myBtn" data-toggle="modal"
+            data-target="#exampleModal">Retrieve QR</a></button>
 
-        <!-- <a href="confirmation.html" style="text-decoration: none; color: black;">Retrieve QR
+          <!-- <a href="confirmation.html" style="text-decoration: none; color: black;">Retrieve QR
         </a> -->
+        </div>
+
+      </div>
+    </template>
+
+  </div>
+
+  <!-- Trigger/Open The Modal -->
+  <!-- <button id="myBtn">Open Modal</button> -->
+  <!-- Footer-->
+  <div class="footer-nav" id="footerNav"></div>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Some text in the Modal..</p>
+      <div id="qrcode">
+        <!-- <img src="QR code.jpg" alt="QRCode"> -->
+      </div>
+      <div class="modal-buttons">
         <button type="button" class="btn btn-secondary" id="pickUpTestBtn" data-toggle="modal"
           data-target="#exampleModal" style="display: none;">Pick Up
           Test</button>
@@ -102,16 +124,14 @@
           data-target="#exampleModal" style="display: none;">Return Test</button>
       </div>
     </div>
+
+
   </div>
-
-  <!-- Footer-->
-  <div class="footer-nav" id="footerNav"></div>
-
   <!-- JS -->
   <script src="./scripts/firebaseAPI.js"></script>
   <script src="./scripts/script.js"></script>
   <script src="./scripts/skeleton.js"></script>
-  <!-- <script src="./scripts/timer.js"></script> -->
+  <script src="./scripts/timer.js"></script>
   <script src="./scripts/my_umbrella.js"></script>
   <script src="./scripts/qrcode.js"></script>
   <script src="./scripts/QR.js"></script>
