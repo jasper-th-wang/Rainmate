@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
           
           if (timeLeft >= 0) {
               updateTimerDisplay(timeLeft);
-              alert('Pick up on time! Thank you, now you have 24 hrs for return.');
+              
           } else {
               clearInterval(countdown);
               onComplete();
@@ -77,8 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   pickUpBtn.addEventListener('click', () => {
-      startCountdown(24 * 60 * 60, onCountdownComplete); // Start a new 24-hour countdown
-  });
+    clearInterval(countdown);
+    alert('Pick up on time! Thank you, now you have 24 hrs for return.');
+    startCountdown(24 * 60 * 60, onCountdownComplete); // Start a new 24-hour countdown
+});
 
   returnTestBtn.addEventListener('click', () => {
       clearInterval(countdown);
