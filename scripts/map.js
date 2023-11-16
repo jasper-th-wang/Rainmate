@@ -1,3 +1,13 @@
+let params = new URL(window.location.href); //get URL of search bar
+let vendorCoordinatesString = params.searchParams.get('vendorCoord'); //get value for key "id"
+let vendorCoordinates;
+if (vendorCoordinatesString) {
+  vendorCoordinates = vendorCoordinatesString
+    .split(',')
+    .map((coord) => parseFloat(coord));
+}
+
+// console.log(vendorCoordinates);
 function dayIndexToStr(dayIndex) {
   const weekday = [
     'sunday',
@@ -45,6 +55,7 @@ function showMap() {
   // then Add map features
   //------------------------------------
   map.on('load', () => {
+    let vendorPopup;
     // Defines map pin icon for events
     map.loadImage(
       'https://cdn.iconscout.com/icon/free/png-256/pin-locate-marker-location-navigation-16-28668.png',
@@ -66,15 +77,15 @@ function showMap() {
               coordinates = [lng, lat];
 
               // Coordinates
-              vendorID = doc.id;
-              vendor_name = doc.data().name; // Event Name
-              vendor_code = doc.data().code;
-              available_umbrellas = doc.data().umbrellaCount;
-              vendor_imgSrc = './images/vendors/' + vendor_code + '.png';
-              address = doc.data().address; // Text Preview
-              hours = doc.data().hours_of_operation;
-              dayOfTodayIndex = new Date().getDay();
-              dayOfTodayStr = dayIndexToStr(dayOfTodayIndex);
+              let vendorID = doc.id;
+              let vendor_name = doc.data().name; // Event Name
+              let vendor_code = doc.data().code;
+              let available_umbrellas = doc.data().umbrellaCount;
+              let vendor_imgSrc = './images/vendors/' + vendor_code + '.png';
+              let address = doc.data().address; // Text Preview
+              let hours = doc.data().hours_of_operation;
+              let dayOfTodayIndex = new Date().getDay();
+              let dayOfTodayStr = dayIndexToStr(dayOfTodayIndex);
 
               // Store in session storage
               if (!sessionStorage.getItem(`vendor-${doc.id}`)) {
@@ -91,19 +102,32 @@ function showMap() {
 
               // img = doc.data().posterurl; // Image
               // url = doc.data().link; // URL
-
+              let description = `<div class="vendor-features" id="vendor-${doc.id}" data-lat="${lat}" data-lng="${lng}"><h2>${vendor_name}</h2><img src="${vendor_imgSrc}" style="width: 100%;"></img><p>${address}</p><p id="hours">${hoursHTML}</p> <p>Available Umbrellas: ${available_umbrellas} umbrellas</p><a href="./vendor.html?id=${doc.id}"  title="Opens in a new window">Details</a></div>`;
               // Pushes information into the features array
               // in our application, we have a string description of the hike
               features.push({
                 type: 'Feature',
                 properties: {
-                  description: `<div class="vendor-features" id="vendor-${doc.id}" data-lat="${lat}" data-lng="${lng}"><h2>${vendor_name}</h2><img src="${vendor_imgSrc}" style="width: 100%;"></img><p>${address}</p> <br> <p id="hours">${hoursHTML}</p> <p>Available Umbrellas: ${available_umbrellas} umbrellas</p><a href="./vendor.html?id=${doc.id}"  title="Opens in a new window">Details</a></div>`,
+                  description: description,
                 },
                 geometry: {
                   type: 'Point',
                   coordinates: coordinates,
                 },
               });
+              // IF PARAM -> RENDER
+              console.log(vendorCoordinates, coordinates);
+              if (
+                JSON.stringify(vendorCoordinates) == JSON.stringify(coordinates)
+              ) {
+                // map.flyto({ coordinates });
+                console.log('HIIIIIIII!!!');
+                vendorPopup = new mapboxgl.Popup()
+                  .setLngLat(coordinates)
+                  .setHTML(description)
+                  .addTo(map);
+                // console.log('vendor!!!!' + vendorPopup);
+              }
             });
 
             // Adds features as a source of data for the map
@@ -244,8 +268,15 @@ function showMap() {
         });
       }
     );
+    map.on('idle', () => {
+      // vendorPopup.setLngLat(coordinates).setHTML(description).addTo(map);
+      if (vendorCoordinates) {
+        map.flyTo({ coordinates: vendorCoordinates });
+      }
+    });
   });
 }
 
 // Call the function to display the map with the user's location and event pins
 showMap();
+console.log(map);
