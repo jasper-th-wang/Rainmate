@@ -247,6 +247,11 @@ input:checked+.slider:before {
   width: 30px;
 }
 
+.bloc-icon svg {
+  width: 30px;
+  color: #000000;
+}
+
 
 .content-container {
   padding-bottom: 65px;
