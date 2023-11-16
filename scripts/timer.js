@@ -118,9 +118,18 @@ currentUserRef.get().then((doc) =>{
     }, 1000);
 
   } else {
-    document.getElementById('timer').innerHTML = 'No current reservation';
+      startCountdown(20 * 60, onCountdownComplete); // Start a new 20-minute countdown
   }
 
-}).catch((error) => {
-  console.log('Error getting document:', error);
+  pickUpBtn.addEventListener('click', () => {
+      startCountdown(24 * 60 * 60, onCountdownComplete); // Start a new 24-hour countdown
+  });
+
+  returnTestBtn.addEventListener('click', () => {
+      clearInterval(countdown);
+      localStorage.removeItem('countdownEndTime'); // Clear the saved end time
+      updateTimerDisplay(0);
+      alert('Countdown stopped and timer cleared.');
+      // Additional actions on stopping the countdown
+  });
 });
