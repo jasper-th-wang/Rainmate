@@ -33,40 +33,60 @@ async function handleReturn(currentUser, currentReservation) {
   const currentReservationDoc = await currentReservation.get();
   const { vendorId } = currentReservationDoc.data();
   // register return to current reservation
-  currentReservation.update({
+  const registerReturnToUser = currentReservation.update({
     returnVendorId: vendorId,
     returnTime: firebase.firestore.FieldValue.serverTimestamp(),
     isReturned: true,
   });
   // increment umbrella count to vendor
-  db.collection('vendors')
+  const incrementUmbrellaCount = db
+    .collection('vendors')
     .doc(vendorId)
     .update({
       umbrellaCount: firebase.firestore.FieldValue.increment(1),
     });
 
   // De-register current reservation from user
-  currentUser.update({
+  const deregisterReservationToUser = currentUser.update({
     currentReservation: false,
   });
+
+  // use Promise.allSettled, then do location.reload(); after all promises are resolved
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled
+  await Promise.allSettled([
+    registerReturnToUser,
+    incrementUmbrellaCount,
+    deregisterReservationToUser,
+  ]);
+  location.reload();
 }
+
 async function handlePickUp(currentReservation) {
   console.log(currentReservation);
 
   // register pickup (isPickedUp) to current reservation
-  currentReservation.update({
+  const registerPickUpToUser = currentReservation.update({
     isPickedUp: true,
     pickedUpTime: firebase.firestore.FieldValue.serverTimestamp(),
   });
+
   // get vendor id for current reservation
   const currentReservationDoc = await currentReservation.get();
   const { vendorId } = currentReservationDoc.data();
   // decrement umbrella count to vendor
-  db.collection('vendors')
+  const decrementUmbrellaCountToVendor = db
+    .collection('vendors')
     .doc(vendorId)
     .update({
       umbrellaCount: firebase.firestore.FieldValue.increment(-1),
     });
+
+  // use Promise.allSettled, then do location.reload(); after all promises are resolved
+  await Promise.allSettled([
+    registerPickUpToUser,
+    decrementUmbrellaCountToVendor,
+  ]);
+  location.reload();
 }
 
 async function myUmbrellaMain() {
