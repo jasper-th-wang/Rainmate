@@ -68,6 +68,7 @@ function displayCardsDynamically(collection) {
       });
     })
     .then(() => {
+      removeLoaderDisplayContent();
       sortVendorCardByDistance();
     })
     .then(() => {

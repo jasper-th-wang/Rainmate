@@ -11,6 +11,16 @@ function logout() {
     });
 }
 
+function displayLoadingScreen() {
+  moviesContainer.style.opacity = 0;
+  loaderContainer.style.display = 'grid';
+}
+
+function removeLoaderDisplayContent() {
+  console.log('works???');
+  document.querySelector('.loader-container').remove();
+  // document.querySelector('body').style.visibility = 'visible';
+}
 function toRad(Value) {
   return (Value * Math.PI) / 180;
 }
@@ -51,6 +61,19 @@ function assignDistancesToVendorsInStorage(userCoordinates) {
   }
 }
 
+// document.onload = () => {
+//   document.querySelector('body').style.visibility = 'hidden';
+//   // document.querySelector('.loader').style.display = 'block';
+// };
+// document.onreadystatechange = function () {
+//   if (document.readyState !== 'complete') {
+//     document.querySelector('body').style.visibility = 'hidden';
+//     document.querySelector('.loader').style.display = 'block';
+//   } else {
+//     document.querySelector('.loader').style.display = 'none';
+//     document.querySelector('body').style.visibility = 'visible';
+//   }
+// };
 // Comment out unused, archived code
 /**
 function writeVendors() {

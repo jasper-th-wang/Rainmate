@@ -49,6 +49,9 @@ function displayVendorInfo() {
 
       let imgEvent = document.querySelector('#vendor-img');
       imgEvent.src = './images/vendors/' + vendorCode + '.png';
+    })
+    .then(() => {
+      removeLoaderDisplayContent();
     });
 }
 

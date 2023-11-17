@@ -165,6 +165,7 @@ async function myUmbrellaMain() {
     } else {
       throw new Error('No user is logged in.'); // Log a message when no user is logged in
     }
+    removeLoaderDisplayContent();
   });
 }
 

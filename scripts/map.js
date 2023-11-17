@@ -274,6 +274,8 @@ function showMap() {
         map.flyTo({ coordinates: vendorCoordinates });
       }
     });
+
+    removeLoaderDisplayContent();
   });
 }
 

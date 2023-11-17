@@ -50,3 +50,8 @@ async function handleReservationFormSubmit(event) {
 document
   .getElementById('reservationForm')
   .addEventListener('submit', handleReservationFormSubmit);
+
+// document.onload = removeLoaderDisplayContent;
+window.addEventListener('load', () => {
+  removeLoaderDisplayContent();
+});
