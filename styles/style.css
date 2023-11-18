@@ -90,13 +90,17 @@ body {
   object-fit: cover;
 }
 
-#timer {
+#timer-card {
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-weight: 900px;
   font-size: 40px;
   margin: 0;
   background-color: #E9EDC9
+}
+
+#timer-card p {
+  margin: 0;
 }
 
 .card-body {

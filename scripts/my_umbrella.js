@@ -1,5 +1,9 @@
 const pickUpBtn = document.getElementById('pickUpTestBtn');
 const returnBtn = document.getElementById('returnTestBtn');
+const pendingPickUpMessage =
+  '<h1 class="header-message">Time Remaining for Pick Up:</h1>';
+const pendingReturnMessage =
+  '<h1 class="header-message">Time Remaining for Return:</h1>';
 const VendorCardTemplate = document.getElementById('my-umbrella-card');
 
 async function renderVendorCard(vendorID, isPickedUp) {
@@ -8,6 +12,13 @@ async function renderVendorCard(vendorID, isPickedUp) {
   let vendorData = vendorDoc.data();
   // Render Vendor Card
   const vendorCard = VendorCardTemplate.content.cloneNode(true);
+  document
+    .querySelector('.hi-user-name')
+    .insertAdjacentHTML(
+      'afterend',
+      isPickedUp ? pendingReturnMessage : pendingPickUpMessage
+    );
+
   vendorCard.querySelector('#card-title').innerHTML = isPickedUp
     ? 'Pending Return'
     : 'Pending Pick Up';

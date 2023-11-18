@@ -8,20 +8,20 @@ function initTimer(firestoreTimeStamp, isPickedUp) {
   // var countDownDate = new Date('Nov 7, 2023 06:37:25').getTime();
 
   // Update the count down every 1 second
-  var x = setInterval(function () {
+  let x = setInterval(function () {
     // Get today's date and time
-    var now = new Date().getTime();
+    let now = new Date().getTime();
 
     // Find the distance between now and the count down date
-    var distance = dueDate - now;
+    let distance = dueDate - now;
 
     // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor(
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor(
       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Output the result in an element with id="demo"
     document.getElementById('timer').innerHTML =
@@ -31,6 +31,9 @@ function initTimer(firestoreTimeStamp, isPickedUp) {
     if (distance < 0) {
       clearInterval(x);
       document.getElementById('timer').innerHTML = 'EXPIRED';
+      // TODO
+      // if !pickedUp -> deregister
+      // if pickedUp && !returned ->
     }
   }, 1000);
 }

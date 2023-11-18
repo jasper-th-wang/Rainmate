@@ -36,6 +36,7 @@ function displayVendorInfo() {
         .getElementById('vendor-hours')
         .insertAdjacentHTML('beforeend', vendorHoursHTML);
 
+      // disable button if there is no current reservation
       if (
         !JSON.parse(sessionStorage.getItem('currentUser')).currentReservation
       ) {
