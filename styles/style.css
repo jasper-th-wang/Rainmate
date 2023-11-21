@@ -96,7 +96,7 @@ body {
   font-weight: 900px;
   font-size: 40px;
   margin: 0;
-  background-color: #E9EDC9
+  border:0;
 }
 
 #timer-card p {
@@ -134,10 +134,18 @@ body {
 }
 
 .hi-user-name {
-  font-family: "Bree Serif", serif;
-  font-weight: 400;
-  padding-left: 15px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  padding: 15px;
+
   ;
+}
+
+.header-message{
+  font-size: 20px;
+  text-align: center;
+  color: grey;
+  font-weight: 200;
 }
 
 
@@ -288,6 +296,56 @@ input:checked+.slider:before {
   align-items: center;
 }
 
+.card-container{
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+  margin:10px;
+  margin-top:0px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.card-title{
+  padding-bottom: 10px;
+}
+
+#card-vendor-img{
+  width: 100px;
+  height:100px;
+  border-radius: 60px;
+  margin-top: 20px;
+}
+
+#card-vendor-name{
+  font-weight: 600;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+
+#card-vendor-address{
+  font-size: 12px;
+  margin:10px;
+  margin-top: 0;
+}
+
+
+#card-vendor-link{
+  text-decoration: none;
+  font-weight: 600;
+  color: rgb(5, 54, 5);
+  margin-top: 20px;
+}
+
+.material-symbols-outlined{
+  vertical-align: middle;
+  margin-bottom: 5px;
+}
+
+#myBtn{
+  margin:10px;
+}
+
 
 
 
@@ -305,6 +363,10 @@ input:checked+.slider:before {
 
 .card-link {
   all: unset;
+}
+
+.placeholder{
+  display: none;
 }
 
 .my-umbrella-no-reservation {
@@ -413,6 +475,10 @@ input:checked+.slider:before {
 .loader:after {
   transform: rotate(60deg);
 }
+
+
+
+
 
 @keyframes load {
   from {
