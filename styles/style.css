@@ -37,7 +37,7 @@ body {
 .btn-primary {
   background-color: #ccd5ae !important;
   border: none;
-  color: #ffffff;
+  color: black;
 }
 
 .btn-outline-secondary {
@@ -419,6 +419,12 @@ a.card-link {
   font-size: 15px;
   padding: 0;
   margin: 0;
+}
+
+.card-title__my-umbrella{
+  font-size: 20px;
+  padding: 10px;
+  padding-top: 20px;
 }
 
 .card-address {
