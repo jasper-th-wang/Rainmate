@@ -7,12 +7,11 @@ body {
 }
 
 .navbar-brand {
-  font-family: "Bree Serif", serif;
-  background-color: #ccd5ae;
+  font-family: 'Bree Serif', serif;
 }
 
 #navbar {
-  background-color: #ccd5ae;
+  border-bottom: 1px solid #080808
 }
 
 * {
@@ -157,9 +156,10 @@ p#vendor-address {
 }
 
 .card-title {
-  margin-left: 4px;
-  margin-top: 4px;
-  font-weight: 600;
+  text-align: center;
+  font-weight: 300;
+  color: #808080;
+  font-size: 25px;
 }
 
 .card-image {
