@@ -64,13 +64,45 @@ body {
 #map {
 
   height: calc(80vh);
+  position: absolute;
 
+}
+
+
+.mapboxgl-popup-content{
+  width: 100%;
+}
+
+.vendor-features{
+  font-family: 'Barlow', sans-serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .vendor-features img {
-  height: 50px;
-  object-fit: cover;
+  width: 75px;
+  height: 75px;
+  border-radius: 60px;
+  margin-top: 20px;
+  
 }
+
+.vendor-features h5{
+  font-size: 15px;
+}
+
+.vendor-features #address{
+  font-size: 10px;
+  margin: 0;
+}
+
+.vendor-features #hours{
+  font-size: 10px;
+  margin: 0;
+}
+
 
 
 .map-ui img {
