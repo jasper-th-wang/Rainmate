@@ -34,6 +34,19 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet" />
+  <!-- Link to styles of your own -->
+  <!-- Google fonts - Bree Serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Pacifico&family=Tilt+Neon&display=swap"
+    rel="stylesheet" />
+
+  <!--Google fonts - Barlow -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
 
   <link rel="stylesheet" href="./styles/style.css" />
 
@@ -50,23 +63,7 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="./styles/style.css" />
-
-  <style>
-    #explore-icon {
-      fill: #b3cf57;
-    }
-  </style>
-</head>
-
-<body class="container">
-  <div class="loader-container">
-    <div class="loader"></div>
-  </div>
-  <!-- Navbar-->
-  <nav class="navbar navbar-expand-lg" id="navbar"></nav>
-
-  <!-- <div class="position-fixed" style="top: 10vh; right: 20px;">
+  <link rel="stylesheet" href="./styles/style.css" /> <!-- <div class="position-fixed" style="top: 10vh; right: 20px;">
     <label class="switch">
       <input type="checkbox" id="pageToggle" >
       <span class="slider round"></span>
@@ -82,40 +79,39 @@
           List
         </button>
       </div>
-    </div>
 
-    <!-- Cards-->
-    <div class="list-card-container">
-      <!-- Here is the container for cards  -->
-      <div class="container">
-        <div id="vendors-go-here"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Templates for general use, not displayed -->
-  <template id="vendorCardTemplate">
-    <a class="card-link card mx-auto vendor-card" id="card-link">
+      <!-- Cards-->
       <div class="list-card-container">
-        <img class="card-image card-img-top" src=" ..." alt="..." />
-        <div class="card-body">
-          <div class="card-title">Card title</div>
-          <div class="card-address">Address</div>
-          <div class="card-distance">Distance</div>
+        <!-- Here is the container for cards  -->
+        <div class="container">
+          <div id="vendors-go-here"></div>
         </div>
       </div>
-    </a>
-  </template>
+    </div>
 
-  <!-- Footer-->
-  <div class="footer-nav" id="footerNav"></div>
+    <!-- Templates for general use, not displayed -->
+    <template id="vendorCardTemplate">
+      <a class="card-link card mx-auto vendor-card" id="card-link">
+        <div class="list-card-container">
+          <img class="card-image card-img-top" src=" ..." alt="..." />
+          <div class="card-body">
+            <div class="card-title">Card title</div>
+            <div class="card-address">Address</div>
+            <div class="card-distance">Distance</div>
+          </div>
+        </div>
+      </a>
+    </template>
 
-  <!-- JS-->
-  <script src="./scripts/firebaseAPI.js"></script>
-  <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/main.js"></script>
-  <script src="./scripts/script.js"></script>
-  <script src="./scripts/list.js"></script>
-</body>
+    <!-- Footer-->
+    <div class="footer-nav" id="footerNav"></div>
+
+    <!-- JS-->
+    <script src="./scripts/firebaseAPI.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/list.js"></script>
+    </body>
 
 </html>
