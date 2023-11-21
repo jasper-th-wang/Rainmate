@@ -241,6 +241,7 @@ input:checked+.slider:before {
 .mobile-nav {
   background: #ffffff;
   border-top: 0.5px solid #808080;
+  overflow: hidden;
   position: fixed;
   bottom: 0;
   height: 65px;
@@ -311,8 +312,8 @@ input:checked+.slider:before {
 }
 
 #card-vendor-img{
-  width: 100px;
-  height:100px;
+  width: 80px;
+  height:80px;
   border-radius: 60px;
   margin-top: 20px;
 }
@@ -344,6 +345,61 @@ input:checked+.slider:before {
 
 #myBtn{
   margin:10px;
+}
+
+img.card-image{
+  width: 50px;
+  height: 50px;
+  border-radius: 60px;
+  margin-right: 10px;
+
+}
+
+body.container{
+  padding-left:0;
+  padding-right: 0;
+}
+
+footer.mobile-nav{
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.card-link{
+  width: 100%;
+  border: 0;
+  padding: 0 10px;
+  margin: 10px;
+  margin-top: 0;
+}
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+}
+
+a.card-link{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom:5px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.card-title{
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.card-address{
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
 }
 
 

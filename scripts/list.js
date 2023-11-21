@@ -22,6 +22,7 @@ function displayCardsDynamically(collection) {
         //iterate thru each doc
         var docID = doc.id; //gets the unique ID of the document
         var vendorName = doc.data().name; // get value of the "name" key
+        var vendorAddress = doc.data().address; // get value of the "address" key
         var vendorCode = doc.data().code; //get unique ID to each hike to be used for fetching right image
         var vendorDistance = sessionStorage.getItem(`vendor-${docID}`)
           ? JSON.parse(sessionStorage.getItem(`vendor-${docID}`)).distance *
@@ -40,6 +41,7 @@ function displayCardsDynamically(collection) {
           `#vendor-${docID}`
         ).href = `./vendor.html?id=${docID}`;
         newCard.querySelector('.card-title').innerHTML = vendorName;
+        newCard.querySelector('.card-address').innerHTML = vendorAddress;
         newCard.querySelector(
           '.card-image'
         ).src = `./images/vendors/${vendorCode}.png`; //Example: NV01.jpg
