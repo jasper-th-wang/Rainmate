@@ -102,8 +102,16 @@ body {
   font-size: 10px;
   margin: 0;
 }
+h1#vendor-name{
+  font-weight: 600;
 
+  margin-bottom: 0;
+}
 
+p#vendor-address{
+  font-size: 14px;
+  margin: 0;
+}
 
 .map-ui img {
   object-fit: fill;
@@ -303,9 +311,9 @@ input:checked+.slider:before {
 
 }
 
-.vendors-go-here {
+/* .vendors-go-here {
   align-items: center;
-}
+} */
 
 .vendor-card {
   margin: 10px;
