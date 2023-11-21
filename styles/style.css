@@ -258,7 +258,7 @@ input:checked+.slider:before {
 #pageToggle .btn-secondary.active,
 #pageToggle .btn-secondary:active {
   background-color: #ccd5ae;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 #pageToggle {
@@ -374,8 +374,8 @@ input:checked+.slider:before {
 }
 
 img.card-image {
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
   border-radius: 60px;
   margin-right: 10px;
 }
@@ -397,22 +397,30 @@ footer.mobile-nav {
   width: 100%;
   border: 0;
   padding: 0 10px;
-  margin: 10px;
+  /* margin: 10px; */
+  margin: 0 !important;
   margin-top: 0;
 }
 
 .card-body {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  align-items: start;
 }
 
 a.card-link {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   margin-bottom: 5px;
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
+}
+
+.list-card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 2rem;
 }
 
 .card-title {
