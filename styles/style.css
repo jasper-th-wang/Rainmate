@@ -258,7 +258,7 @@ input:checked+.slider:before {
 #pageToggle .btn-secondary.active,
 #pageToggle .btn-secondary:active {
   background-color: #ccd5ae;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 #pageToggle {
