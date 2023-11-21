@@ -23,8 +23,11 @@ async function renderVendorCard(vendorID, isPickedUp) {
     ? 'Pending Return'
     : 'Pending Pick Up';
   vendorCard.querySelector('#card-vendor-name').innerHTML = vendorData.name;
+  vendorCard.querySelector('#card-vendor-address').innerHTML = vendorData.address;
   vendorCard.querySelector('#card-vendor-link').innerHTML =
-    'Click here to see the vendor on the map!';
+    `Find store<div class="material-symbols-outlined">
+    location_on
+    </div>`;
   vendorCard.querySelector(
     '#card-vendor-link'
   ).href = `main.html?vendorCoord=${vendorData.lng},${vendorData.lat}`;

@@ -85,7 +85,7 @@
     <div class="list-card-container">
       <!-- Here is the container for cards  -->
       <div class="container">
-        <div id="vendors-go-here" class="row row-cols-auto">
+        <div id="vendors-go-here">
         </div>
       </div>
     </div>
@@ -94,13 +94,16 @@
 
   <!-- Templates for general use, not displayed -->
   <template id="vendorCardTemplate">
-    <a class="card-link card mx-auto vendor-card" id="card-link"
-      style="width: 100%; border: 0; padding: 0 10px;margin: 10px; margin-top: 0;">
-      <img class="card-image card-img-top" src=" ..." alt="..." style="border-radius: 10px; " />
-      <div class="card-body">
-        <h5 class="card-title" style="margin: 0;">Card title</h5>
-        <p class="card-distance" style="margin: 0;">placeholder</p>
+    <a class="card-link card mx-auto vendor-card" id="card-link">
+      <div class="list-card-container"></div>
+        <img class="card-image card-img-top" src=" ..." alt="..."/>
+        <div class="card-body">
+          <div class="card-title">Card title</div>
+          <div class="card-address">Address</div>
+          <div class="card-distance">Distance</div>
+        </div>
       </div>
+      </a>
     </a>
   </template>
 

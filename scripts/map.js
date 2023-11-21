@@ -102,7 +102,17 @@ function showMap() {
 
               // img = doc.data().posterurl; // Image
               // url = doc.data().link; // URL
-              let description = `<div class="vendor-features" id="vendor-${doc.id}" data-lat="${lat}" data-lng="${lng}"><h2>${vendor_name}</h2><img src="${vendor_imgSrc}" style="width: 100%;"></img><p>${address}</p><p id="hours">${hoursHTML}</p> <p>Available Umbrellas: ${available_umbrellas} umbrellas</p><a href="./vendor.html?id=${doc.id}"  title="Opens in a new window">Details</a></div>`;
+              let description = `<div class="vendor-features" id="vendor-${doc.id}" data-lat="${lat}" data-lng="${lng}">
+                                    <img src="${vendor_imgSrc}"></img>
+                                    <div class="vendor-features-body">
+                                      <h5>${vendor_name}</h5>
+                                      <p id="address">${address}</p>
+                                      <p id="hours">${hoursHTML}</p>
+                                      <p>Available Umbrellas: ${available_umbrellas}</p>
+                                      <a href="./vendor.html?id=${doc.id}" title="Opens in a new window">Details</a>
+                                    </div>
+                                  </div>`;
+
               // Pushes information into the features array
               // in our application, we have a string description of the hike
               features.push({
