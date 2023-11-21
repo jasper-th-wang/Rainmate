@@ -96,6 +96,7 @@ body {
   font-size: 10px;
   margin: 0;
 }
+
 h1#vendor-name {
   font-weight: 600;
 
@@ -118,7 +119,7 @@ p#vendor-address {
   border-bottom: 10px;
 }
 
-#qrcode > img {
+#qrcode>img {
   width: 100%;
   object-fit: cover;
 }
@@ -216,15 +217,15 @@ p#vendor-address {
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: #ccd5ae;
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px #ccd5ae;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -538,10 +539,8 @@ a.card-link {
 .loader:before,
 .loader:after {
   background:
-    radial-gradient(closest-side at 50% 12.5%, currentColor 90%, #0000 98%) 50%
-      0/20% 80% repeat-y,
-    radial-gradient(closest-side at 12.5% 50%, currentColor 90%, #0000 98%) 0
-      50%/80% 20% repeat-x;
+    radial-gradient(closest-side at 50% 12.5%, currentColor 90%, #0000 98%) 50% 0/20% 80% repeat-y,
+    radial-gradient(closest-side at 12.5% 50%, currentColor 90%, #0000 98%) 0 50%/80% 20% repeat-x;
 }
 
 .loader:before,
