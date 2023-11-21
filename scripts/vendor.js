@@ -32,6 +32,7 @@ function displayVendorInfo() {
 
       // only populate title, and image
       document.getElementById('vendor-name').innerHTML = vendorName;
+      document.getElementById('vendor-address').innerHTML = vendorAddress;
       document
         .getElementById('vendor-hours')
         .insertAdjacentHTML('beforeend', vendorHoursHTML);
