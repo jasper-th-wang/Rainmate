@@ -39,13 +39,17 @@ function initTimer(firestoreTimeStamp, isPickedUp) {
     document.getElementById('timer').innerHTML =
       days + ': ' + hours + ': ' + minutes + ': ' + seconds + '';
 
-    // If the count down is over, write some text
+    // If the count down is over, write some text and change css and html layout
     if (distance < 0) {
       clearInterval(x);
       document.getElementById('card-title').innerHTML = 'Pickup no longer available'
       document.getElementById('timer').innerHTML = 'EXPIRED';
-      document.getElementById('myBtn').disabled = true;
+      document.getElementById('myBtn').hidden = true;
+      document.getElementsByClassName('btn-secondary').disabled = true;
       document.getElementById('card-container').style.color = 'grey'
+      document.getElementById('card-vendor-img').style.filter = 'grayscale(100%)'
+      // document.getElementById('myBtn').style.background="#6C757D"
+
       // TODO
       // if !pickedUp -> deregister
       // if pickedUp && !returned ->
