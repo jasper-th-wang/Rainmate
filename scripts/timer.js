@@ -42,9 +42,10 @@ function initTimer(firestoreTimeStamp, isPickedUp) {
     // If the count down is over, write some text
     if (distance < 0) {
       clearInterval(x);
-      // document.getElementById('card-container').hidden = true;
+      document.getElementById('card-title').innerHTML = 'Pickup no longer available'
       document.getElementById('timer').innerHTML = 'EXPIRED';
-      
+      document.getElementById('myBtn').disabled = true;
+      document.getElementById('card-container').style.color = 'grey'
       // TODO
       // if !pickedUp -> deregister
       // if pickedUp && !returned ->
