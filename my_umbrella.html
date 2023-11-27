@@ -84,18 +84,20 @@
     <!-- Reservation Details-->
     <template id="my-umbrella-card">
       <h5 class="card-title card-title__my-umbrella" id="card-title"></h5>
-      <div class="card-container">
+      <div id="card-container">
         <img id="card-vendor-img" src="" alt="Card image cap">
         <div class="card-body">
-          <h5 id="card-vendor-name"></h5>
-          <p id="card-vendor-address"></p>
+          <div id="card-vendor-name"></div>
+          <div id="card-vendor-address"></div>
           <div class="container">
             <a id="card-vendor-link" href="" target="_blank"></a>
           </div>  
-          <button type="button" class="btn btn-primary" id="myBtn" data-toggle="modal"
+          <div class="container">
+            <button type="button" class="btn btn-primary" id="myBtn" data-toggle="modal"
             data-target="#exampleModal">Pick up/Return</a></button>
           
-          <a href="return.html" class="btn btn-secondary">Return Details</a>
+            <a href="return.html" class="btn btn-secondary">Return Details</a>
+          </div>
 
           <!-- <a href="confirmation.html" style="text-decoration: none; color: black;">Retrieve QR
         </a> -->
