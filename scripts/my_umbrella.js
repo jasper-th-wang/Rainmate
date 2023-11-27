@@ -1,3 +1,4 @@
+
 const pickUpBtn = document.getElementById('pickUpTestBtn');
 const returnBtn = document.getElementById('returnTestBtn');
 const pendingPickUpMessage =
@@ -138,6 +139,20 @@ async function myUmbrellaMain() {
             vendorId,
           } = doc.data();
           // Display pickup and reserve button
+
+        //   if (!isPickedUp) {
+        //     qrButton.textContent = 'Pick Up';
+        //     qrButton.addEventListener('click', async () => {
+        //         await handlePickUp(currentReservation);
+        //         qrButton.textContent = 'Return'; // Change to 'Return' after pickup
+        //     });
+        // } else {
+        //     qrButton.textContent = 'Return';
+        //     qrButton.addEventListener('click', () => {
+        //         handleReturn(currentUser, currentReservation);
+        //     });
+        // }
+
           if (!isPickedUp) {
             // get reservationTime for timer
             console.log(reservationTime);
@@ -149,6 +164,7 @@ async function myUmbrellaMain() {
             });
             return;
           } else {
+            
             console.log(pickedUpTime);
             initTimer(pickedUpTime, true);
             renderVendorCard(vendorId, true);

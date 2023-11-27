@@ -1,10 +1,22 @@
 //Set the date we're counting down to
 function initTimer(firestoreTimeStamp, isPickedUp) {
   let startDate = firestoreTimeStamp.toDate();
-  let dueDate = isPickedUp
-    ? startDate.setDate(startDate.getDate() + 2)
-    : startDate.setMinutes(startDate.getMinutes() + 20);
-  console.log(dueDate);
+  let dueDate = isPickedUp ? startDate.setDate(startDate.getDate() + 2) : startDate.setMinutes(startDate.getMinutes() + 20);
+
+  if (isPickedUp) {
+      let returnTime = new Date(dueDate);
+      document.getElementById('timer').innerHTML = 'Return by: ' + returnTime.toLocaleString();
+  } else {
+      // Handle the non-picked up case as before (if needed)
+  }
+}
+// function initTimer(firestoreTimeStamp, isPickedUp) {
+//   let startDate = firestoreTimeStamp.toDate();
+//   let dueDate = isPickedUp
+//     ? startDate.setDate(startDate.getDate() + 2)
+//     : startDate.setMinutes(startDate.getMinutes() + 20);
+  
+//   console.log(dueDate);
   // var countDownDate = new Date('Nov 7, 2023 06:37:25').getTime();
 
   // Update the count down every 1 second
@@ -36,7 +48,7 @@ function initTimer(firestoreTimeStamp, isPickedUp) {
       // if pickedUp && !returned ->
     }
   }, 1000);
-}
+
 // document.addEventListener('DOMContentLoaded', () => {
 //   let countdown;
 //   const timerDisplay = document.getElementById('timer');
