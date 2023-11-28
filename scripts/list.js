@@ -104,12 +104,12 @@ async function initializeVendorCards() {
     renderVendorCard(vendor);
     setVendorCoordinatesToLocalStorage(vendor);
   });
+  sortVendorCardByDistance();
+  removeLoaderDisplayContent();
 }
 
 async function listMain() {
   await initializeVendorCards();
-  sortVendorCardByDistance();
-  removeLoaderDisplayContent();
   updateDistanceAfterInitialization();
 }
 
