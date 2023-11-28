@@ -7,6 +7,7 @@ const pendingReturnMessage =
   '<h1 class="header-message">Time Remaining for Return:</h1>';
 const VendorCardTemplate = document.getElementById("my-umbrella-card");
 
+// TODO: change this name because it is more like reservation/pickup detail Card
 async function renderVendorCard(vendorID, isPickedUp) {
   // Get vendor information
   let vendorDoc = await db.collection("vendors").doc(vendorID).get();

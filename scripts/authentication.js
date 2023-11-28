@@ -1,6 +1,6 @@
-let ui = new firebaseui.auth.AuthUI(firebase.auth());
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
-let uiConfig = {
+var uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function (authResult, redirectUrl) {
       // User successfully signed in.
@@ -14,25 +14,25 @@ let uiConfig = {
       // Before this works, you must enable "Firestore" from the firebase console.
       // The Firestore rules must allow the user to write.
       //------------------------------------------------------------------------------------------
-      let user = authResult.user; // get the user object from the Firebase authentication database
+      var user = authResult.user; // get the user object from the Firebase authentication database
       if (authResult.additionalUserInfo.isNewUser) {
         //if new user
         db.collection('users')
-            .doc(user.uid)
-            .set({
-              //write to firestore. We are using the UID for the ID in users collection
-              name: user.displayName, //"users" collection
-              email: user.email, //with authenticated user's ID (user.uid)
-              signupDate: firebase.firestore.FieldValue.serverTimestamp(), //current system time
-              currentReservation: false, //get reservation_id from Reservations collection
-            })
-            .then(function () {
-              console.log('New user added to firestore');
-              window.location.assign('main.html'); //re-direct to main.html after signup
-            })
-            .catch(function (error) {
-              console.log('Error adding new user: ' + error);
-            });
+          .doc(user.uid)
+          .set({
+            //write to firestore. We are using the UID for the ID in users collection
+            name: user.displayName, //"users" collection
+            email: user.email, //with authenticated user's ID (user.uid)
+            signupDate: firebase.firestore.FieldValue.serverTimestamp(), //current system time
+            currentReservation: false, //get reservation_id from Reservations collection
+          })
+          .then(function () {
+            console.log('New user added to firestore');
+            window.location.assign('main.html'); //re-direct to main.html after signup
+          })
+          .catch(function (error) {
+            console.log('Error adding new user: ' + error);
+          });
       } else {
         return true;
       }

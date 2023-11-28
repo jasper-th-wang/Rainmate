@@ -17,6 +17,7 @@ function displayLoadingScreen() {
 }
 
 function removeLoaderDisplayContent() {
+  // TODO: Delete
   console.log('works???');
   document.querySelector('.loader-container').remove();
   // document.querySelector('body').style.visibility = 'visible';
