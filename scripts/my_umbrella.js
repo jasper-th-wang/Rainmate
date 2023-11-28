@@ -1,5 +1,6 @@
 const pickUpBtn = document.getElementById("pickUpTestBtn");
 const returnBtn = document.getElementById("returnTestBtn");
+const cancelBtn = document.getElementById("cancelBtn");
 const pendingPickUpMessage =
   '<h1 class="header-message">Time Remaining for Pick Up:</h1>';
 const pendingReturnMessage =
@@ -35,6 +36,14 @@ async function renderVendorCard(vendorID, isPickedUp) {
   document.querySelector(".content-container").appendChild(vendorCard);
 
   renderModal();
+}
+
+async function handleCancelReservation(currentUser) {
+  await currentUser.update({
+    currentReservation: false,
+  });
+
+  location.reload();
 }
 
 async function handleReturn(currentUser, currentReservation) {
@@ -160,6 +169,12 @@ async function myUmbrellaMain() {
             pickUpBtn.addEventListener("click", (e) => {
               handlePickUp(currentReservation);
             });
+
+            cancelBtn.style.display = "block";
+            cancelBtn.addEventListener("click", (e) => {
+              handleCancelReservation(currentUser);
+            });
+
             return;
           } else {
             console.log(pickedUpTime);

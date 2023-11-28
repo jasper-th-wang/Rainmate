@@ -7,11 +7,11 @@ body {
 }
 
 .navbar-brand {
-  font-family: 'Bree Serif', serif;
+  font-family: "Bree Serif", serif;
 }
 
 #navbar {
-  border-bottom: 1px solid #080808
+  border-bottom: 1px solid #080808;
 }
 
 * {
@@ -118,7 +118,7 @@ p#vendor-address {
   border-bottom: 10px;
 }
 
-#qrcode>img {
+#qrcode > img {
   width: 100%;
   object-fit: cover;
 }
@@ -218,15 +218,15 @@ p#vendor-address {
   transition: 0.4s;
 }
 
-input:checked+.slider {
+input:checked + .slider {
   background-color: #ccd5ae;
 }
 
-input:focus+.slider {
+input:focus + .slider {
   box-shadow: 0 0 1px #ccd5ae;
 }
 
-input:checked+.slider:before {
+input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -366,7 +366,6 @@ input:checked+.slider:before {
   text-decoration: none;
   font-weight: 600;
   color: rgb(5, 54, 5);
-
 }
 
 .material-symbols-outlined {
@@ -376,6 +375,12 @@ input:checked+.slider:before {
 
 #myBtn {
   margin: 10px;
+}
+
+#cancelBtn {
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  display: none;
 }
 
 img.card-image {
@@ -414,7 +419,7 @@ footer.mobile-nav {
   align-items: start;
 }
 
-.card-distance{
+.card-distance {
   font-size: 14px;
 }
 
@@ -439,7 +444,7 @@ a.card-link {
   color: black;
 }
 
-.card-title__my-umbrella{
+.card-title__my-umbrella {
   font-size: 20px;
   padding: 10px;
   padding-top: 20px;
@@ -563,8 +568,10 @@ a.card-link {
 .loader:before,
 .loader:after {
   background:
-    radial-gradient(closest-side at 50% 12.5%, currentColor 90%, #0000 98%) 50% 0/20% 80% repeat-y,
-    radial-gradient(closest-side at 12.5% 50%, currentColor 90%, #0000 98%) 0 50%/80% 20% repeat-x;
+    radial-gradient(closest-side at 50% 12.5%, currentColor 90%, #0000 98%) 50%
+      0/20% 80% repeat-y,
+    radial-gradient(closest-side at 12.5% 50%, currentColor 90%, #0000 98%) 0
+      50%/80% 20% repeat-x;
 }
 
 .loader:before,
@@ -587,3 +594,4 @@ a.card-link {
     transform: rotate(1turn);
   }
 }
+
