@@ -1,22 +1,22 @@
 let params = new URL(window.location.href); //get URL of search bar
-let vendorCoordinatesString = params.searchParams.get('vendorCoord'); //get value for key "id"
+let vendorCoordinatesString = params.searchParams.get("vendorCoord"); //get value for key "id"
 let vendorCoordinates;
 if (vendorCoordinatesString) {
   vendorCoordinates = vendorCoordinatesString
-    .split(',')
+    .split(",")
     .map((coord) => parseFloat(coord));
 }
 
 // console.log(vendorCoordinates);
 function dayIndexToStr(dayIndex) {
   const weekday = [
-    'sunday',
-    'monday',
-    'tuesday',
-    'wednesday',
-    'thursday',
-    'friday',
-    'saturday',
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
   ];
   return weekday[dayIndex];
 }
@@ -28,10 +28,10 @@ function showMap() {
   // Define and initialize basic mapbox data
   //-----------------------------------------
   mapboxgl.accessToken =
-    'pk.eyJ1IjoiYWRhbWNoZW4zIiwiYSI6ImNsMGZyNWRtZzB2angzanBjcHVkNTQ2YncifQ.fTdfEXaQ70WoIFLZ2QaRmQ';
+    "pk.eyJ1IjoiYWRhbWNoZW4zIiwiYSI6ImNsMGZyNWRtZzB2angzanBjcHVkNTQ2YncifQ.fTdfEXaQ70WoIFLZ2QaRmQ";
   const map = new mapboxgl.Map({
-    container: 'map', // Container ID
-    style: 'mapbox://styles/mapbox/streets-v11', // Styling URL
+    container: "map", // Container ID
+    style: "mapbox://styles/mapbox/streets-v11", // Styling URL
     center: [-123.11526553178035, 49.283591043313926], // Starting position
     zoom: 15, // Starting zoom
   });
@@ -47,26 +47,26 @@ function showMap() {
       trackUserLocation: true,
       // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: true,
-    })
+    }),
   );
 
   //------------------------------------
   // Listen for when map finishes loading
   // then Add map features
   //------------------------------------
-  map.on('load', () => {
+  map.on("load", () => {
     let vendorPopup;
     // Defines map pin icon for events
     map.loadImage(
-      'https://cdn.iconscout.com/icon/free/png-256/pin-locate-marker-location-navigation-16-28668.png',
+      "https://cdn.iconscout.com/icon/free/png-256/pin-locate-marker-location-navigation-16-28668.png",
       (error, image) => {
         if (error) throw error;
 
         // Add the image to the map style.
-        map.addImage('eventpin', image); // Pin Icon
+        map.addImage("eventpin", image); // Pin Icon
 
         // READING information from "hikes" collection in Firestore
-        db.collection('vendors')
+        db.collection("vendors")
           .get()
           .then((allVendors) => {
             const features = []; // Defines an empty array for information to be added to
@@ -81,7 +81,7 @@ function showMap() {
               let vendor_name = doc.data().name; // Event Name
               let vendor_code = doc.data().code;
               let available_umbrellas = doc.data().umbrellaCount;
-              let vendor_imgSrc = './images/vendors/' + vendor_code + '.png';
+              let vendor_imgSrc = "./images/vendors/" + vendor_code + ".png";
               let address = doc.data().address; // Text Preview
               let hours = doc.data().hours_of_operation;
               let dayOfTodayIndex = new Date().getDay();
@@ -95,7 +95,7 @@ function showMap() {
                     ...doc.data(),
                     coordinates: coordinates,
                     distance: 0,
-                  })
+                  }),
                 );
               }
               hoursHTML = `Today's Hours: ${hours[dayOfTodayStr]}`;
@@ -116,12 +116,12 @@ function showMap() {
               // Pushes information into the features array
               // in our application, we have a string description of the hike
               features.push({
-                type: 'Feature',
+                type: "Feature",
                 properties: {
                   description: description,
                 },
                 geometry: {
-                  type: 'Point',
+                  type: "Point",
                   coordinates: coordinates,
                 },
               });
@@ -131,7 +131,7 @@ function showMap() {
                 JSON.stringify(vendorCoordinates) == JSON.stringify(coordinates)
               ) {
                 // map.flyto({ coordinates });
-                console.log('HIIIIIIII!!!');
+                console.log("HIIIIIIII!!!");
                 vendorPopup = new mapboxgl.Popup()
                   .setLngLat(coordinates)
                   .setHTML(description)
@@ -141,10 +141,10 @@ function showMap() {
             });
 
             // Adds features as a source of data for the map
-            map.addSource('places', {
-              type: 'geojson',
+            map.addSource("places", {
+              type: "geojson",
               data: {
-                type: 'FeatureCollection',
+                type: "FeatureCollection",
                 features: features,
               },
             });
@@ -152,14 +152,14 @@ function showMap() {
             // Creates a layer above the map displaying the pins
             // by using the sources that was just added
             map.addLayer({
-              id: 'places',
-              type: 'symbol',
+              id: "places",
+              type: "symbol",
               // source: 'places',
-              source: 'places',
+              source: "places",
               layout: {
-                'icon-image': 'eventpin', // Pin Icon
-                'icon-size': 0.1, // Pin Size
-                'icon-allow-overlap': true, // Allows icons to overlap
+                "icon-image": "eventpin", // Pin Icon
+                "icon-size": 0.1, // Pin Size
+                "icon-allow-overlap": true, // Allows icons to overlap
               },
             });
 
@@ -167,7 +167,7 @@ function showMap() {
             // Add Click event listener, and handler function that creates a popup
             // that displays info from "hikes" collection in Firestore
             //-----------------------------------------------------------------------
-            map.on('click', 'places', (e) => {
+            map.on("click", "places", (e) => {
               // Extract coordinates array.
               // Extract description of that place
               const coordinates = e.features[0].geometry.coordinates.slice();
@@ -188,26 +188,26 @@ function showMap() {
             // Add mousenter event listener, and handler function to
             // Change the cursor to a pointer when the mouse is over the places layer.
             //-----------------------------------------------------------------------
-            map.on('mouseenter', 'places', () => {
-              map.getCanvas().style.cursor = 'pointer';
+            map.on("mouseenter", "places", () => {
+              map.getCanvas().style.cursor = "pointer";
             });
 
             // Defaults cursor when not hovering over the places layer
-            map.on('mouseleave', 'places', () => {
-              map.getCanvas().style.cursor = '';
+            map.on("mouseleave", "places", () => {
+              map.getCanvas().style.cursor = "";
             });
           });
-      }
+      },
     );
 
     // Add the image to the map style.
     map.loadImage(
-      'https://cdn-icons-png.flaticon.com/512/61/61168.png',
+      "https://cdn-icons-png.flaticon.com/512/61/61168.png",
       (error, image) => {
         if (error) throw error;
 
         // Add the image to the map style with width and height values
-        map.addImage('userpin', image, { width: 10, height: 10 });
+        map.addImage("userpin", image, { width: 10, height: 10 });
 
         // Adds user's current location as a source to the map
         navigator.geolocation.getCurrentPosition((position) => {
@@ -215,25 +215,25 @@ function showMap() {
             position.coords.longitude,
             position.coords.latitude,
           ];
-          sessionStorage.setItem('currentPosition', userLocation);
+          sessionStorage.setItem("currentPosition", userLocation);
           assignDistancesToVendorsInStorage(userLocation);
 
           // call function to calculate and render distance
           console.log(userLocation);
           if (userLocation) {
-            map.addSource('userLocation', {
-              type: 'geojson',
+            map.addSource("userLocation", {
+              type: "geojson",
               data: {
-                type: 'FeatureCollection',
+                type: "FeatureCollection",
                 features: [
                   {
-                    type: 'Feature',
+                    type: "Feature",
                     geometry: {
-                      type: 'Point',
+                      type: "Point",
                       coordinates: userLocation,
                     },
                     properties: {
-                      description: 'Your location',
+                      description: "Your location",
                     },
                   },
                 ],
@@ -242,18 +242,18 @@ function showMap() {
 
             // Creates a layer above the map displaying the user's location
             map.addLayer({
-              id: 'userLocation',
-              type: 'symbol',
-              source: 'userLocation',
+              id: "userLocation",
+              type: "symbol",
+              source: "userLocation",
               layout: {
-                'icon-image': 'userpin', // Pin Icon
-                'icon-size': 0.05, // Pin Size
-                'icon-allow-overlap': true, // Allows icons to overlap
+                "icon-image": "userpin", // Pin Icon
+                "icon-size": 0.05, // Pin Size
+                "icon-allow-overlap": true, // Allows icons to overlap
               },
             });
 
             // Map On Click function that creates a popup displaying the user's location
-            map.on('click', 'userLocation', (e) => {
+            map.on("click", "userLocation", (e) => {
               // Copy coordinates array.
               const coordinates = e.features[0].geometry.coordinates.slice();
               const description = e.features[0].properties.description;
@@ -265,21 +265,21 @@ function showMap() {
             });
 
             // Change the cursor to a pointer when the mouse is over the userLocation layer.
-            map.on('mouseenter', 'userLocation', () => {
-              map.getCanvas().style.cursor = 'pointer';
+            map.on("mouseenter", "userLocation", () => {
+              map.getCanvas().style.cursor = "pointer";
             });
 
             // Defaults
             // Defaults cursor when not hovering over the userLocation layer
-            map.on('mouseleave', 'userLocation', () => {
-              map.getCanvas().style.cursor = '';
+            map.on("mouseleave", "userLocation", () => {
+              map.getCanvas().style.cursor = "";
             });
           }
         });
-      }
+      },
     );
-    map.on('idle', () => {
-      // vendorPopup.setLngLat(coordinates).setHTML(description).addTo(map);
+    // Zoom to vendor specified in URL parameter
+    map.on("idle", () => {
       if (vendorCoordinates) {
         map.flyTo({ coordinates: vendorCoordinates });
       }
@@ -291,4 +291,3 @@ function showMap() {
 
 // Call the function to display the map with the user's location and event pins
 showMap();
-console.log(map);

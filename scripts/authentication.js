@@ -1,3 +1,8 @@
+/**
+ * @fileoverview
+ * - Render UI for user sign up and login on login.html
+ */
+
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 var uiConfig = {
@@ -17,7 +22,7 @@ var uiConfig = {
       var user = authResult.user; // get the user object from the Firebase authentication database
       if (authResult.additionalUserInfo.isNewUser) {
         //if new user
-        db.collection('users')
+        db.collection("users")
           .doc(user.uid)
           .set({
             //write to firestore. We are using the UID for the ID in users collection
@@ -27,11 +32,11 @@ var uiConfig = {
             currentReservation: false, //get reservation_id from Reservations collection
           })
           .then(function () {
-            console.log('New user added to firestore');
-            window.location.assign('main.html'); //re-direct to main.html after signup
+            console.log("New user added to firestore");
+            window.location.assign("main.html"); //re-direct to main.html after signup
           })
           .catch(function (error) {
-            console.log('Error adding new user: ' + error);
+            console.log("Error adding new user: " + error);
           });
       } else {
         return true;
@@ -41,12 +46,12 @@ var uiConfig = {
     uiShown: function () {
       // The widget is rendered.
       // Hide the loader.
-      document.getElementById('loader').style.display = 'none';
+      document.getElementById("loader").style.display = "none";
     },
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-  signInFlow: 'popup',
-  signInSuccessUrl: 'main.html',
+  signInFlow: "popup",
+  signInSuccessUrl: "main.html",
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
     // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -57,9 +62,9 @@ var uiConfig = {
     // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
   ],
   // Terms of service url.
-  tosUrl: '<your-tos-url>',
+  tosUrl: "<your-tos-url>",
   // Privacy policy url.
-  privacyPolicyUrl: '<your-privacy-policy-url>',
+  privacyPolicyUrl: "<your-privacy-policy-url>",
 };
 
-ui.start('#firebaseui-auth-container', uiConfig);
+ui.start("#firebaseui-auth-container", uiConfig);

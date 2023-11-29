@@ -1,4 +1,9 @@
 /**
+ * @fileoverview
+ * - Handle rendering QR code to user on confirmation.html
+ */
+
+/**
  * Renders QR code based on search parameters
  */
 function renderQRCodeFromParams() {

@@ -1,4 +1,9 @@
 /**
+ * @fileoverview
+ * - Retrieve data from firebase and handle rendering Vendor Cards into a list to user on list.html
+ */
+
+/**
  * Sort Vendor Cards by distance by reading data-distance attribute, and apply number to flex order
  */
 function sortVendorCardByDistance() {
@@ -40,7 +45,8 @@ function updateDistanceAfterInitialization() {
 }
 
 /**
- * Renders a Vendor Card dynamically by using vendorCardTemplate
+ * Renders a Vendor Card dynamically by using Vendor Card Template
+ * @param vendor - firestore doc object representing a vendor
  */
 function renderVendorCard(vendor) {
   let Template = document.getElementById("vendorCardTemplate");

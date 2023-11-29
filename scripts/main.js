@@ -1,19 +1,24 @@
-document.addEventListener('DOMContentLoaded', function () {
-  var mapButton = document.getElementById('mapButton');
-  var listButton = document.getElementById('listButton');
+/**
+ * @fileoverview
+ * - Handle rendering of Map and List toggle buttons on main.html
+ */
+
+document.addEventListener("DOMContentLoaded", function () {
+  var mapButton = document.getElementById("mapButton");
+  var listButton = document.getElementById("listButton");
 
   // Set initial active button based on current page
-  if (window.location.href.indexOf('List.html') > -1) {
-    listButton.classList.add('active');
+  if (window.location.href.indexOf("List.html") > -1) {
+    listButton.classList.add("active");
   } else {
-    mapButton.classList.add('active');
+    mapButton.classList.add("active");
   }
 
-  mapButton.addEventListener('click', function () {
-    window.location.href = 'Main.html';
+  mapButton.addEventListener("click", function () {
+    window.location.href = "Main.html";
   });
 
-  listButton.addEventListener('click', function () {
-    window.location.href = 'List.html';
+  listButton.addEventListener("click", function () {
+    window.location.href = "List.html";
   });
 });
