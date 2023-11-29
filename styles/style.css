@@ -6,6 +6,11 @@ body {
   font-family: "Barlow", sans-serif;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 .navbar-brand {
   font-family: "Bree Serif", serif;
 }
@@ -59,7 +64,8 @@ body {
 
 .mapboxgl-canvas-container,
 #map {
-  height: calc(80vh);
+  /* 188px is defined by the heights of navbar, toggle bar and bottom nav */
+  height: calc(100vh - 188px);
   position: absolute;
 }
 
@@ -273,6 +279,7 @@ input:checked + .slider:before {
   overflow: hidden;
   position: fixed;
   bottom: 0;
+  left: 0;
   height: 65px;
   width: 100%;
   display: flex;
@@ -396,11 +403,17 @@ body.container {
 }
 
 footer.mobile-nav {
-  overflow: hidden;
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  /* overflow: hidden; */
+  /* position: fixed; */
+  /* left: 0; */
+  /* bottom: 0; */
+  /* width: 100%; */
+  /* below is before commit */
   width: 100%;
+  /* border: 0; */
+  padding: 0 10px;
+  /* margin: 10px; */
+  /* margin-top: 0; */
 }
 
 .card-link {
@@ -594,4 +607,3 @@ a.card-link {
     transform: rotate(1turn);
   }
 }
-

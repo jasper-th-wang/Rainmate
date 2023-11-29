@@ -82,16 +82,21 @@
     <div class="loader-container">
       <div class="loader"></div>
     </div>
-    <nav class="row navbar navbar-expand-lg" id="navbar"></nav>
-    <div class="row justify-content-center">
-      <div class="btn-group" id="pageToggle">
-        <button type="button" class="btn btn-secondary" id="mapButton">
-          Map
-        </button>
-        <button type="button" class="btn btn-secondary" id="listButton">
-          List
-        </button>
+    <!-- Navbar-->
+    <nav class="navbar navbar-expand-lg" id="navbar"></nav>
+    <div class="content-container">
+      <div class="row justify-content-center p-0">
+        <div class="btn-group" id="pageToggle">
+          <button type="button" class="btn btn-secondary" id="mapButton">
+            Map
+          </button>
+          <button type="button" class="btn btn-secondary" id="listButton">
+            List
+          </button>
+        </div>
       </div>
+      <!-- MAPBOX -->
+      <div class="content-container" id="map" style="width: 100%"></div>
     </div>
 
     <!-- <div class="position-fixed" style="top: 10vh; right: 20px;">
@@ -100,8 +105,6 @@
         <span class="slider round"></span>
       </label>
     </div> -->
-    <!-- MAPBOX -->
-    <div class="content-container" id="map" style="width: 100%"></div>
 
     <!-- Footer-->
     <div class="footer-nav" id="footerNav"></div>
@@ -114,4 +117,3 @@
     <script src="./scripts/main.js"></script>
   </body>
 </html>
-
