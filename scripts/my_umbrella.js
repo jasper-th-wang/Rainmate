@@ -146,20 +146,6 @@ async function myUmbrellaMain() {
             reservationTime,
             vendorId,
           } = doc.data();
-          // Display pickup and reserve button
-
-          //   if (!isPickedUp) {
-          //     qrButton.textContent = 'Pick Up';
-          //     qrButton.addEventListener('click', async () => {
-          //         await handlePickUp(currentReservation);
-          //         qrButton.textContent = 'Return'; // Change to 'Return' after pickup
-          //     });
-          // } else {
-          //     qrButton.textContent = 'Return';
-          //     qrButton.addEventListener('click', () => {
-          //         handleReturn(currentUser, currentReservation);
-          //     });
-          // }
 
           if (!isPickedUp) {
             // get reservationTime for timer
@@ -194,9 +180,6 @@ async function myUmbrellaMain() {
           }
         });
       } else {
-        // no reservation
-        // document.getElementById('no-reservation-message').style.display =
-        // 'block';
         const noReservationCard =
           '<div class="my-umbrella-no-reservation" id="no-reservation-message"><h1>You Have No Reservation!</h1></div>';
         document
@@ -209,8 +192,6 @@ async function myUmbrellaMain() {
     removeLoaderDisplayContent();
   });
 }
-
-// initTimer();
 
 function renderModal() {
   // Get the modal
@@ -227,7 +208,7 @@ function renderModal() {
     modal.style.display = "block";
   };
 
-  // When the user clicks on <span> (x), close the modal
+  // When the user clicks on <span>, close the modal
   span.onclick = function () {
     modal.style.display = "none";
   };

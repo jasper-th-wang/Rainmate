@@ -30,8 +30,9 @@ function dayIndexToStr(dayIndex) {
   return weekday[dayIndex];
 }
 
-// Converts numeric degrees to radians
-
+/**
+ * Renders MapBox Map
+ */
 function showMap() {
   //-----------------------------------------
   // Define and initialize basic mapbox data
