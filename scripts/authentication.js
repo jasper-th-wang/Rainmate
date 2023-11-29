@@ -32,7 +32,6 @@ var uiConfig = {
             currentReservation: false, //get reservation_id from Reservations collection
           })
           .then(function () {
-            console.log("New user added to firestore");
             window.location.assign("main.html"); //re-direct to main.html after signup
           })
           .catch(function (error) {

@@ -1,13 +1,22 @@
+/**
+ * @fileoverview
+ * Renders the MapBox map on main.html
+ */
+
 let params = new URL(window.location.href); //get URL of search bar
 let vendorCoordinatesString = params.searchParams.get("vendorCoord"); //get value for key "id"
 let vendorCoordinates;
+
 if (vendorCoordinatesString) {
   vendorCoordinates = vendorCoordinatesString
     .split(",")
     .map((coord) => parseFloat(coord));
 }
 
-// console.log(vendorCoordinates);
+/**
+ * Get a string representing the day of the week using a JavaScript Day index
+ * @param {int} dayIndex
+ */
 function dayIndexToStr(dayIndex) {
   const weekday = [
     "sunday",
@@ -125,18 +134,14 @@ function showMap() {
                   coordinates: coordinates,
                 },
               });
-              // IF PARAM -> RENDER
-              console.log(vendorCoordinates, coordinates);
+              // If there is a vendor id in URL parameter, render feature
               if (
                 JSON.stringify(vendorCoordinates) == JSON.stringify(coordinates)
               ) {
-                // map.flyto({ coordinates });
-                console.log("HIIIIIIII!!!");
                 vendorPopup = new mapboxgl.Popup()
                   .setLngLat(coordinates)
                   .setHTML(description)
                   .addTo(map);
-                // console.log('vendor!!!!' + vendorPopup);
               }
             });
 
