@@ -70,7 +70,9 @@ function showMap() {
     map.loadImage(
       "https://cdn.iconscout.com/icon/free/png-256/pin-locate-marker-location-navigation-16-28668.png",
       (error, image) => {
-        if (error) throw error;
+        if (error) {
+          throw error;
+        }
 
         // Add the image to the map style.
         map.addImage("eventpin", image); // Pin Icon
@@ -82,8 +84,7 @@ function showMap() {
             const features = []; // Defines an empty array for information to be added to
 
             allVendors.forEach((doc) => {
-              lat = doc.data().lat;
-              lng = doc.data().lng;
+              let {lat, lng} = doc.data();
               coordinates = [lng, lat];
 
               // Coordinates
@@ -92,7 +93,7 @@ function showMap() {
               let vendor_code = doc.data().code;
               let available_umbrellas = doc.data().umbrellaCount;
               let vendor_imgSrc = "./images/vendors/" + vendor_code + ".png";
-              let address = doc.data().address; // Text Preview
+              let {address} = doc.data(); // Text Preview
               let hours = doc.data().hours_of_operation;
               let dayOfTodayIndex = new Date().getDay();
               let dayOfTodayStr = dayIndexToStr(dayOfTodayIndex);

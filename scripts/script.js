@@ -11,7 +11,7 @@ function logout() {
       console.log("logging out user");
     })
     .catch((error) => {
-      // An error happened.
+      console.error(error);
     });
 }
 
