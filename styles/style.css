@@ -559,12 +559,12 @@ a.card-link {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 65px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  /* background-color: #FFFFFF; */
+   background-color: #FFFFFF;
 }
 
 .loader {
@@ -606,4 +606,15 @@ a.card-link {
   to {
     transform: rotate(1turn);
   }
+}
+
+#loading-msg {
+  position: absolute;
+  top: 60vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  z-index: 99999999;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }

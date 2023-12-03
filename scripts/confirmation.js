@@ -17,7 +17,7 @@ function renderQRCodeFromParams() {
       // Handle the case where there is no ID in the URL
       console.log("No reservation ID found.");
     }
-    removeLoaderDisplayContent();
+    removeLoader();
   });
 }
 

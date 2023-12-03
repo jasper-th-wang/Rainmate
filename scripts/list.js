@@ -111,7 +111,7 @@ async function initializeVendorCards() {
     setVendorCoordinatesToLocalStorage(vendor);
   });
   sortVendorCardByDistance();
-  removeLoaderDisplayContent();
+  removeLoader();
 }
 
 async function listMain() {

@@ -43,23 +43,45 @@ function displayVendorInfo() {
         .insertAdjacentHTML("beforeend", vendorHoursHTML);
 
       // disable button if there is no current reservation
-      if (
-        !JSON.parse(sessionStorage.getItem("currentUser")).currentReservation
-      ) {
+      let { currentReservation } = JSON.parse(
+        sessionStorage.getItem("currentUser"),
+      );
+      if (!currentReservation) {
         document.getElementById("reserveBtn").style.display = "block";
         document.getElementById("reserveBtn").href =
           `./reservation.html?id=${doc.id}`;
       } else {
-        document.getElementById("noReserveBtn").style.display = "block";
+        // document.getElementById("noReserveBtn").style.display = "block";
+        renderReturnUI(currentReservation);
       }
+      // if there is current reservation
+      // check if it is picked up, if yes -> render Return button (with modal) / else -> render noReserveBtn
 
       let imgEvent = document.querySelector("#vendor-img");
       imgEvent.src =
         vendorThumbnail || "./images/vendors/" + vendorCode + ".png";
     })
     .then(() => {
-      removeLoaderDisplayContent();
+      removeLoader();
     });
+}
+
+function renderReturnUI(currentReservationId) {
+  const currentReservation = db
+    .collection("Reservations")
+    .doc(currentReservationId);
+
+  currentReservation.onSnapshot((doc) => {
+    const { isPickedUp } = doc.data();
+
+    if (!isPickedUp) {
+      document.getElementById("noReserveBtn").style.display = "block";
+    } else {
+      const returnBtn = document.getElementById("returnBtn");
+      returnBtn.style.display = "block";
+      returnBtn.href = `my_umbrella.html?return=true`;
+    }
+  });
 }
 
 displayVendorInfo();

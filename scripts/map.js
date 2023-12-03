@@ -294,7 +294,7 @@ function showMap() {
       },
     );
 
-    removeLoaderDisplayContent();
+    removeLoader();
   });
 }
 

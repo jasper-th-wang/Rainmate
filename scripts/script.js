@@ -15,13 +15,17 @@ function logout() {
     });
 }
 
-function displayLoadingScreen() {
-  moviesContainer.style.opacity = 0;
-  loaderContainer.style.display = "grid";
+function displayLoadingScreen(message = "") {
+  let loaderContainer = document.querySelector(".loader-container");
+  console.log("HI!");
+  let messageElement = `<h2 id="loading-msg">${message}</h2>`;
+  document.querySelector(".content-container").style.opacity = 0;
+  loaderContainer.insertAdjacentHTML("beforebegin", messageElement);
+  loaderContainer.style.display = "flex";
 }
 
-function removeLoaderDisplayContent() {
-  document.querySelector(".loader-container").remove();
+function removeLoader() {
+  document.querySelector(".loader-container").style.display = "none";
 }
 function toRad(Value) {
   return (Value * Math.PI) / 180;

@@ -36,8 +36,10 @@ async function handleReservationFormSubmit(event) {
   try {
     let { id: reservationID } = await createReservationDoc();
     registerReservationIDToUser(reservationID);
-    console.log("Reservation added to Firebase");
-    window.location.href = `../confirmation.html?id=${reservationID}`;
+    displayLoadingScreen("Confirming your reservation...");
+    setTimeout(() => {
+      window.location.href = `../confirmation.html?id=${reservationID}`;
+    }, 1500);
   } catch (err) {
     console.error("Error adding reservation:", error);
   }
@@ -48,7 +50,7 @@ document
   .getElementById("reservationForm")
   .addEventListener("submit", handleReservationFormSubmit);
 
-// document.onload = removeLoaderDisplayContent;
+// document.onload = removeLoader;
 window.addEventListener("load", () => {
-  removeLoaderDisplayContent();
+  removeLoader();
 });

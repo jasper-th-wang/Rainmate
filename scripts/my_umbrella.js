@@ -1,3 +1,5 @@
+let params = new URL(window.location.href); //get URL of search bar
+let toReturn = params.searchParams.get("return"); //get value for key "id"
 const pickUpBtn = document.getElementById("pickUpTestBtn");
 const returnBtn = document.getElementById("returnTestBtn");
 const cancelBtn = document.getElementById("cancelBtn");
@@ -48,7 +50,8 @@ async function handleCancelReservation(currentUser) {
     currentReservation: false,
   });
 
-  location.reload();
+  // location.reload();
+  delayedReloadForDemo();
 }
 
 async function handleReturn(currentUser, currentReservation) {
@@ -79,7 +82,8 @@ async function handleReturn(currentUser, currentReservation) {
     incrementUmbrellaCount,
     deregisterReservationToUser,
   ]);
-  location.reload();
+  // location.reload();
+  delayedReloadForDemo();
 }
 
 async function handlePickUp(currentReservation) {
@@ -104,7 +108,8 @@ async function handlePickUp(currentReservation) {
     registerPickUpToUser,
     decrementUmbrellaCountToVendor,
   ]);
-  location.reload();
+  // location.reload();
+  delayedReloadForDemo();
 }
 
 async function myUmbrellaMain() {
@@ -144,11 +149,13 @@ async function myUmbrellaMain() {
             renderVendorCard(vendorId, false);
             pickUpBtn.style.display = "block";
             pickUpBtn.addEventListener("click", () => {
+              displayLoadingScreen("Confirming your pickup...");
               handlePickUp(currentReservation);
             });
 
             cancelBtn.style.display = "block";
             cancelBtn.addEventListener("click", () => {
+              displayLoadingScreen("Canceling your reservation...");
               handleCancelReservation(currentUser);
             });
 
@@ -159,6 +166,7 @@ async function myUmbrellaMain() {
             pickUpBtn.style.display = "none";
             returnBtn.style.display = "block";
             returnBtn.addEventListener("click", () => {
+              displayLoadingScreen("Confirming your return...");
               handleReturn(currentUser, currentReservation);
             });
           }
@@ -178,7 +186,7 @@ async function myUmbrellaMain() {
     } else {
       throw new Error("No user is logged in."); // Log a message when no user is logged in
     }
-    removeLoaderDisplayContent();
+    removeLoader();
   });
 }
 
@@ -208,6 +216,18 @@ function renderModal() {
       modal.style.display = "none";
     }
   };
+  if (toReturn === "true") {
+    modal.style.display = "block";
+  }
+  // document.addEventListener("DOMContentLoaded", (event) => {
+  //   log.textContent += "DOMContentLoaded\n";
+  // });
+}
+
+function delayedReloadForDemo() {
+  setTimeout(() => {
+    location.reload();
+  }, 1500);
 }
 
 myUmbrellaMain();
