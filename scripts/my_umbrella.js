@@ -11,6 +11,7 @@ async function renderVendorCard(vendorID, isPickedUp) {
   // Get vendor information
   let vendorDoc = await db.collection("vendors").doc(vendorID).get();
   let vendorData = vendorDoc.data();
+  let vendorThumbnail = vendorData.thumbnail;
   // Render Vendor Card
   const vendorCard = VendorCardTemplate.content.cloneNode(true);
   document
@@ -35,7 +36,7 @@ async function renderVendorCard(vendorID, isPickedUp) {
   vendorCard.querySelector("#card-vendor-google").href =
     `http://maps.google.com?q=${vendorData.lat}, ${vendorData.lng}`;
   vendorCard.querySelector("#card-vendor-img").src =
-    `./images/vendors/${vendorData.code}.png`;
+    vendorThumbnail || `./images/vendors/${vendorData.code}.png`;
 
   document.querySelector(".content-container").appendChild(vendorCard);
 

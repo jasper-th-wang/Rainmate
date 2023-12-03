@@ -91,7 +91,9 @@ function showMap() {
               let vendor_name = doc.data().name; // Event Name
               let vendor_code = doc.data().code;
               let available_umbrellas = doc.data().umbrellaCount;
-              let vendor_imgSrc = "./images/vendors/" + vendor_code + ".png";
+              let vendor_imgSrc =
+                doc.data().thumbnail ||
+                "./images/vendors/" + vendor_code + ".png";
               let { address } = doc.data(); // Text Preview
               let hours = doc.data().hours_of_operation;
               let dayOfTodayIndex = new Date().getDay();

@@ -13,6 +13,7 @@ function displayVendorInfo() {
     .then((doc) => {
       let thisVendor = doc.data();
       let available_umbrellas = thisVendor.umbrellaCount;
+      let vendorThumbnail = thisVendor.thumbnail;
       let vendorCode = thisVendor.code;
       let vendorName = thisVendor.name;
       let vendorAddress = thisVendor.address;
@@ -53,7 +54,8 @@ function displayVendorInfo() {
       }
 
       let imgEvent = document.querySelector("#vendor-img");
-      imgEvent.src = "./images/vendors/" + vendorCode + ".png";
+      imgEvent.src =
+        vendorThumbnail || "./images/vendors/" + vendorCode + ".png";
     })
     .then(() => {
       removeLoaderDisplayContent();
