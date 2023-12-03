@@ -5,7 +5,10 @@
 
 let params = new URL(window.location.href); //get URL of search bar
 let vendorCoordinatesString = params.searchParams.get("vendorCoord"); //get value for key "id"
+let userCurrentLocation;
 let vendorCoordinates;
+let zoomToCurrentUserCounter = 0;
+let zoomToVendorCounter = 0;
 
 if (vendorCoordinatesString) {
   vendorCoordinates = vendorCoordinatesString
@@ -42,7 +45,7 @@ function showMap() {
   const map = new mapboxgl.Map({
     container: "map", // Container ID
     style: "mapbox://styles/mapbox/streets-v11", // Styling URL
-    center: [-123.11526553178035, 49.283591043313926], // Starting position
+    center: vendorCoordinates || [-123.11526553178035, 49.283591043313926], // Starting position
     zoom: 15, // Starting zoom
   });
 
@@ -220,16 +223,20 @@ function showMap() {
 
         // Adds user's current location as a source to the map
         navigator.geolocation.getCurrentPosition((position) => {
-          const userLocation = [
+          userCurrentLocation = [
             position.coords.longitude,
             position.coords.latitude,
           ];
-          sessionStorage.setItem("currentPosition", userLocation);
-          assignDistancesToVendorsInStorage(userLocation);
+          // if there is no vendor coordinates in param, change center of map to user current location
+          if (!vendorCoordinates) {
+            map.flyTo({ center: userCurrentLocation });
+          }
+          sessionStorage.setItem("currentPosition", userCurrentLocation);
+          assignDistancesToVendorsInStorage(userCurrentLocation);
 
           // call function to calculate and render distance
-          console.log(userLocation);
-          if (userLocation) {
+          console.log(userCurrentLocation);
+          if (userCurrentLocation) {
             map.addSource("userLocation", {
               type: "geojson",
               data: {
@@ -239,7 +246,7 @@ function showMap() {
                     type: "Feature",
                     geometry: {
                       type: "Point",
-                      coordinates: userLocation,
+                      coordinates: userCurrentLocation,
                     },
                     properties: {
                       description: "Your location",
@@ -286,12 +293,6 @@ function showMap() {
         });
       },
     );
-    // Zoom to vendor specified in URL parameter
-    map.on("idle", () => {
-      if (vendorCoordinates) {
-        map.flyTo({ coordinates: vendorCoordinates });
-      }
-    });
 
     removeLoaderDisplayContent();
   });

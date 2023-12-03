@@ -35,7 +35,6 @@ function calculateDistance(userCoordinates, vendorCoordinates) {
   const dLon = toRad(lng2 - lng1);
   lat1 = toRad(lat1);
   lat2 = toRad(lat2);
-
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
