@@ -115,6 +115,7 @@ async function initializeVendorCards() {
 }
 
 async function listMain() {
+  handleMapListToggle();
   await initializeVendorCards();
   updateDistanceAfterInitialization();
 }

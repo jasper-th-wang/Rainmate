@@ -63,3 +63,18 @@ function assignDistancesToVendorsInStorage(userCoordinates) {
     }
   }
 }
+
+function handleMapListToggle() {
+  document.addEventListener("DOMContentLoaded", function () {
+    var mapButton = document.getElementById("mapButton");
+    var listButton = document.getElementById("listButton");
+
+    mapButton.addEventListener("click", function () {
+      window.location.href = "main.html";
+    });
+
+    listButton.addEventListener("click", function () {
+      window.location.href = "list.html";
+    });
+  });
+}
