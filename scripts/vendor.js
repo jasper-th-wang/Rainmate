@@ -4,20 +4,20 @@
  */
 function displayVendorInfo() {
   let params = new URL(window.location.href); //get URL of search bar
-  let ID = params.searchParams.get('id'); //get value for key "id"
+  let ID = params.searchParams.get("id"); //get value for key "id"
   console.log(ID);
 
-  db.collection('vendors')
+  db.collection("vendors")
     .doc(ID)
     .get()
     .then((doc) => {
-      thisVendor = doc.data();
-      vendorCode = thisVendor.code;
-      vendorName = thisVendor.name;
-      vendorAddress = thisVendor.address;
-      vendorContact = thisVendor.contact;
-      vendorHours = thisVendor.hours_of_operation;
-      hoursSorted = [
+      let thisVendor = doc.data();
+      let available_umbrellas = thisVendor.umbrellaCount;
+      let vendorCode = thisVendor.code;
+      let vendorName = thisVendor.name;
+      let vendorAddress = thisVendor.address;
+      let vendorHours = thisVendor.hours_of_operation;
+      let hoursSorted = [
         `Monday: ${vendorHours.monday}`,
         `Tuesday: ${vendorHours.tuesday}`,
         `Wednesday: ${vendorHours.wednesday}`,
@@ -26,33 +26,34 @@ function displayVendorInfo() {
         `Saturday: ${vendorHours.saturday}`,
         `Sunday: ${vendorHours.sunday}`,
       ];
-      vendorHoursHTML = '';
+      let vendorHoursHTML = "";
       for (const dayHours of hoursSorted) {
         dayOfWeek = `<p>${dayHours}</p>`;
         vendorHoursHTML += dayOfWeek;
       }
 
       // only populate title, and image
-      document.getElementById('vendor-name').innerHTML = vendorName;
-      document.getElementById('vendor-address').innerHTML = vendorAddress;
+      document.getElementById("vendor-available-umbrellas").innerHTML =
+        `Available Umbrellas: ${available_umbrellas}`;
+      document.getElementById("vendor-name").innerHTML = vendorName;
+      document.getElementById("vendor-address").innerHTML = vendorAddress;
       document
-        .getElementById('vendor-hours')
-        .insertAdjacentHTML('beforeend', vendorHoursHTML);
+        .getElementById("vendor-hours")
+        .insertAdjacentHTML("beforeend", vendorHoursHTML);
 
       // disable button if there is no current reservation
       if (
-        !JSON.parse(sessionStorage.getItem('currentUser')).currentReservation
+        !JSON.parse(sessionStorage.getItem("currentUser")).currentReservation
       ) {
-        document.getElementById('reserveBtn').style.display = 'block';
-        document.getElementById(
-          'reserveBtn'
-        ).href = `./reservation.html?id=${doc.id}`;
+        document.getElementById("reserveBtn").style.display = "block";
+        document.getElementById("reserveBtn").href =
+          `./reservation.html?id=${doc.id}`;
       } else {
-        document.getElementById('noReserveBtn').style.display = 'block';
+        document.getElementById("noReserveBtn").style.display = "block";
       }
 
-      let imgEvent = document.querySelector('#vendor-img');
-      imgEvent.src = './images/vendors/' + vendorCode + '.png';
+      let imgEvent = document.querySelector("#vendor-img");
+      imgEvent.src = "./images/vendors/" + vendorCode + ".png";
     })
     .then(() => {
       removeLoaderDisplayContent();

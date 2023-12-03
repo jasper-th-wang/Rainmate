@@ -276,7 +276,6 @@ function showMap() {
               map.getCanvas().style.cursor = "pointer";
             });
 
-            // Defaults
             // Defaults cursor when not hovering over the userLocation layer
             map.on("mouseleave", "userLocation", () => {
               map.getCanvas().style.cursor = "";
