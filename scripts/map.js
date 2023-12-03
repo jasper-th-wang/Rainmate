@@ -43,10 +43,10 @@ function showMap() {
   mapboxgl.accessToken =
     "pk.eyJ1IjoiYWRhbWNoZW4zIiwiYSI6ImNsMGZyNWRtZzB2angzanBjcHVkNTQ2YncifQ.fTdfEXaQ70WoIFLZ2QaRmQ";
   const map = new mapboxgl.Map({
-    container: "map", // Container ID
+    container: "map", // Container vendorID
     style: "mapbox://styles/mapbox/streets-v11", // Styling URL
     center: vendorCoordinates || [-123.11526553178035, 49.283591043313926], // Starting position
-    zoom: 15, // Starting zoom
+    zoom: 15, // Starting zoom (Initially 15)
   });
 
   // Add user controls to map
@@ -234,8 +234,6 @@ function showMap() {
           sessionStorage.setItem("currentPosition", userCurrentLocation);
           assignDistancesToVendorsInStorage(userCurrentLocation);
 
-          // call function to calculate and render distance
-          console.log(userCurrentLocation);
           if (userCurrentLocation) {
             map.addSource("userLocation", {
               type: "geojson",

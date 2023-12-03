@@ -17,7 +17,6 @@ function logout() {
 
 function displayLoadingScreen(message = "") {
   let loaderContainer = document.querySelector(".loader-container");
-  console.log("HI!");
   let messageElement = `<h2 id="loading-msg">${message}</h2>`;
   document.querySelector(".content-container").style.opacity = 0;
   loaderContainer.insertAdjacentHTML("beforebegin", messageElement);

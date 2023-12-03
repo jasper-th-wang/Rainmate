@@ -11,11 +11,11 @@ function renderQRCodeFromParams() {
     let params = new URLSearchParams(document.location.search);
     let id = params.get("id"); // "id" is the query string parameter
     if (id) {
-      // Call your function to generate the QR code here, passing the reservation ID
+      // Call your function to generate the QR code here, passing the reservation vendorID
       generateQRCode(id);
     } else {
-      // Handle the case where there is no ID in the URL
-      console.log("No reservation ID found.");
+      // Handle the case where there is no vendorID in the URL
+      console.log("No reservation vendorID found.");
     }
     removeLoader();
   });

@@ -9,12 +9,10 @@ function loadSkeleton() {
       // User is signed in.
       // Do something for the user here.
       console.log($("#navbar").load("./components/nav_after_login.html"));
-      // console.log($('#footerPlaceholder').load('./components/footer.html'));
       $("#footerNav")?.load("./components/footerNav.html");
     } else {
       // No user is signed in.
       console.log($("#navbar").load("./components/nav_before_login.html"));
-      // console.log($('#footerPlaceholder').load('./components/footer.html'));
     }
     const currentUser = await db.collection("users").doc(user.uid).get();
     const currentUserData = currentUser.data();

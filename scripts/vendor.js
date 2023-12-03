@@ -2,13 +2,11 @@
  * @fileoverview
  * Renders vendor information on vendor.html
  */
+let params = new URL(window.location.href); //get URL of search bar
+let vendorID = params.searchParams.get("id"); //get value for key "id"
 function displayVendorInfo() {
-  let params = new URL(window.location.href); //get URL of search bar
-  let ID = params.searchParams.get("id"); //get value for key "id"
-  console.log(ID);
-
   db.collection("vendors")
-    .doc(ID)
+    .doc(vendorID)
     .get()
     .then((doc) => {
       let thisVendor = doc.data();
@@ -79,7 +77,7 @@ function renderReturnUI(currentReservationId) {
     } else {
       const returnBtn = document.getElementById("returnBtn");
       returnBtn.style.display = "block";
-      returnBtn.href = `my_umbrella.html?return=true`;
+      returnBtn.href = `my_umbrella.html?return=true&vendorID=${vendorID}`;
     }
   });
 }

@@ -82,7 +82,7 @@
 
 
     <!-- Reservation Details-->
-    <template id="my-umbrella-card">
+    <div id="my-umbrella-card" style="display: none;">
       <h5 class="card-title card-title__my-umbrella" id="card-title"></h5>
       <div id="card-container">
         <img id="card-vendor-img" src="" alt="Card image cap">
@@ -94,16 +94,16 @@
             <a id="card-vendor-google" href=""></a>
           </div>
 
-          <div class="container">
-            <button type="button" class="btn btn-primary" id="myBtn" data-toggle="modal"
-              data-target="#exampleModal">Pick up/Return</a></button>
-            <a href="return.html" class="btn btn-secondary">Return Details</a>
+          <div class="container row">
+            <button type="button" class="btn btn-primary" id="mainBtn" data-toggle="modal"
+              data-target="#exampleModal">Pick up/Cancel</button>
+            <a href="return.html" id="return-details-btn" class="btn btn-secondary" style="display: none;">Tips and Details</a>
           </div>
 
         </div>
 
       </div>
-    </template>
+    </div>
 
   </div>
 
@@ -118,9 +118,9 @@
       <div id="qrcode">
       </div>
       <div class="modal-buttons">
-        <button type="button" class="btn btn-secondary modal-button" id="pickUpTestBtn" data-toggle="modal"
+        <button type="button" class="btn btn-secondary modal-button" id="pickUpBtn" data-toggle="modal"
           data-target="#exampleModal" style="display: none; background-color: #CCD5AE;">Complete Pickup</button>
-        <button type="button" class="btn btn-secondary modal-button" id="returnTestBtn" data-toggle="modal"
+        <button type="button" class="btn btn-secondary modal-button" id="returnBtn" data-toggle="modal"
           data-target="#exampleModal" style="display: none; background-color: #CCD5AE;">Complete Return</button>
         <button type="button" class="btn btn-danger modal-button" id="cancelBtn" data-toggle="modal"
           data-target="#exampleModal" style="display: none; background-color: red;">Cancel Reservation</button>

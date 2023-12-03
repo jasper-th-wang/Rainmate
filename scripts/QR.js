@@ -4,11 +4,11 @@ function renderReservationQRCode() {
   );
   const reservationID = reservationData.id;
   if (reservationID) {
-    // Call your function to generate the QR code here, passing the reservation ID
+    // Call your function to generate the QR code here, passing the reservation vendorID
     generateQRCode(reservationID);
   } else {
-    // Handle the case where there is no ID in the URL
-    console.log("No reservation ID found.");
+    // Handle the case where there is no vendorID in the URL
+    console.log("No reservation vendorID found.");
   }
   console.log(reservationID);
 }

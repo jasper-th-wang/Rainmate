@@ -1,21 +1,20 @@
 let params = new URL(window.location.href); //get URL of search bar
 let toReturn = params.searchParams.get("return"); //get value for key "id"
-const pickUpBtn = document.getElementById("pickUpTestBtn");
-const returnBtn = document.getElementById("returnTestBtn");
+let toReturnVendorID = params.searchParams.get("vendorID");
+const pickUpBtn = document.getElementById("pickUpBtn");
+const returnBtn = document.getElementById("returnBtn");
 const cancelBtn = document.getElementById("cancelBtn");
 const pendingPickUpMessage =
   '<h1 class="header-message">Time Remaining for Pick Up:</h1>';
 const pendingReturnMessage =
   '<h1 class="header-message">Time Remaining for Return:</h1>';
-const VendorCardTemplate = document.getElementById("my-umbrella-card");
 
 async function renderVendorCard(vendorID, isPickedUp) {
   // Get vendor information
   let vendorDoc = await db.collection("vendors").doc(vendorID).get();
   let vendorData = vendorDoc.data();
   let vendorThumbnail = vendorData.thumbnail;
-  // Render Vendor Card
-  const vendorCard = VendorCardTemplate.content.cloneNode(true);
+  const vendorCard = document.getElementById("my-umbrella-card");
   document
     .querySelector(".hi-user-name")
     .insertAdjacentHTML(
@@ -40,7 +39,7 @@ async function renderVendorCard(vendorID, isPickedUp) {
   vendorCard.querySelector("#card-vendor-img").src =
     vendorThumbnail || `./images/vendors/${vendorData.code}.png`;
 
-  document.querySelector(".content-container").appendChild(vendorCard);
+  vendorCard.style.display = "block";
 
   renderModal();
 }
@@ -60,14 +59,14 @@ async function handleReturn(currentUser, currentReservation) {
   const { vendorId } = currentReservationDoc.data();
   // register return to current reservation
   const registerReturnToUser = currentReservation.update({
-    returnVendorId: vendorId,
+    returnVendorId: toReturnVendorID || vendorId,
     returnTime: firebase.firestore.FieldValue.serverTimestamp(),
     isReturned: true,
   });
   // increment umbrella count to vendor
   const incrementUmbrellaCount = db
     .collection("vendors")
-    .doc(vendorId)
+    .doc(toReturnVendorID || vendorId)
     .update({
       umbrellaCount: firebase.firestore.FieldValue.increment(1),
     });
@@ -143,6 +142,7 @@ async function myUmbrellaMain() {
             vendorId,
           } = doc.data();
 
+          // If umbrella reserved but is not picked up
           if (!isPickedUp) {
             // get reservationTime for timer
             initTimer(reservationTime, false);
@@ -161,9 +161,13 @@ async function myUmbrellaMain() {
 
             return;
           } else {
+            // if umbrella reserved and picked up
             initTimer(pickedUpTime, true);
             renderVendorCard(vendorId, true);
             pickUpBtn.style.display = "none";
+            document.getElementById("return-details-btn").style.display =
+              "block";
+            document.getElementById("mainBtn").innerHTML = "Return";
             returnBtn.style.display = "block";
             returnBtn.addEventListener("click", () => {
               displayLoadingScreen("Confirming your return...");
@@ -195,7 +199,7 @@ function renderModal() {
   var modal = document.getElementById("myModal");
 
   // Get the button that opens the modal
-  var btn = document.getElementById("myBtn");
+  var btn = document.getElementById("mainBtn");
 
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];

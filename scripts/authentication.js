@@ -25,9 +25,9 @@ var uiConfig = {
         db.collection("users")
           .doc(user.uid)
           .set({
-            //write to firestore. We are using the UID for the ID in users collection
+            //write to firestore. We are using the UID for the vendorID in users collection
             name: user.displayName, //"users" collection
-            email: user.email, //with authenticated user's ID (user.uid)
+            email: user.email, //with authenticated user's vendorID (user.uid)
             signupDate: firebase.firestore.FieldValue.serverTimestamp(), //current system time
             currentReservation: false, //get reservation_id from Reservations collection
           })

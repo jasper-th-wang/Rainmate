@@ -52,11 +52,11 @@ function renderVendorCard(vendor) {
   let Template = document.getElementById("vendorCardTemplate");
 
   //iterate thru each doc
-  let docID = vendor.id; //gets the unique ID of the document
+  let docID = vendor.id; //gets the unique vendorID of the document
   let vendorThumbnail = vendor.data().thumbnail;
   let vendorName = vendor.data().name; // get value of the "name" key
   let vendorAddress = vendor.data().address; // get value of the "address" key
-  let vendorCode = vendor.data().code; //get unique ID to each hike to be used for fetching right image
+  let vendorCode = vendor.data().code; //get unique vendorID to each hike to be used for fetching right image
   let vendorDistance = sessionStorage.getItem(`vendor-${docID}`)
     ? JSON.parse(sessionStorage.getItem(`vendor-${docID}`)).distance * 1000
     : 0; //gets the length field
@@ -88,7 +88,7 @@ function setVendorCoordinatesToLocalStorage(vendor) {
   let { lat, lng } = vendor.data();
   let coordinates = [lng, lat];
 
-  // iterate variable to serve as unique ID
+  // iterate variable to serve as unique vendorID
   if (!sessionStorage.getItem(`vendor-${vendor.id}`)) {
     sessionStorage.setItem(
       `vendor-${vendor.id}`,
