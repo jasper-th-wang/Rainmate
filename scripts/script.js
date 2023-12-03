@@ -1,3 +1,7 @@
+/**
+ * @fileoverview
+ * Utility functions shared by multiple other JavaScript files
+ */
 function logout() {
   firebase
     .auth()
@@ -20,7 +24,6 @@ function removeLoaderDisplayContent() {
   // TODO: Delete
   console.log("works???");
   document.querySelector(".loader-container").remove();
-  // document.querySelector('body').style.visibility = 'visible';
 }
 function toRad(Value) {
   return (Value * Math.PI) / 180;
@@ -44,7 +47,6 @@ function calculateDistance(userCoordinates, vendorCoordinates) {
 }
 
 function assignDistancesToVendorsInStorage(userCoordinates) {
-  // calculateDistance
   for (let i = 0; i < sessionStorage.length; i++) {
     const itemKey = sessionStorage.key(i);
     if (itemKey.includes("vendor-")) {
