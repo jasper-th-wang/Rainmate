@@ -84,8 +84,7 @@ function renderVendorCard(vendor) {
  * @param vendor - firestore doc object representing a vendor
  */
 function setVendorCoordinatesToLocalStorage(vendor) {
-  let lat = vendor.data().lat;
-  let lng = vendor.data().lng;
+  let {lat, lng} = vendor.data();
   let coordinates = [lng, lat];
 
   // iterate variable to serve as unique ID

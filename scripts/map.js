@@ -84,16 +84,15 @@ function showMap() {
             const features = []; // Defines an empty array for information to be added to
 
             allVendors.forEach((doc) => {
-              let {lat, lng} = doc.data();
+              let { lat, lng } = doc.data();
               coordinates = [lng, lat];
 
               // Coordinates
-              let vendorID = doc.id;
               let vendor_name = doc.data().name; // Event Name
               let vendor_code = doc.data().code;
               let available_umbrellas = doc.data().umbrellaCount;
               let vendor_imgSrc = "./images/vendors/" + vendor_code + ".png";
-              let {address} = doc.data(); // Text Preview
+              let { address } = doc.data(); // Text Preview
               let hours = doc.data().hours_of_operation;
               let dayOfTodayIndex = new Date().getDay();
               let dayOfTodayStr = dayIndexToStr(dayOfTodayIndex);
@@ -138,7 +137,8 @@ function showMap() {
               });
               // If there is a vendor id in URL parameter, render feature
               if (
-                JSON.stringify(vendorCoordinates) == JSON.stringify(coordinates)
+                JSON.stringify(vendorCoordinates) ===
+                JSON.stringify(coordinates)
               ) {
                 vendorPopup = new mapboxgl.Popup()
                   .setLngLat(coordinates)
@@ -178,7 +178,7 @@ function showMap() {
               // Extract coordinates array.
               // Extract description of that place
               const coordinates = e.features[0].geometry.coordinates.slice();
-              const description = e.features[0].properties.description;
+              const { description } = e.features[0].properties;
 
               // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
               while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
@@ -263,7 +263,7 @@ function showMap() {
             map.on("click", "userLocation", (e) => {
               // Copy coordinates array.
               const coordinates = e.features[0].geometry.coordinates.slice();
-              const description = e.features[0].properties.description;
+              const { description } = e.features[0].properties;
 
               new mapboxgl.Popup()
                 .setLngLat(coordinates)
