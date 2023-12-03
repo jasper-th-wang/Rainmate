@@ -369,7 +369,7 @@ input:checked + .slider:before {
   margin-bottom: 10px;
 }
 
-#card-vendor-link {
+#card-vendor-link, #card-vendor-google {
   text-decoration: none;
   font-weight: 600;
   color: rgb(5, 54, 5);

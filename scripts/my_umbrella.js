@@ -29,6 +29,10 @@ async function renderVendorCard(vendorID, isPickedUp) {
   vendorCard.querySelector("#card-vendor-link").innerHTML =
     `Find store<div class="material-symbols-outlined">location_on</div>`;
   vendorCard.querySelector("#card-vendor-link").href =
+    `main.html?vendorCoord=${vendorData.lng},${vendorData.lat}`;
+  vendorCard.querySelector("#card-vendor-google").innerHTML =
+    `Get Direction<div class="material-symbols-outlined">assistant_direction</div>`;
+  vendorCard.querySelector("#card-vendor-google").href =
     `http://maps.google.com?q=${vendorData.lat}, ${vendorData.lng}`;
   vendorCard.querySelector("#card-vendor-img").src =
     `./images/vendors/${vendorData.code}.png`;
