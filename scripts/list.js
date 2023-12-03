@@ -53,6 +53,7 @@ function renderVendorCard(vendor) {
 
   //iterate thru each doc
   let docID = vendor.id; //gets the unique ID of the document
+  let vendorThumbnail = vendor.data().thumbnail;
   let vendorName = vendor.data().name; // get value of the "name" key
   let vendorAddress = vendor.data().address; // get value of the "address" key
   let vendorCode = vendor.data().code; //get unique ID to each hike to be used for fetching right image
@@ -71,7 +72,7 @@ function renderVendorCard(vendor) {
   newCard.querySelector(".card-title").innerHTML = vendorName;
   newCard.querySelector(".card-address").innerHTML = vendorAddress;
   newCard.querySelector(".card-image").src =
-    `./images/vendors/${vendorCode}.png`; //Example: NV01.jpg
+    vendorThumbnail || `./images/vendors/${vendorCode}.png`; //Example: NV01.jpg
   newCard.querySelector(".card-distance").innerHTML =
     `Distance: ${vendorDistance.toFixed(2)} m`;
 
@@ -84,7 +85,7 @@ function renderVendorCard(vendor) {
  * @param vendor - firestore doc object representing a vendor
  */
 function setVendorCoordinatesToLocalStorage(vendor) {
-  let {lat, lng} = vendor.data();
+  let { lat, lng } = vendor.data();
   let coordinates = [lng, lat];
 
   // iterate variable to serve as unique ID
