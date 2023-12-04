@@ -60,6 +60,7 @@ function renderVendorCard(vendor) {
   let vendorDistance = sessionStorage.getItem(`vendor-${docID}`)
     ? JSON.parse(sessionStorage.getItem(`vendor-${docID}`)).distance * 1000
     : 0; //gets the length field
+  let vendorUmbrellaCount = vendor.data().umbrellaCount;
 
   let newCard = Template.content.cloneNode(true); // Clone the HTML template to create a new card (newCard) that will be filled with Firestore data.
 
@@ -75,6 +76,8 @@ function renderVendorCard(vendor) {
     vendorThumbnail || `./images/vendors/${vendorCode}.png`; //Example: NV01.jpg
   newCard.querySelector(".card-distance").innerHTML =
     `Distance: ${vendorDistance.toFixed(2)} m`;
+  newCard.querySelector(".card-umbrellas").innerHTML =
+    `Available Umbrellas: ${vendorUmbrellaCount}`;
 
   //attach to vendorCard
   document.getElementById("vendors-go-here").appendChild(newCard);
