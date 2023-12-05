@@ -30,7 +30,7 @@ function dayIndexToStr(dayIndex) {
     "friday",
     "saturday",
   ];
-  return weekday[dayIndex];
+  return weekday?.[dayIndex] ?? "No data.";
 }
 
 /**
@@ -113,7 +113,9 @@ function showMap() {
                   }),
                 );
               }
-              hoursHTML = `Today's Hours: ${hours[dayOfTodayStr]}`;
+              hoursHTML = `Today's Hours: ${
+                hours?.[dayOfTodayStr] ?? "No Data"
+              }`;
 
               // img = doc.data().posterurl; // Image
               // url = doc.data().link; // URL
