@@ -52,7 +52,7 @@ function showMap() {
   // Add user controls to map
   map.addControl(new mapboxgl.NavigationControl());
   map.addControl(
-    new mapboxgl.GeolocateControl({
+    (geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true,
       },
@@ -60,7 +60,7 @@ function showMap() {
       trackUserLocation: true,
       // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: true,
-    }),
+    })),
   );
 
   //------------------------------------
@@ -68,7 +68,15 @@ function showMap() {
   // then Add map features
   //------------------------------------
   map.on("load", () => {
-    let vendorPopup;
+    // map.trigger();
+    // geolocate.trigger();
+    // let vendorPopup;
+    //
+    // let matched_vendors = await getVendorsInRadius(
+    //     currentUserCoord,
+    //     searchRadius,
+    // );
+
     // Defines map pin icon for events
     map.loadImage(
       "https://cdn.iconscout.com/icon/free/png-256/pin-locate-marker-location-navigation-16-28668.png",
@@ -80,7 +88,7 @@ function showMap() {
         // Add the image to the map style.
         map.addImage("eventpin", image); // Pin Icon
 
-        // READING information from "hikes" collection in Firestore
+        // READING information from "vendors" collection in Firestore
         db.collection("vendors")
           .get()
           .then((allVendors) => {
@@ -233,7 +241,10 @@ function showMap() {
           if (!vendorCoordinates) {
             map.flyTo({ center: userCurrentLocation });
           }
-          sessionStorage.setItem("currentPosition", userCurrentLocation);
+          sessionStorage.setItem(
+            "currentPosition",
+            JSON.stringify(userCurrentLocation),
+          );
           assignDistancesToVendorsInStorage(userCurrentLocation);
 
           if (userCurrentLocation) {
@@ -288,6 +299,11 @@ function showMap() {
             // Defaults cursor when not hovering over the userLocation layer
             map.on("mouseleave", "userLocation", () => {
               map.getCanvas().style.cursor = "";
+            });
+
+            map.on("idle", () => {
+              const { lng, lat } = map.getCenter();
+              console.log(lng, lat);
             });
           }
         });

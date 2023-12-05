@@ -2,6 +2,9 @@
  * @fileoverview
  * - Retrieve data from firebase and handle rendering Vendor Cards into a list to user on list.html
  */
+const distanceSlider = document.getElementById("myRange");
+const showResultsBtn = document.getElementById("show-results-btn");
+// const distanceOutput = document.getElementById("distance-output");
 
 /**
  * Sort Vendor Cards by distance by reading data-distance attribute, and apply number to flex order
@@ -22,7 +25,7 @@ function updateDistanceAfterInitialization() {
     const userLocation = [position.coords.longitude, position.coords.latitude];
 
     assignDistancesToVendorsInStorage(userLocation);
-    sessionStorage.setItem("currentPosition", userLocation);
+    sessionStorage.setItem("currentPosition", JSON.stringify(userLocation));
 
     // loop through all vendors, and append distance to the corresponding element
     for (let i = 0; i < sessionStorage.length; i++) {
@@ -31,13 +34,16 @@ function updateDistanceAfterInitialization() {
       if (itemKey.includes("vendor-")) {
         const itemData = JSON.parse(sessionStorage.getItem(itemKey));
         const vendorDistance = itemData.distance * 1000;
+        console.log(vendorDistance);
         document.querySelector(`#${itemKey}`).dataset.distance = (
           vendorDistance.toFixed(2) * 100
         ).toFixed(0);
         document
           .querySelector(`#${itemKey}`)
           .querySelector(".card-distance").innerHTML =
-          `Distance: ${vendorDistance.toFixed(2)} m`;
+          vendorDistance > 1000
+            ? `Distance: ${(vendorDistance / 1000).toFixed(2)} km`
+            : `Distance: ${vendorDistance.toFixed(2)} m`;
       }
     }
     sortVendorCardByDistance();
@@ -75,7 +81,10 @@ function renderVendorCard(vendor) {
   newCard.querySelector(".card-image").src =
     vendorThumbnail || `./images/vendors/${vendorCode}.png`; //Example: NV01.jpg
   newCard.querySelector(".card-distance").innerHTML =
-    `Distance: ${vendorDistance.toFixed(2)} m`;
+    vendorDistance > 1000
+      ? `Distance ${(vendorDistance / 1000).toFixed(2)} km`
+      : `Distance: ${vendorDistance.toFixed(2)} m`;
+
   newCard.querySelector(".card-umbrellas").innerHTML =
     `Available Umbrellas: ${vendorUmbrellaCount}`;
 
@@ -107,8 +116,8 @@ function setVendorCoordinatesToLocalStorage(vendor) {
 /**
  *  Initialize all vendor cards, and assign coordinates on page load
  */
-async function initializeVendorCards() {
-  const allVendors = await db.collection("vendors").get();
+function initializeVendorCards(allVendors) {
+  // const allVendors = await db.collection("vendors").get();
   allVendors.forEach((vendor) => {
     renderVendorCard(vendor);
     setVendorCoordinatesToLocalStorage(vendor);
@@ -117,10 +126,38 @@ async function initializeVendorCards() {
   removeLoader();
 }
 
+async function handleGeohashQeuryInRadius(searchRadius) {
+  displayLoadingScreen();
+  document.getElementById("vendors-go-here").innerHTML = "";
+  let currentUserCoord;
+  try {
+    currentUserCoord = JSON.parse(sessionStorage.getItem("currentPosition"));
+    currentUserCoord.reverse();
+  } catch (e) {
+    console.log("User location not found, please refresh and try again.");
+    console.log(e);
+  }
+  let matched_vendors = await getVendorsInRadius(
+    currentUserCoord,
+    searchRadius,
+  );
+  initializeVendorCards(matched_vendors);
+  console.log("Hello");
+}
+
 async function listMain() {
   handleMapListToggle();
-  await initializeVendorCards();
+  const allVendors = await db.collection("vendors").get();
+  // initializeVendorCards(allVendors);
+  handleGeohashQeuryInRadius(2);
   updateDistanceAfterInitialization();
+  // event listener -> listen for change in value on the drag selector
+  showResultsBtn.addEventListener("click", (e) => {
+    handleGeohashQeuryInRadius(parseInt(distanceSlider.value));
+  });
+  // if change, run a function that will
+  // display loader
+  // run the initialize Vendor Cards again
 }
 
 listMain();

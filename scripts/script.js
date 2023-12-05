@@ -18,13 +18,15 @@ function logout() {
 function displayLoadingScreen(message = "") {
   let loaderContainer = document.querySelector(".loader-container");
   let messageElement = `<h2 id="loading-msg">${message}</h2>`;
-  document.querySelector(".content-container").style.opacity = 0;
+  document.querySelector(".content-container").style.opacity = "0";
   loaderContainer.insertAdjacentHTML("beforebegin", messageElement);
   loaderContainer.style.display = "flex";
 }
 
 function removeLoader() {
+  // document.getElementById("loading-msg").style.display = "none";
   document.querySelector(".loader-container").style.display = "none";
+  document.querySelector(".content-container").style.opacity = "100";
 }
 function toRad(Value) {
   return (Value * Math.PI) / 180;

@@ -103,7 +103,14 @@
             List
           </button>
         </div>
-
+        <div class="distance-container">
+          <h3>Select a Distance</h3>
+          <div class="slidecontainer">
+            <input type="range" min="2" max="50" value="2" step="2" class="slider" id="myRange" oninput="this.nextElementSibling.value = this.value">
+            <output id="distance-output">2</output><span>km</span>
+          </div>
+          <button class="btn btn-primary" id="show-results-btn">Show Results</button>
+        </div>
         <!-- Cards-->
         <div class="list-card-container">
           <!-- Here is the container for cards  -->
@@ -136,9 +143,9 @@
     <script src="./scripts/firebaseAPI.js"></script>
     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/script.js"></script>
-    <script src="./scripts/list.js"></script>
-    <script src="./scripts/geofire.min.js"></script>
+    <script src="./scripts/geohash-bundle.js"></script>
     <script src="./scripts/add_geohash.js"></script>
+    <script src="./scripts/list.js"></script>
   </body>
 </html>
 
