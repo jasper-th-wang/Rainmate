@@ -1,6 +1,8 @@
 /**
  * @fileoverview
  * - Uses Firestore GeoFire library to query firestore based on given radius by using GeoHashing
+ * - This file is not used directly, it is compiled using Browserify library to resolve dependencies,
+ *    the bundled file is named geohash-bundle.js in the same directory.
  */
 
 const geofire = require("geofire-common");
