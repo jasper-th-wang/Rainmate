@@ -74,16 +74,10 @@ function dayIndexToStr(dayIndex) {
 // mapObject may be problematic
 async function renderFeatures(center, radius, mapObject) {
   let zoomLevel = mapObject.getZoom();
-  if (zoomLevel < 15) {
-    radius = 5;
+  if (zoomLevel < 14.5) {
+    radius = 3;
   } else if (zoomLevel < 13) {
-    radius = 10;
-  } else if (zoomLevel < 10) {
-    radius = 100;
-  } else if (zoomLevel < 9.8) {
-    radius = 300;
-  } else if (zoomLevel < 9.5) {
-    radius = 500;
+    radius = 8;
   }
   const features = []; // Defines an empty array for information to be added to
   let matchedVendors = await getVendorsInRadius(center, radius);
