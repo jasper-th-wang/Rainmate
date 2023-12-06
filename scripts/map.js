@@ -7,6 +7,7 @@ let params = new URL(window.location.href); //get URL of search bar
 let vendorCoordinatesString = params.searchParams.get("vendorCoord"); //get value for key "id"
 let userCurrentLocation;
 let vendorCoordinates;
+let searchAreaBtnRef;
 
 if (vendorCoordinatesString) {
   vendorCoordinates = vendorCoordinatesString
@@ -14,33 +15,44 @@ if (vendorCoordinatesString) {
     .map((coord) => parseFloat(coord));
 }
 
-const homePosition = {
-  center: [144, -37],
-};
-
-function addHomeButton(map) {
-  class HomeButton {
+function addSearchAreaButton(map) {
+  class SearchAreaButton {
     onAdd(map) {
-      const div = document.createElement("div");
-      div.className = "mapboxgl-ctrl btn btn-primary map-search-area";
-      div.innerHTML = `<button>
-<!--        <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="font-size: 20px;"><title>Reset map</title><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>-->
+      this._map = map;
+      this._container = document.createElement("div");
+      this._container.className =
+        "mapboxgl-ctrl btn btn-primary map-search-area";
+      this._container.innerHTML = `<button>
            Search Area
         </button>`;
-      div.addEventListener("contextmenu", (e) => e.preventDefault());
-      div.addEventListener("click", () => {
+      this._container.addEventListener("contextmenu", (e) =>
+        e.preventDefault(),
+      );
+      this._container.addEventListener("click", () => {
         map.removeLayer("places");
         map.removeSource("places");
         const { lat, lng } = map.getCenter();
         const centerCoord = [lat, lng];
         renderFeatures(centerCoord, 2, map);
+        map.removeControl(this);
       });
-
-      return div;
+      setTimeout(() => {
+        this._container.style.opacity = 1;
+      }, 200);
+      return this._container;
+    }
+    onRemove() {
+      this._container.style.opacity = 0;
+      setTimeout(() => {
+        this._container.parentNode.removeChild(this._container);
+        this._map = undefined;
+        searchAreaBtnRef = null;
+      }, 200);
     }
   }
-  const homeButton = new HomeButton();
+  const homeButton = new SearchAreaButton();
   map.addControl(homeButton, "top-left");
+  return homeButton;
 }
 
 /**
@@ -194,7 +206,7 @@ async function showMap() {
   // then Add map features
   //------------------------------------
   map.on("load", () => {
-    addHomeButton(map);
+    // addSearchAreaButton(map);
 
     // Defines map pin icon for events
     map.loadImage(
@@ -339,7 +351,11 @@ async function showMap() {
         });
       },
     );
-
+    map.on("dragend", () => {
+      if (!searchAreaBtnRef) {
+        searchAreaBtnRef = addSearchAreaButton(map);
+      }
+    });
     removeLoader();
   });
 }
