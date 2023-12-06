@@ -231,7 +231,7 @@ To Be Added...
 
 - Jasper Wang: Lead JavaScript Developer. Bringing enthusiasm and expertise to the forefront of our app's dynamic functionality and interactive features.
 - Flora Deng: HTML/CSS Specialist. Focused on crafting the user interface with precision and creative flair to ensure an engaging user experience.
-- Joey Cho: HTML/CSS Developer and Designer. Infusing the project with innovative design ideas and a keen eye for aesthetic detail, enhancing the overall look and feel of the application.
+- Joey Cho: HTML/CSS/JavaScript Developer and Designer. Infusing the project with innovative design ideas and a keen eye for aesthetic detail, enhancing the overall look and feel of the application.
 
 [**Return**](#Top)
 
