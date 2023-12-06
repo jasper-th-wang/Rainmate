@@ -1,8 +1,8 @@
 <div align="center">
 <h1 align="center">
 <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
-<br>1800_202330_DTC05</h1>
-<h3>◦ Code Forward: Unleash Future with DTC05!</h3>
+<br>RainMate</h1>
+<h3>◦ Never Get Drenched Again</h3>
 <h3>◦ Developed with the software and tools below.</h3>
 
 <p align="center">
@@ -231,7 +231,7 @@ To Be Added...
 
 - Jasper Wang: Lead JavaScript Developer. Bringing enthusiasm and expertise to the forefront of our app's dynamic functionality and interactive features.
 - Flora Deng: HTML/CSS Specialist. Focused on crafting the user interface with precision and creative flair to ensure an engaging user experience.
-- Joey: HTML/CSS Developer and Designer. Infusing the project with innovative design ideas and a keen eye for aesthetic detail, enhancing the overall look and feel of the application.
+- Joey Cho: HTML/CSS Developer and Designer. Infusing the project with innovative design ideas and a keen eye for aesthetic detail, enhancing the overall look and feel of the application.
 
 [**Return**](#Top)
 
