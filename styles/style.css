@@ -187,18 +187,6 @@ p#vendor-address {
   font-weight: 200;
 }
 
-/* .switch {
-  position: relative;
-  display: inline-block;
-  width: 55px;
-  height: 28px;
-}
-
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-} */
 
 .slider {
   position: absolute;
@@ -403,17 +391,8 @@ body.container {
 }
 
 footer.mobile-nav {
-  /* overflow: hidden; */
-  /* position: fixed; */
-  /* left: 0; */
-  /* bottom: 0; */
-  /* width: 100%; */
-  /* below is before commit */
   width: 100%;
-  /* border: 0; */
   padding: 0 10px;
-  /* margin: 10px; */
-  /* margin-top: 0; */
 }
 
 .card-link {
@@ -539,21 +518,6 @@ a.card-link {
   border: none;
 }
 
-/* The Close Button */
-/* .close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-} */
-
-/* .close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-} */
-
 .loader-container {
   position: absolute;
   top: 0;
@@ -619,44 +583,6 @@ a.card-link {
   padding: 0;
 }
 
-/*.slidecontainer {*/
-/*  width: 100%; !* Width of the outside container *!*/
-/*}*/
-
-/*!* The slider itself *!*/
-/*.slider {*/
-/*  -webkit-appearance: none;  !* Override default CSS styles *!*/
-/*  appearance: none;*/
-/*  width: 100%; !* Full-width *!*/
-/*  height: 25px; !* Specified height *!*/
-/*  background: #d3d3d3; !* Grey background *!*/
-/*  outline: none; !* Remove outline *!*/
-/*  opacity: 0.7; !* Set transparency (for mouse-over effects on hover) *!*/
-/*  -webkit-transition: .2s; !* 0.2 seconds transition on hover *!*/
-/*  transition: opacity .2s;*/
-/*}*/
-
-/*!* Mouse-over effects *!*/
-/*.slider:hover {*/
-/*  opacity: 1; !* Fully shown on mouse-over *!*/
-/*}*/
-
-/*!* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) *!*/
-/*.slider::-webkit-slider-thumb {*/
-/*  -webkit-appearance: none; !* Override default look *!*/
-/*  appearance: none;*/
-/*  width: 25px; !* Set a specific slider handle width *!*/
-/*  height: 25px; !* Slider handle height *!*/
-/*  background: #04AA6D; !* Green background *!*/
-/*  cursor: pointer; !* Cursor on hover *!*/
-/*}*/
-
-/*.slider::-moz-range-thumb {*/
-/*  width: 25px; !* Set a specific slider handle width *!*/
-/*  height: 25px; !* Slider handle height *!*/
-/*  background: #04AA6D; !* Green background *!*/
-/*  cursor: pointer; !* Cursor on hover *!*/
-/*}*/
 .distance-container {
   display: flex;
   flex-direction: column;
@@ -681,17 +607,6 @@ a.card-link {
   display: none;
 }
 
-.map-search-area {
-  /*position: absolute;*/
-  /*top: 50%;*/
-  /*left: 50%;*/
-  /*transform: translate(-50%, -50%);*/
-  /*z-index: 99999999;*/
-
-}
-
-
-
 .map-search-area > button{
   background: none;
 	color: inherit;
@@ -700,4 +615,9 @@ a.card-link {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+}
+.map-search-area {
+  opacity: 0;
+  transition: opacity;
+  transition-duration: 1s;
 }
