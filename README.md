@@ -1,7 +1,6 @@
 <div align="center">
 <h1 align="center">
-<img src="./images/logo.png" width="100" />
-<br>RainMate</h1>
+<img src="./images/logo.png" width="300px" />
 <h3>◦ Never Get Drenched Again</h3>
 <h3>◦ Developed with the software and tools below.</h3>
 
