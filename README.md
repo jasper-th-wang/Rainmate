@@ -22,12 +22,11 @@
 - [📍 Overview](#-overview)
 - [🎈 Demo](#-demo)
 - [📦 Features](#-features)
-- [📂 repository Structure](#-repository-structure)
+- [📂 Repository Structure](#-repository-structure)
 - [⚙️ Modules](#modules)
 - [🚀 Getting Started](#-getting-started)
     - [🔧 Installation](#-installation)
     - [🤖 Running RainMate](#-running-rainmate)
-    - [🧪 Tests](#-tests)
 - [🛠️ Technologies and Resources Used](#-technologies-and-resources-used)
 - [⚠️ Known Bugs and Limitations](#-known-bugs-and-limitations)
 - [🛣 Roadmap](#-roadmap)
@@ -216,8 +215,7 @@ Here are some known bugs:
 
 ---
 
-
-## 🛣 Project Roadmap
+## 🛣 Roadmap
 
 What we'd like to build in the future:
 
