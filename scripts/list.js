@@ -34,7 +34,6 @@ function updateDistanceAfterInitialization() {
       if (itemKey.includes("vendor-")) {
         const itemData = JSON.parse(sessionStorage.getItem(itemKey));
         const vendorDistance = itemData.distance * 1000;
-        console.log(vendorDistance);
         document.querySelector(`#${itemKey}`).dataset.distance = (
           vendorDistance.toFixed(2) * 100
         ).toFixed(0);
@@ -142,7 +141,6 @@ async function handleGeohashQeuryInRadius(searchRadius) {
     searchRadius,
   );
   initializeVendorCards(matched_vendors);
-  console.log("Hello");
 }
 
 async function listMain() {

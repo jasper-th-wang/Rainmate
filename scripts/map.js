@@ -7,13 +7,40 @@ let params = new URL(window.location.href); //get URL of search bar
 let vendorCoordinatesString = params.searchParams.get("vendorCoord"); //get value for key "id"
 let userCurrentLocation;
 let vendorCoordinates;
-let zoomToCurrentUserCounter = 0;
-let zoomToVendorCounter = 0;
 
 if (vendorCoordinatesString) {
   vendorCoordinates = vendorCoordinatesString
     .split(",")
     .map((coord) => parseFloat(coord));
+}
+
+const homePosition = {
+  center: [144, -37],
+};
+
+function addHomeButton(map) {
+  class HomeButton {
+    onAdd(map) {
+      const div = document.createElement("div");
+      div.className = "mapboxgl-ctrl btn btn-primary map-search-area";
+      div.innerHTML = `<button>
+<!--        <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true" style="font-size: 20px;"><title>Reset map</title><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>-->
+           Search Area
+        </button>`;
+      div.addEventListener("contextmenu", (e) => e.preventDefault());
+      div.addEventListener("click", () => {
+        map.removeLayer("places");
+        map.removeSource("places");
+        const { lat, lng } = map.getCenter();
+        const centerCoord = [lat, lng];
+        renderFeatures(centerCoord, 2, map);
+      });
+
+      return div;
+    }
+  }
+  const homeButton = new HomeButton();
+  map.addControl(homeButton, "top-left");
 }
 
 /**
@@ -32,11 +59,110 @@ function dayIndexToStr(dayIndex) {
   ];
   return weekday?.[dayIndex] ?? "No data.";
 }
+// mapObject may be problematic
+async function renderFeatures(center, radius, mapObject) {
+  let zoomLevel = mapObject.getZoom();
+  if (zoomLevel < 15) {
+    radius = 5;
+  } else if (zoomLevel < 13) {
+    radius = 10;
+  } else if (zoomLevel < 10) {
+    radius = 100;
+  } else if (zoomLevel < 9.8) {
+    radius = 300;
+  } else if (zoomLevel < 9.5) {
+    radius = 500;
+  }
+  const features = []; // Defines an empty array for information to be added to
+  let matchedVendors = await getVendorsInRadius(center, radius);
+  matchedVendors.forEach((doc) => {
+    let { lat, lng } = doc.data();
+    coordinates = [lng, lat];
+
+    // Coordinates
+    let vendor_name = doc.data().name; // Event Name
+    let vendor_code = doc.data().code;
+    let available_umbrellas = doc.data().umbrellaCount;
+    let vendor_imgSrc =
+      doc.data().thumbnail || "./images/vendors/" + vendor_code + ".png";
+    let { address } = doc.data(); // Text Preview
+    let hours = doc.data().hours_of_operation;
+    let dayOfTodayIndex = new Date().getDay();
+    let dayOfTodayStr = dayIndexToStr(dayOfTodayIndex);
+
+    // Store in session storage
+    if (!sessionStorage.getItem(`vendor-${doc.id}`)) {
+      sessionStorage.setItem(
+        `vendor-${doc.id}`,
+        JSON.stringify({
+          ...doc.data(),
+          coordinates: coordinates,
+          distance: 0,
+        }),
+      );
+    }
+    hoursHTML = `Today's Hours: ${hours?.[dayOfTodayStr] ?? "No Data"}`;
+
+    let description = `<div class="vendor-features" id="vendor-${doc.id}" data-lat="${lat}" data-lng="${lng}">
+                                    <img src="${vendor_imgSrc}"></img>
+                                    <div class="vendor-features-body">
+                                      <h5>${vendor_name}</h5>
+                                      <p id="address">${address}</p>
+                                      <p id="hours">${hoursHTML}</p>
+                                      <p>Available Umbrellas: ${available_umbrellas}</p>
+                                      <a href="./vendor.html?id=${doc.id}" title="Opens in a new window">Details</a>
+                                    </div>
+                                  </div>`;
+
+    // Pushes information into the features array
+    // in our application, we have a string description of the hike
+    features.push({
+      type: "Feature",
+      properties: {
+        description: description,
+      },
+      geometry: {
+        type: "Point",
+        coordinates: coordinates,
+      },
+    });
+    // If there is a vendor id in URL parameter, render feature
+    if (JSON.stringify(vendorCoordinates) === JSON.stringify(coordinates)) {
+      vendorPopup = new mapboxgl.Popup()
+        .setLngLat(coordinates)
+        .setHTML(description)
+        .addTo(mapObject);
+    }
+  });
+
+  // Adds features as a source of data for the map
+  mapObject.addSource("places", {
+    type: "geojson",
+    data: {
+      type: "FeatureCollection",
+      features: features,
+    },
+  });
+
+  // Creates a layer above the map displaying the pins
+  // by using the sources that was just added
+  mapObject.addLayer({
+    id: "places",
+    type: "symbol",
+    // source: 'places',
+    source: "places",
+    layout: {
+      "icon-image": "eventpin", // Pin Icon
+      "icon-size": 0.1, // Pin Size
+      "icon-allow-overlap": true, // Allows icons to overlap
+    },
+  });
+}
 
 /**
  * Renders MapBox Map
  */
-function showMap() {
+async function showMap() {
   //-----------------------------------------
   // Define and initialize basic mapbox data
   //-----------------------------------------
@@ -68,19 +194,12 @@ function showMap() {
   // then Add map features
   //------------------------------------
   map.on("load", () => {
-    // map.trigger();
-    // geolocate.trigger();
-    // let vendorPopup;
-    //
-    // let matched_vendors = await getVendorsInRadius(
-    //     currentUserCoord,
-    //     searchRadius,
-    // );
+    addHomeButton(map);
 
     // Defines map pin icon for events
     map.loadImage(
       "https://cdn.iconscout.com/icon/free/png-256/pin-locate-marker-location-navigation-16-28668.png",
-      (error, image) => {
+      async (error, image) => {
         if (error) {
           throw error;
         }
@@ -88,137 +207,53 @@ function showMap() {
         // Add the image to the map style.
         map.addImage("eventpin", image); // Pin Icon
 
-        // READING information from "vendors" collection in Firestore
-        db.collection("vendors")
-          .get()
-          .then((allVendors) => {
-            const features = []; // Defines an empty array for information to be added to
-
-            allVendors.forEach((doc) => {
-              let { lat, lng } = doc.data();
-              coordinates = [lng, lat];
-
-              // Coordinates
-              let vendor_name = doc.data().name; // Event Name
-              let vendor_code = doc.data().code;
-              let available_umbrellas = doc.data().umbrellaCount;
-              let vendor_imgSrc =
-                doc.data().thumbnail ||
-                "./images/vendors/" + vendor_code + ".png";
-              let { address } = doc.data(); // Text Preview
-              let hours = doc.data().hours_of_operation;
-              let dayOfTodayIndex = new Date().getDay();
-              let dayOfTodayStr = dayIndexToStr(dayOfTodayIndex);
-
-              // Store in session storage
-              if (!sessionStorage.getItem(`vendor-${doc.id}`)) {
-                sessionStorage.setItem(
-                  `vendor-${doc.id}`,
-                  JSON.stringify({
-                    ...doc.data(),
-                    coordinates: coordinates,
-                    distance: 0,
-                  }),
-                );
-              }
-              hoursHTML = `Today's Hours: ${
-                hours?.[dayOfTodayStr] ?? "No Data"
-              }`;
-
-              // img = doc.data().posterurl; // Image
-              // url = doc.data().link; // URL
-              let description = `<div class="vendor-features" id="vendor-${doc.id}" data-lat="${lat}" data-lng="${lng}">
-                                    <img src="${vendor_imgSrc}"></img>
-                                    <div class="vendor-features-body">
-                                      <h5>${vendor_name}</h5>
-                                      <p id="address">${address}</p>
-                                      <p id="hours">${hoursHTML}</p>
-                                      <p>Available Umbrellas: ${available_umbrellas}</p>
-                                      <a href="./vendor.html?id=${doc.id}" title="Opens in a new window">Details</a>
-                                    </div>
-                                  </div>`;
-
-              // Pushes information into the features array
-              // in our application, we have a string description of the hike
-              features.push({
-                type: "Feature",
-                properties: {
-                  description: description,
-                },
-                geometry: {
-                  type: "Point",
-                  coordinates: coordinates,
-                },
-              });
-              // If there is a vendor id in URL parameter, render feature
-              if (
-                JSON.stringify(vendorCoordinates) ===
-                JSON.stringify(coordinates)
-              ) {
-                vendorPopup = new mapboxgl.Popup()
-                  .setLngLat(coordinates)
-                  .setHTML(description)
-                  .addTo(map);
-              }
-            });
-
-            // Adds features as a source of data for the map
-            map.addSource("places", {
-              type: "geojson",
-              data: {
-                type: "FeatureCollection",
-                features: features,
-              },
-            });
-
-            // Creates a layer above the map displaying the pins
-            // by using the sources that was just added
-            map.addLayer({
-              id: "places",
-              type: "symbol",
-              // source: 'places',
-              source: "places",
-              layout: {
-                "icon-image": "eventpin", // Pin Icon
-                "icon-size": 0.1, // Pin Size
-                "icon-allow-overlap": true, // Allows icons to overlap
-              },
-            });
-
-            //-----------------------------------------------------------------------
-            // Add Click event listener, and handler function that creates a popup
-            // that displays info from "hikes" collection in Firestore
-            //-----------------------------------------------------------------------
-            map.on("click", "places", (e) => {
-              // Extract coordinates array.
-              // Extract description of that place
-              const coordinates = e.features[0].geometry.coordinates.slice();
-              const { description } = e.features[0].properties;
-
-              // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
-              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-              }
-
-              new mapboxgl.Popup()
-                .setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(map);
-            });
-
-            //-----------------------------------------------------------------------
-            // Add mousenter event listener, and handler function to
-            // Change the cursor to a pointer when the mouse is over the places layer.
-            //-----------------------------------------------------------------------
-            map.on("mouseenter", "places", () => {
-              map.getCanvas().style.cursor = "pointer";
-            });
-
-            // Defaults cursor when not hovering over the places layer
-            map.on("mouseleave", "places", () => {
-              map.getCanvas().style.cursor = "";
-            });
+        if (vendorCoordinates) {
+          let reversedVendorCoordinates = vendorCoordinates.toReversed();
+          renderFeatures(reversedVendorCoordinates, 2, map);
+        } else {
+          geolocate.trigger();
+          await geolocate.on("geolocate", (position) => {
+            let userCoords = [
+              position.coords.latitude,
+              position.coords.longitude,
+            ];
+            renderFeatures(userCoords, 2, map);
           });
+        }
+
+        //-----------------------------------------------------------------------
+        // Add Click event listener, and handler function that creates a popup
+        // that displays info from "hikes" collection in Firestore
+        //-----------------------------------------------------------------------
+        map.on("click", "places", (e) => {
+          // Extract coordinates array.
+          // Extract description of that place
+          const coordinates = e.features[0].geometry.coordinates.slice();
+          const { description } = e.features[0].properties;
+
+          // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears over the copy being pointed to.
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
+
+          new mapboxgl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(map);
+        });
+
+        //-----------------------------------------------------------------------
+        // Add mousenter event listener, and handler function to
+        // Change the cursor to a pointer when the mouse is over the places layer.
+        //-----------------------------------------------------------------------
+        map.on("mouseenter", "places", () => {
+          map.getCanvas().style.cursor = "pointer";
+        });
+
+        // Defaults cursor when not hovering over the places layer
+        map.on("mouseleave", "places", () => {
+          map.getCanvas().style.cursor = "";
+        });
       },
     );
 
@@ -238,9 +273,9 @@ function showMap() {
             position.coords.latitude,
           ];
           // if there is no vendor coordinates in param, change center of map to user current location
-          if (!vendorCoordinates) {
-            map.flyTo({ center: userCurrentLocation });
-          }
+          // if (!vendorCoordinates) {
+          //   map.flyTo({ center: userCurrentLocation });
+          // }
           sessionStorage.setItem(
             "currentPosition",
             JSON.stringify(userCurrentLocation),
@@ -299,11 +334,6 @@ function showMap() {
             // Defaults cursor when not hovering over the userLocation layer
             map.on("mouseleave", "userLocation", () => {
               map.getCanvas().style.cursor = "";
-            });
-
-            map.on("idle", () => {
-              const { lng, lat } = map.getCenter();
-              console.log(lng, lat);
             });
           }
         });

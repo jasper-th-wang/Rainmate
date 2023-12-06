@@ -680,3 +680,24 @@ a.card-link {
 .slider::before {
   display: none;
 }
+
+.map-search-area {
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  /*transform: translate(-50%, -50%);*/
+  /*z-index: 99999999;*/
+
+}
+
+
+
+.map-search-area > button{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
