@@ -291,7 +291,12 @@ input:checked + .slider:before {
 
 .content-container {
   padding-bottom: 65px;
+  max-width: 500px;
+  margin: 0 auto !important;
+  float: none !important;
+
 }
+
 
 /* display flex is used for ordering, don't remove */
 #vendors-go-here {
@@ -620,4 +625,13 @@ a.card-link {
   opacity: 0;
   transition: opacity;
   transition-duration: 1s;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  box-shadow: 1px 5px 15px #111a;
+}
+@media screen and (min-width: 500px) {
+  .map-search-area {
+    transform: translate(115%, 50%) !important;
+
+  }
 }

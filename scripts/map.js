@@ -23,7 +23,7 @@ function addSearchAreaButton(map) {
       this._container.className =
         "mapboxgl-ctrl btn btn-primary map-search-area";
       this._container.innerHTML = `<button>
-           Search Area
+           Search This Area
         </button>`;
       this._container.addEventListener("contextmenu", (e) =>
         e.preventDefault(),
