@@ -106,10 +106,21 @@
         <div class="distance-container">
           <h3>Select a Distance</h3>
           <div class="slidecontainer">
-            <input type="range" min="2" max="50" value="2" step="2" class="slider" id="myRange" oninput="this.nextElementSibling.value = this.value">
+            <input
+              type="range"
+              min="1"
+              max="10"
+              value="2"
+              step="1"
+              class="slider"
+              id="myRange"
+              oninput="this.nextElementSibling.value = this.value"
+            />
             <output id="distance-output">2</output><span>km</span>
           </div>
-          <button class="btn btn-primary" id="show-results-btn">Show Results</button>
+          <button class="btn btn-primary" id="show-results-btn">
+            Show Results
+          </button>
         </div>
         <!-- Cards-->
         <div class="list-card-container">
@@ -147,4 +158,3 @@
     <script src="./scripts/list.js"></script>
   </body>
 </html>
-

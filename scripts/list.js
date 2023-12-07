@@ -4,7 +4,6 @@
  */
 const distanceSlider = document.getElementById("myRange");
 const showResultsBtn = document.getElementById("show-results-btn");
-// const distanceOutput = document.getElementById("distance-output");
 
 /**
  * Sort Vendor Cards by distance by reading data-distance attribute, and apply number to flex order
@@ -21,32 +20,58 @@ function sortVendorCardByDistance() {
  * It is implemented in case user interrupted location update in main.html
  */
 function updateDistanceAfterInitialization() {
-  navigator.geolocation.getCurrentPosition((position) => {
-    const userLocation = [position.coords.longitude, position.coords.latitude];
+  displayLoadingScreen();
 
-    assignDistancesToVendorsInStorage(userLocation);
-    sessionStorage.setItem("currentPosition", JSON.stringify(userLocation));
+  let currentUserCoord;
+  try {
+    currentUserCoord = JSON.parse(sessionStorage.getItem("currentPosition"));
+    updateDistanceHelper(currentUserCoord);
+    sortVendorCardByDistance();
+    removeLoader();
+  } catch (e) {
+    console.log("User location not found, please refresh and try again.");
+    console.log(e);
+    navigator.geolocation.getCurrentPosition((position) => {
+      const userLocation = [
+        position.coords.longitude,
+        position.coords.latitude,
+      ];
+      updateDistanceHelper(userLocation);
+      sortVendorCardByDistance();
+    });
+  }
+}
 
-    // loop through all vendors, and append distance to the corresponding element
-    for (let i = 0; i < sessionStorage.length; i++) {
-      const itemKey = sessionStorage.key(i);
-      // if vendor exists,
-      if (itemKey.includes("vendor-")) {
+/**
+ * Helper function for updateDistanceAfterInitialization(), it will store current location to session storage,
+ * and add distance information to each vendor card.
+ * @param {any} userLocation - array of coordinates
+ */
+function updateDistanceHelper(userLocation) {
+  assignDistancesToVendorsInStorage(userLocation);
+  sessionStorage.setItem("currentPosition", JSON.stringify(userLocation));
+
+  // loop through all vendors, and append distance to the corresponding element
+  for (let i = 0; i < sessionStorage.length; i++) {
+    const itemKey = sessionStorage.key(i);
+    // if vendor exists,
+    if (itemKey.includes("vendor-")) {
+      try {
+        const vendorCard = document.querySelector(`#${itemKey}`);
         const itemData = JSON.parse(sessionStorage.getItem(itemKey));
         const vendorDistance = itemData.distance * 1000;
-        document.querySelector(`#${itemKey}`).dataset.distance = (
-          vendorDistance.toFixed(2) * 100
-        ).toFixed(0);
-        document
-          .querySelector(`#${itemKey}`)
-          .querySelector(".card-distance").innerHTML =
+        vendorCard.dataset.distance = (vendorDistance.toFixed(2) * 100).toFixed(
+          0,
+        );
+        vendorCard.querySelector(".card-distance").innerHTML =
           vendorDistance > 1000
             ? `Distance: ${(vendorDistance / 1000).toFixed(2)} km`
             : `Distance: ${vendorDistance.toFixed(2)} m`;
+      } catch (e) {
+        console.log(e);
       }
     }
-    sortVendorCardByDistance();
-  });
+  }
 }
 
 /**
@@ -116,15 +141,18 @@ function setVendorCoordinatesToLocalStorage(vendor) {
  *  Initialize all vendor cards, and assign coordinates on page load
  */
 function initializeVendorCards(allVendors) {
-  // const allVendors = await db.collection("vendors").get();
   allVendors.forEach((vendor) => {
-    renderVendorCard(vendor);
     setVendorCoordinatesToLocalStorage(vendor);
+    renderVendorCard(vendor);
   });
-  sortVendorCardByDistance();
-  removeLoader();
+  updateDistanceAfterInitialization();
 }
 
+/**
+ * Using geofire library to retrieve matched vendors based on user's coordinates and radius, and render the
+ * matched vendor cards.
+ * @param {any} searchRadius - array of coordinates
+ */
 async function handleGeohashQeuryInRadius(searchRadius) {
   displayLoadingScreen();
   document.getElementById("vendors-go-here").innerHTML = "";
@@ -135,6 +163,15 @@ async function handleGeohashQeuryInRadius(searchRadius) {
   } catch (e) {
     console.log("User location not found, please refresh and try again.");
     console.log(e);
+    // location.reload();
+    navigator.geolocation.getCurrentPosition((position) => {
+      const userLocation = [
+        position.coords.longitude,
+        position.coords.latitude,
+      ];
+      sessionStorage.setItem("currentPosition", JSON.stringify(userLocation));
+      handleGeohashQeuryInRadius(searchRadius);
+    });
   }
   let matched_vendors = await getVendorsInRadius(
     currentUserCoord,
@@ -147,7 +184,6 @@ async function listMain() {
   handleMapListToggle();
   const allVendors = await db.collection("vendors").get();
   handleGeohashQeuryInRadius(2);
-  updateDistanceAfterInitialization();
   showResultsBtn.addEventListener("click", (e) => {
     handleGeohashQeuryInRadius(parseInt(distanceSlider.value));
   });

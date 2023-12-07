@@ -24,7 +24,6 @@ function displayLoadingScreen(message = "") {
 }
 
 function removeLoader() {
-  // document.getElementById("loading-msg").style.display = "none";
   document.querySelector(".loader-container").style.display = "none";
   document.querySelector(".content-container").style.opacity = "100";
 }
