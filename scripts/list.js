@@ -146,16 +146,11 @@ async function handleGeohashQeuryInRadius(searchRadius) {
 async function listMain() {
   handleMapListToggle();
   const allVendors = await db.collection("vendors").get();
-  // initializeVendorCards(allVendors);
   handleGeohashQeuryInRadius(2);
   updateDistanceAfterInitialization();
-  // event listener -> listen for change in value on the drag selector
   showResultsBtn.addEventListener("click", (e) => {
     handleGeohashQeuryInRadius(parseInt(distanceSlider.value));
   });
-  // if change, run a function that will
-  // display loader
-  // run the initialize Vendor Cards again
 }
 
 listMain();
