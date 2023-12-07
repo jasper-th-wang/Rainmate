@@ -26,8 +26,8 @@
 - [🚀 Getting Started](#-getting-started)
     - [🔧 Installation](#-installation)
     - [🤖 Running RainMate](#-running-rainmate)
-- [🛠️ Technologies and Resources Used](#-technologies-and-resources-used)
-- [⚠️ Known Bugs and Limitations](#-known-bugs-and-limitations)
+- [🛠️ Technologies and Resources Used](#technologies-and-resources-used)
+- [⚠️ Known Bugs and Limitations](#known-bugs-and-limitations)
 - [🛣 Roadmap](#-roadmap)
 - [👏 Contributors](#-contributors)
 
