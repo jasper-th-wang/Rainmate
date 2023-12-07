@@ -17,6 +17,7 @@
 ---
 
 ## 📖 Table of Contents
+
 - [📖 Table of Contents](#-table-of-contents)
 - [📍 Overview](#-overview)
 - [🎈 Demo](#-demo)
@@ -24,8 +25,8 @@
 - [📂 Repository Structure](#-repository-structure)
 - [⚙️ Modules](#modules)
 - [🚀 Getting Started](#-getting-started)
-    - [🔧 Installation](#-installation)
-    - [🤖 Running RainMate](#-running-rainmate)
+  - [🔧 Installation](#-installation)
+  - [🤖 Running RainMate](#-running-rainmate)
 - [🛠️ Technologies and Resources Used](#technologies-and-resources-used)
 - [⚠️ Known Bugs and Limitations](#known-bugs-and-limitations)
 - [🛣 Roadmap](#-roadmap)
@@ -33,11 +34,9 @@
 
 ---
 
-
 ## 📍 Overview
 
 The RainMate app provides an umbrella-sharing service, enabling users to reserve and return umbrellas via a web-based platform. It features a main landing page, reservation details, confirmation with QR code generation for verification, and personal umbrella management. The service emphasizes eco-friendliness, affordability, and instant access, leveraging modern web technologies, geolocation, and real-time database interactions for a seamless user experience. RainMate caters to those needing temporary shelter from the rain, merging convenience with environmental consciousness.
-
 
 ---
 
@@ -52,18 +51,17 @@ https://bcit-comp1800-dtc05-rainmate.web.app/
 ## 📦 Features
 
 - Map View of Vendors: upon opening the app, you can see all the participating vendors near you at a glance.
-    - You can click on the pin to see details with a popup.
-    - After dragging to a different location, a search area button will appear, and it allows user to search for vendors near this particular location.
+  - You can click on the pin to see details with a popup.
+  - After dragging to a different location, a search area button will appear, and it allows user to search for vendors near this particular location.
 - List View of Vendors: at the top of the screen, users can navigate to the list view, and see all the vendors within the 2 km radius.
-    - users are able to use the slider on the top to select the desired radius to search.
-    - vendors are sorted by distance by default!
-- Reserving an umbrella: user can easily reserve an umbrella by clicking a vendor, click **Reserve**, and a reservation document will be generated along with a QR code representing the *Reservation ID*.
+  - users are able to use the slider on the top to select the desired radius to search.
+  - vendors are sorted by distance by default!
+- Reserving an umbrella: user can easily reserve an umbrella by clicking a vendor, click **Reserve**, and a reservation document will be generated along with a QR code representing the _Reservation ID_.
 - Pickup an umbrella: your reservation QR code is conveniently located at your my umbrella page.
 - Return an umbrella: return to any vendor you like! Go to any location, click on their vendor page in RainMate, you will see a **Return** button that allows you to return anywhere, anytime.
 - My Umbrella Page: all your reservation information and remaining time for pickup or return, and pickup and return QR code are all available at a glance on this page!
 
 ---
-
 
 ## 📂 Repository Structure
 
@@ -104,19 +102,18 @@ https://bcit-comp1800-dtc05-rainmate.web.app/
     │   └── vendor.js
     └── styles/
         └── style.css
-    
+
 
 ```
 
 ---
-
 
 ## ⚙️ Modules
 
 <details closed><summary>Root</summary>
 
 | File                                                                                                 | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| ---                                                                                                  | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [index.html](https://github.com/jasper-th-wang/1800_202330_DTC05/blob/main/index.html)               | The provided code is an HTML template for the main landing page of RainMate, an umbrella-sharing service app. It includes metadata, links to jQuery, Bootstrap, Firebase libraries, Google Fonts, and stylesheets. The body consists of a navigation bar, a welcome section promoting the service, a section explaining its benefits (Instant Access, Affordable, Eco-friendly), a video demonstrating app usage, a signup prompt, and a footer with copyright and contact links. JavaScript at the bottom ensures users start logged out. The associated directory structure suggests various HTML pages, UI components, images, and scripts, indicating a feature-rich web application.          |
 | [reservation.html](https://github.com/jasper-th-wang/1800_202330_DTC05/blob/main/reservation.html)   | This HTML file is a template for a Reservation Details page as part of the RainMate umbrella rental service. It outlines rental rules and provides confirm/cancel actions. It leverages Bootstrap for styling, loads custom styles, and integrates Firebase for backend services. The page dynamically loads navigation and footer components, likely through the referenced JavaScript files. It requires the user to adhere to rental timings, return policies, and provides guidance for cancellations and emergencies.                                                                                                                                                                         |
 | [confirmation.html](https://github.com/jasper-th-wang/1800_202330_DTC05/blob/main/confirmation.html) | This HTML document is a reservation confirmation page equipped with Bootstrap and jQuery, leveraging Firebase for backend functionalities. It displays a success message confirming a user's reservation and provides QR code functionality, likely for reservation verification. There are links to return to the main map or to view personal umbrella details. Additional scripts enhance page interactivity and connectivity with backend services, while custom styles are applied for visual presentation.                                                                                                                                                                                   |
@@ -133,7 +130,7 @@ https://bcit-comp1800-dtc05-rainmate.web.app/
 <details closed><summary>Styles</summary>
 
 | File                                                                                        | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ---                                                                                         | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [style.css](https://github.com/jasper-th-wang/1800_202330_DTC05/blob/main/styles/style.css) | The provided code is a CSS stylesheet for a web application with various pages and components, including navigation bars, image backgrounds, buttons, lists, cards, modals, vendor features, map UI, and loading animations. It applies custom styles for smooth scrolling, font families, layout, image handling, and responsive design for different screen sizes. Key functionalities include setting overflow behavior, text and background styling, layout adjustments via padding and margin, button and link customizations, list presentation, modals for pop-up content, and visual feedback with loaders. The code includes media queries for responsive design adjustments, ensuring the application's interface is visually consistent and functional across devices. |
 
 </details>
@@ -141,7 +138,7 @@ https://bcit-comp1800-dtc05-rainmate.web.app/
 <details closed><summary>Components</summary>
 
 | File                                                                                                                    | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ---                                                                                                                     | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [nav_after_login.html](https://github.com/jasper-th-wang/1800_202330_DTC05/blob/main/components/nav_after_login.html)   | The `nav_after_login.html` component is a navigation bar for logged-in users of the RainMate app, featuring links to the app's main map page, the user's personal umbrella management page, and placeholder links for promotional and about pages. It also includes a log-out button that redirects to the homepage. The navigation bar is collapsible, making it responsive for mobile and tablet use.                                                                                                      |
 | [nav_before_login.html](https://github.com/jasper-th-wang/1800_202330_DTC05/blob/main/components/nav_before_login.html) | The directory structure reveals a web project with HTML pages, scripts, styles, and images. The nav_before_login.html within components contains a navigational bar for the RainMate website, visible before a user logs in. It includes a company logo linking to the homepage, a collapsible menu with options Why RainMate, About Us, and Contact, and a Sign In button redirecting to the login page. The navigation is responsive and leverages Bootstrap's collapse functionality for smaller screens. |
 | [footerNav.html](https://github.com/jasper-th-wang/1800_202330_DTC05/blob/main/components/footerNav.html)               | The provided code segment is an HTML snippet defining a mobile navigation footer with two linked icon elements. The footer contains clickable SVG icons, one for navigating to the main.html page, represented by an explore icon, and another for accessing my_umbrella.html, represented by an umbrella icon. Each icon is enclosed in an anchor tag specifying the target URL, ensuring user navigation within the website upon interaction.                                                              |
@@ -151,7 +148,7 @@ https://bcit-comp1800-dtc05-rainmate.web.app/
 <details closed><summary>Scripts</summary>
 
 | File                                                                                                         | Summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| ---                                                                                                          | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | [geohash-main.js](https://github.com/jasper-th-wang/1800_202330_DTC05/blob/main/scripts/geohash-main.js)     | This script uses the GeoFire library to perform geospatial queries on Firestore to find vendor records within a specified radius of a center point, accounting for GeoHash precision limitations. It compiles multiple Firestore queries for geohash ranges, merges their results, and filters for actual proximity before returning the set of vendors truly within the desired radius. The main function is made globally accessible through the `window` object for use in a browser context.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | [timer.js](https://github.com/jasper-th-wang/1800_202330_DTC05/blob/main/scripts/timer.js)                   | The `timer.js` script initializes a countdown timer based on a Firestore timestamp. If an item has been picked up (`isPickedUp` is true), the due date is set to 2 days later; otherwise, it's 20 minutes later. It updates the countdown every second, displaying days, hours, minutes, and seconds on the element with the id timer. If the countdown expires, it stops updating, notifies the user pickup is unavailable, disables interaction elements, and greys out relevant visual components. The same function code appears duplicated, possibly due to a copy-paste error.                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [skeleton.js](https://github.com/jasper-th-wang/1800_202330_DTC05/blob/main/scripts/skeleton.js)             | The `skeleton.js` script dynamically adjusts navigation elements depending on user authentication status. For authenticated users, it loads navigation templates for after login and a footer. It then retrieves user data from a Firebase database collection, storing it in the session. Unauthenticated users only see the pre-login navigation.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -174,7 +171,7 @@ https://bcit-comp1800-dtc05-rainmate.web.app/
 
 ## 🚀 Getting Started
 
-***Dependencies***
+**_Dependencies_**
 
 Please ensure you have the following dependencies installed on your system:
 
@@ -183,11 +180,13 @@ Please ensure you have the following dependencies installed on your system:
 ### 🔧 Installation
 
 1. Clone the 1800_202330_DTC05 repository:
+
 ```sh
 git clone https://github.com/jasper-th-wang/1800_202330_DTC05
 ```
 
 2. Change to the project directory:
+
 ```sh
 cd 1800_202330_DTC05
 ```
@@ -213,7 +212,6 @@ Here is a list of technologies (with version numbers), API's, icons, fonts, imag
 - QRCode.js
 - Google Map Search data is used for mock Vendors information
 
-
 ---
 
 ## Known Bugs and Limitations
@@ -221,8 +219,8 @@ Here is a list of technologies (with version numbers), API's, icons, fonts, imag
 Here are some known bugs:
 
 - When the timer is expired for return, there is no penalty or message indicating the fine user will receive for returning the umbrella late.
-- If user enters the map page and quickly click the *list* button to go to `list.html`, because `list.js` first uses user's location data from the session storage, it will rendered all the distance as "0 m" at first. However, `list.js` will update user's location data in the background to fix this error.
-- Sometimes reservation QR code does not render on first load when user clicks on the *Pickup/Cancel* button in `my_umbrella.html`, a refresh of the page is needed.
+- If user enters the map page and quickly click the _list_ button to go to `list.html`, because `list.js` first uses user's location data from the session storage, it will rendered all the distance as "0 m" at first. However, `list.js` will update user's location data in the background to fix this error.
+- Sometimes reservation QR code does not render on first load when user clicks on the _Pickup/Cancel_ button in `my_umbrella.html`, a refresh of the page is needed.
 
 ---
 
@@ -238,10 +236,12 @@ What we'd like to build in the future:
 ## 👏 Contributors
 
 - Jasper Wang: Lead JavaScript Developer. Bringing enthusiasm and expertise to the forefront of our app's dynamic functionality and interactive features.
+  - Contact: jasper8777@icloud.com
 - Flora Deng: HTML/CSS Specialist. Focused on crafting the user interface with precision and creative flair to ensure an engaging user experience.
+  - Contact: hdeng24@my.bcit.ca
 - Joey Cho: HTML/CSS/JavaScript Developer and Designer. Infusing the project with innovative design ideas and a keen eye for aesthetic detail, enhancing the overall look and feel of the application.
+  - Contact: joeycho1208@gmail.com
 
 [**Return**](#Top)
 
 ---
-
