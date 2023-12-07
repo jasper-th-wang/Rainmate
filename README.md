@@ -230,6 +230,7 @@ What we'd like to build in the future:
 
 - Bug fixes: we want to optimize the user experience as much as possible by fixing the known bugs mentioned above.
 - Query optimization: the amount of read query is more than desired, in the future we wish to optimize our query algorithm.
+- Organization: due to time constraint and inexperience, the CSS and JavaScript code can benefit from a refactoring and reorganization!
 
 ---
 
