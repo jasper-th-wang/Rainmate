@@ -15,6 +15,11 @@ if (vendorCoordinatesString) {
     .map((coord) => parseFloat(coord));
 }
 
+/**
+ * Add search area button in the top left corner of the map
+ * @param map - a Mapbox GL JS Map object
+ * @returns {SearchAreaButton} - a search area button for Mapbox GL JS API to render
+ */
 function addSearchAreaButton(map) {
   class SearchAreaButton {
     onAdd(map) {
@@ -36,6 +41,8 @@ function addSearchAreaButton(map) {
         renderFeatures(centerCoord, 2, map);
         map.removeControl(this);
       });
+
+      // delay for animation
       setTimeout(() => {
         this._container.style.opacity = 1;
       }, 200);
@@ -43,6 +50,8 @@ function addSearchAreaButton(map) {
     }
     onRemove() {
       this._container.style.opacity = 0;
+
+      // delay for animation
       setTimeout(() => {
         this._container.parentNode.removeChild(this._container);
         this._map = undefined;
@@ -278,10 +287,8 @@ async function showMap() {
             position.coords.longitude,
             position.coords.latitude,
           ];
+
           // if there is no vendor coordinates in param, change center of map to user current location
-          // if (!vendorCoordinates) {
-          //   map.flyTo({ center: userCurrentLocation });
-          // }
           sessionStorage.setItem(
             "currentPosition",
             JSON.stringify(userCurrentLocation),
@@ -345,6 +352,8 @@ async function showMap() {
         });
       },
     );
+
+    // After user drag to another area on the map, it will show the search area button.
     map.on("dragend", () => {
       if (!searchAreaBtnRef) {
         searchAreaBtnRef = addSearchAreaButton(map);

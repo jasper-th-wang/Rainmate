@@ -4,7 +4,8 @@
  */
 
 /**
- * Renders QR code based on search parameters
+ * Renders the QR code based on the query string parameter "id" in the URL.
+ * @returns {void}
  */
 function renderQRCodeFromParams() {
   document.addEventListener("DOMContentLoaded", (event) => {

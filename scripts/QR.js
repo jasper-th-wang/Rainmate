@@ -1,3 +1,7 @@
+/**
+ * Renders the QR code for the current reservation.
+ * @returns {void}
+ */
 function renderReservationQRCode() {
   const reservationData = JSON.parse(
     sessionStorage.getItem("currentReservation"),
@@ -13,6 +17,11 @@ function renderReservationQRCode() {
   console.log(reservationID);
 }
 
+/**
+ * Generates a QR code for the provided reservation ID using qrcode.js library.
+ * @param {string} reservationId - The ID of the reservation to generate the QR code for.
+ * @returns {void}
+ */
 function generateQRCode(reservationId) {
   // Your code to generate the QR code using qrcode.js
   let qrcode = new QRCode(document.getElementById("qrcode"), {

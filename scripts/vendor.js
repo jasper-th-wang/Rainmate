@@ -4,6 +4,11 @@
  */
 let params = new URL(window.location.href); //get URL of search bar
 let vendorID = params.searchParams.get("id"); //get value for key "id"
+
+/**
+ * Displays the information of a vendor.
+ * @returns {void}
+ */
 function displayVendorInfo() {
   db.collection("vendors")
     .doc(vendorID)
@@ -64,6 +69,11 @@ function displayVendorInfo() {
     });
 }
 
+/**
+ * Renders the UI for returning the umbrella based on the current reservation status.
+ * @param {string} currentReservationId - The ID of the current reservation.
+ * @returns {void}
+ */
 function renderReturnUI(currentReservationId) {
   const currentReservation = db
     .collection("Reservations")

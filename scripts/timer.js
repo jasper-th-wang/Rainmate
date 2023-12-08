@@ -2,33 +2,25 @@
  * @fileoverview
  * Render timer for my_umbrella.html
  */
-//Set the date we're counting down to
+
+/**
+ * Initializes a countdown timer based on the provided Firestore timestamp and pick-up status.
+ * @param {firebase.firestore.Timestamp} firestoreTimeStamp - The Firestore timestamp representing the start time of the reservation.
+ * @param {boolean} isPickedUp - Indicates whether the umbrella has been picked up.
+ * @returns {void}
+ */
 function initTimer(firestoreTimeStamp, isPickedUp) {
   let startDate = firestoreTimeStamp.toDate();
   let dueDate = isPickedUp
     ? startDate.setDate(startDate.getDate() + 2)
     : startDate.setMinutes(startDate.getMinutes() + 20);
 
-  if (isPickedUp) {
-    let returnTime = new Date(dueDate);
-    document.getElementById("timer").innerHTML =
-      "Return by: " + returnTime.toLocaleString();
-  } else {
-    // Handle the non-picked up case as before (if needed)
-  }
-}
-function initTimer(firestoreTimeStamp, isPickedUp) {
-  let startDate = firestoreTimeStamp.toDate();
-  let dueDate = isPickedUp
-    ? startDate.setDate(startDate.getDate() + 2)
-    : startDate.setMinutes(startDate.getMinutes() + 20);
-
-  // Update the count down every 1 second
+  // Update the count-down every 1 second
   let x = setInterval(function () {
     // Get today's date and time
     let now = new Date().getTime();
 
-    // Find the distance between now and the count down date
+    // Find the distance between now and the count-down date
     let distance = dueDate - now;
 
     // Time calculations for days, hours, minutes and seconds

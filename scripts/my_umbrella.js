@@ -9,6 +9,12 @@ const pendingPickUpMessage =
 const pendingReturnMessage =
   '<h1 class="header-message">Time Remaining for Return:</h1>';
 
+/**
+ * Renders the vendor card with the provided vendor ID and pick-up status.
+ * @param {string} vendorID - The ID of the vendor.
+ * @param {boolean} isPickedUp - Indicates whether the umbrella has been picked up.
+ * @returns {Promise<void>}
+ */
 async function renderVendorCard(vendorID, isPickedUp) {
   // Get vendor information
   let vendorDoc = await db.collection("vendors").doc(vendorID).get();
@@ -44,6 +50,11 @@ async function renderVendorCard(vendorID, isPickedUp) {
   renderModal();
 }
 
+/**
+ * Handles the cancellation of the current reservation for the current user.
+ * @param {firebase.firestore.DocumentReference} currentUser - The reference to the current user document.
+ * @returns {Promise<void>}
+ */
 async function handleCancelReservation(currentUser) {
   await currentUser.update({
     currentReservation: false,
@@ -53,6 +64,12 @@ async function handleCancelReservation(currentUser) {
   delayedReloadForDemo();
 }
 
+/**
+ * Handles the return of the umbrella for the current user's current reservation.
+ * @param {firebase.firestore.DocumentReference} currentUser - The reference to the current user document.
+ * @param {firebase.firestore.DocumentReference} currentReservation - The reference to the current reservation document.
+ * @returns {Promise<void>}
+ */
 async function handleReturn(currentUser, currentReservation) {
   // get vendor id for current reservation
   const currentReservationDoc = await currentReservation.get();
@@ -85,6 +102,11 @@ async function handleReturn(currentUser, currentReservation) {
   delayedReloadForDemo();
 }
 
+/**
+ * Handles the pick-up of the umbrella for the current user's current reservation.
+ * @param {firebase.firestore.DocumentReference} currentReservation - The reference to the current reservation document.
+ * @returns {Promise<void>}
+ */
 async function handlePickUp(currentReservation) {
   // register pickup (isPickedUp) to current reservation
   const registerPickUpToUser = currentReservation.update({
@@ -111,6 +133,10 @@ async function handlePickUp(currentReservation) {
   delayedReloadForDemo();
 }
 
+/**
+ * Main function for the My Umbrella page.
+ * @returns {Promise<void>}
+ */
 async function myUmbrellaMain() {
   firebase.auth().onAuthStateChanged(async (user) => {
     if (user) {
@@ -194,6 +220,10 @@ async function myUmbrellaMain() {
   });
 }
 
+/**
+ * Renders and controls the behavior of a modal.
+ * @returns {void}
+ */
 function renderModal() {
   // Get the modal
   var modal = document.getElementById("myModal");

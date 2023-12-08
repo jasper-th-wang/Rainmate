@@ -2,6 +2,11 @@
  * @fileoverview
  * Handle creating hamburger menu items and footer navigation based on user's login status
  */
+
+/**
+ * Loads the skeleton of the page based on the user's authentication status.
+ * @returns {void}
+ */
 function loadSkeleton() {
   firebase.auth().onAuthStateChanged(async function (user) {
     if (user) {
