@@ -50,16 +50,56 @@ https://bcit-comp1800-dtc05-rainmate.web.app/
 
 ## 📦 Features
 
-- Map View of Vendors: upon opening the app, you can see all the participating vendors near you at a glance.
-  - You can click on the pin to see details with a popup.
-  - After dragging to a different location, a search area button will appear, and it allows user to search for vendors near this particular location.
-- List View of Vendors: at the top of the screen, users can navigate to the list view, and see all the vendors within the 2 km radius.
-  - users are able to use the slider on the top to select the desired radius to search.
+### Map View of Vendors
+
+- upon opening the app, you can see all the participating vendors near you at a glance.
+
+  ![open](./images/readme/opening.gif)
+
+- You can click on the pin to see details with a popup.
+
+  ![popup](./images/readme/popup.gif)
+
+- After dragging to a different location, a search area button will appear, and it allows user to search for vendors near this particular location.
+
+  This is done using geohased user and vendor location to dynamically fetch appropriate vendors from Firestore.
+
+  ![search area](./images/readme/search_area.gif)
+
+### List View of Vendors
+
+- at the top of the screen, users can navigate to the list view, and see all the vendors within the 2 km radius.
+
   - vendors are sorted by distance by default!
-- Reserving an umbrella: user can easily reserve an umbrella by clicking a vendor, click **Reserve**, and a reservation document will be generated along with a QR code representing the _Reservation ID_.
-- Pickup an umbrella: your reservation QR code is conveniently located at your my umbrella page.
+  - users are able to use the slider on the top to select the desired radius to search.
+
+  ![list](./images/readme/list.gif)
+
+### Reserving an Umbrella
+
+- Reserving an umbrella: user can easily reserve an umbrella by clicking a vendor, click **Reserve**, and a reservation document will be generated on Firestore. And, user will be shown a QR code generated using the _Reservation ID_.
+
+  ![reserving an umbrella](./images/readme/reserve.gif)
+
+### My Umbrella Page
+
+- All your reservation information and remaining time for pickup or return, and pickup and return QR code are all available at a glance on this page!
+- You can also click **Find Store** to direct you to the store you reserved your umbrella from.
+
+  ![my umbrella page](./images/readme/my_umbrella_page.gif)
+
+### Picking Up an Umbrella
+
+- To pickup an umbrella, simply open up the QR code, have it scanned by the vendor and complete the pickup!
+- RainMate will update the vendor's umbrella count, and your pickup information at the same time.
+
+  ![pickup](./images/readme/pickup.gif)
+
+### Returning an Umbrella
+
 - Return an umbrella: return to any vendor you like! Go to any location, click on their vendor page in RainMate, you will see a **Return** button that allows you to return anywhere, anytime.
-- My Umbrella Page: all your reservation information and remaining time for pickup or return, and pickup and return QR code are all available at a glance on this page!
+
+  ![return](./images/readme/return.gif)
 
 ---
 

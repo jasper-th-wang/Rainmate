@@ -1,5 +1,11 @@
 .DS_Store
 *.logs
 node_modules/
+.idea/
 .vscode/
 firebaseAPI.js
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
+storage.rules
