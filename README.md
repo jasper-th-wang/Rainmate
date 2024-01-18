@@ -276,12 +276,9 @@ What we'd like to build in the future:
 
 ## 👏 Contributors
 
-- Jasper Wang: Lead JavaScript Developer. Bringing enthusiasm and expertise to the forefront of our app's dynamic functionality and interactive features.
-  - Contact: jasper8777@icloud.com
-- Flora Deng: HTML/CSS Specialist. Focused on crafting the user interface with precision and creative flair to ensure an engaging user experience.
-  - Contact: hdeng24@my.bcit.ca
-- Joey Cho: HTML/CSS/JavaScript Developer and Designer. Infusing the project with innovative design ideas and a keen eye for aesthetic detail, enhancing the overall look and feel of the application.
-  - Contact: joeycho1208@gmail.com
+- Jasper Wang 👋: jasper8777@icloud.com
+- Flora Deng 👋: hdeng24@my.bcit.ca
+- Joey Cho 👋: joeycho1208@gmail.com
 
 [**Return**](#Top)
 
